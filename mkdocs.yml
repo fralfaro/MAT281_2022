@@ -68,8 +68,17 @@ extra:
     - icon: fontawesome/brands/medium
       link: https://medium.com/@fralfaro
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/fralfaro/portfolio
+      link: https://fralfaro.github.io/portfolio/
 
 # TOC
 nav:
     - Home: index.md
+    - Basic Tools:
+        - Introducción: lectures/basic_tools/lecture_000_intro.md
+        - Configuraciones: lectures/basic_tools/lecture_000_configuraciones.md
+        - Linux: lectures/basic_tools/lecture_011_os.md
+        - Git: lectures/basic_tools/lecture_015_git.md
+        - IDE: lectures/basic_tools/lecture_013_ide.md
+        - Python: lectures/basic_tools/lecture_012_python.md
+        - Jupyter Notebook: lectures/basic_tools/lecture_014_jupyter.md
+        - Google Colab: lectures/basic_tools/lecture_016_colab.md
