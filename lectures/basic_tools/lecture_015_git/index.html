@@ -10,19 +10,21 @@
         <meta name="author" content="Francisco Alfaro">
       
       
-      <link rel="icon" href="/fralfaro/MAT281_2022/assets/images/favicon.png">
+        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_015_git/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Home</title>
+        <title>Git - Home</title>
       
     
     
-      <link rel="stylesheet" href="/fralfaro/MAT281_2022/assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="/fralfaro/MAT281_2022/assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -37,7 +39,7 @@
       
     
     
-    <script>__md_scope=new URL("/fralfaro/MAT281_2022/",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#git" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -74,7 +81,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="/fralfaro/MAT281_2022/." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
+    <a href="../../.." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -93,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Git
             
           </span>
         </div>
@@ -194,7 +201,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/fralfaro/MAT281_2022/." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
+    <a href="../../.." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -225,7 +232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -238,12 +245,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -266,7 +275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_000_intro/" class="md-nav__link">
+      <a href="../lecture_000_intro/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -280,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_000_configuraciones/" class="md-nav__link">
+      <a href="../lecture_000_configuraciones/" class="md-nav__link">
         Configuraciones
       </a>
     </li>
@@ -294,7 +303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_011_os/" class="md-nav__link">
+      <a href="../lecture_011_os/" class="md-nav__link">
         Linux
       </a>
     </li>
@@ -306,11 +315,135 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_015_git/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Git
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-basicos" class="md-nav__link">
+    Comandos básicos
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos básicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-inicial" class="md-nav__link">
+    Configuración inicial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crea-un-repositorio-nuevo" class="md-nav__link">
+    crea un repositorio nuevo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacer-checkout-a-un-repositorio" class="md-nav__link">
+    hacer checkout a un repositorio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo" class="md-nav__link">
+    flujo de trabajo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-commit" class="md-nav__link">
+    add &amp; commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ramas-branches" class="md-nav__link">
+    ramas (branches)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actualiza-fusiona-pull-merge" class="md-nav__link">
+    actualiza &amp; fusiona (pull &amp; merge)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore" class="md-nav__link">
+    gitignore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reemplaza-cambios-locales" class="md-nav__link">
+    reemplaza cambios locales
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -322,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_013_ide/" class="md-nav__link">
+      <a href="../lecture_013_ide/" class="md-nav__link">
         IDE
       </a>
     </li>
@@ -336,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_012_python/" class="md-nav__link">
+      <a href="../lecture_012_python/" class="md-nav__link">
         Python
       </a>
     </li>
@@ -350,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_014_jupyter/" class="md-nav__link">
+      <a href="../lecture_014_jupyter/" class="md-nav__link">
         Jupyter Notebook
       </a>
     </li>
@@ -364,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_016_colab/" class="md-nav__link">
+      <a href="../lecture_016_colab/" class="md-nav__link">
         Google Colab
       </a>
     </li>
@@ -395,6 +528,106 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-basicos" class="md-nav__link">
+    Comandos básicos
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos básicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-inicial" class="md-nav__link">
+    Configuración inicial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crea-un-repositorio-nuevo" class="md-nav__link">
+    crea un repositorio nuevo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacer-checkout-a-un-repositorio" class="md-nav__link">
+    hacer checkout a un repositorio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo" class="md-nav__link">
+    flujo de trabajo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-commit" class="md-nav__link">
+    add &amp; commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ramas-branches" class="md-nav__link">
+    ramas (branches)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actualiza-fusiona-pull-merge" class="md-nav__link">
+    actualiza &amp; fusiona (pull &amp; merge)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore" class="md-nav__link">
+    gitignore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reemplaza-cambios-locales" class="md-nav__link">
+    reemplaza cambios locales
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -405,8 +638,110 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
 
+
+<h1 id="git">Git</h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHG2qgaSuI_FvrlphFXxKnjZixfFmOs3-iNlkMxxnWazUiWMlyc3C-zMlZMTS2U2J9CZI&usqp=CAU" align="center"/></p>
+<h2 id="introduccion">Introducción</h2>
+<p><a href="https://en.wikipedia.org/wiki/Git">Git</a> es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia, la confiabilidad y compatibilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente. Su propósito es llevar registro de los cambios en archivos de computadora incluyendo coordinar el trabajo que varias personas realizan sobre archivos compartidos en un repositorio de código.</p>
+<p>Al principio, Git se pensó como un motor de bajo nivel sobre el cual otros pudieran escribir la interfaz de usuario o front end como Cogito o StGIT. Sin embargo, Git se ha convertido desde entonces en un sistema de control de versiones con funcionalidad plena. Hay algunos proyectos de mucha relevancia que ya usan Git, en particular, el grupo de programación del núcleo Linux.</p>
+<p>El mantenimiento del software Git está actualmente (2009) supervisado por Junio Hamano, quien recibe contribuciones al código de alrededor de 280 programadores. En cuanto a derechos de autor Git es un software libre distribuible bajo los términos de la versión 2 de la Licencia Pública General de GNU.</p>
+<h2 id="comandos-basicos">Comandos básicos</h2>
+<h3 id="configuracion-inicial">Configuración inicial</h3>
+<p>Abra su terminal de Git para comenzar con la ejecución de comandos, por ejemplo, abrirá el programa Git bash en Windows para ingresar a la línea de comandos de este programa.</p>
+<p>Una vez que ingrese, use el siguiente comando para establecer el nombre de usuario de git:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git config --global user.name &quot;tunombre&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>!git config --global user.name
+</code></pre></div>
+<p>Recuerde sustituir el texto entre comillas por su nombre real. Ahora indique el correo electrónico del usuario para git:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git config --global user.email &quot;tuemail&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>!git config --global user.email
+</code></pre></div>
+<h3 id="crea-un-repositorio-nuevo">crea un repositorio nuevo</h3>
+<p>Crea un directorio nuevo, ábrelo y ejecuta
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git init
+</code></pre></div></p>
+<p>para crear un nuevo repositorio de git.</p>
+<h3 id="hacer-checkout-a-un-repositorio">hacer checkout a un repositorio</h3>
+<p>Crea una copia local del repositorio ejecutando:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git clone /path/to/repository
+</code></pre></div></p>
+<p>Si utilizas un servidor remoto, ejecuta:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git clone username@host:/path/to/repository
+</code></pre></div>
+<p><img src="https://bobbelderbos.com/assets/git-clone.png" alt="" width="300" height="300" align="center"/></p>
+<h3 id="flujo-de-trabajo">flujo de trabajo</h3>
+<p>Tu repositorio local esta compuesto por tres "árboles" administrados por git. El primero es tu <code>Directorio de trabajo</code> que contiene los archivos, el segundo es el <code>Index</code> que actua como una zona intermedia, y el último es el <code>HEAD</code> que apunta al último commit realizado.
+<img src="images/trees.png" alt="" width="500" height="300" align="center"/></p>
+<h3 id="add-commit">add &amp; commit</h3>
+<p>Puedes registrar cambios (añadirlos al Index) usando</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git add &lt;filename&gt;
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>git add .
+</code></pre></div>
+<p>Este es el primer paso en el flujo de trabajo básico. Para hacer commit a estos cambios usa
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git commit -m &quot;Commit message&quot;
+</code></pre></div></p>
+<p>Ahora el archivo esta incluído en el <code>HEAD</code>, pero aún no en tu repositorio remoto.</p>
+<p><img src="images/flujo.jpg" alt="" width="300" height="500" align="center"/></p>
+<h3 id="ramas-branches">ramas (branches)</h3>
+<p>Las ramas son utilizadas para desarrollar funcionalidades aisladas unas de otras. La rama master es la rama "por defecto" cuando creas un repositorio. Crea nuevas ramas durante el desarrollo y fusiónalas a la rama principal cuando termines.</p>
+<p><img src="images/branches.png" alt="" width="500" height="300" align="center"/></p>
+<p>Crea una nueva rama llamada "feature_x" y cámbiate a ella usando</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git checkout -b feature_x
+</code></pre></div>
+<p>vuelve a la rama principal</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git checkout master
+</code></pre></div>
+<p>y borra la rama</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git branch -d feature_x
+</code></pre></div>
+<p>Una rama nueva no estará disponible para los demás a menos que subas (push) la rama a tu repositorio remoto</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git push origin &lt;branch&gt;
+</code></pre></div>
+<h3 id="actualiza-fusiona-pull-merge">actualiza &amp; fusiona (pull &amp; merge)</h3>
+<p>Para actualizar tu repositorio local al commit más nuevo, ejecuta</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git pull
+</code></pre></div>
+<p><img src="https://www.maixuanviet.com/wp-content/uploads/2020/05/git-pull2.png" alt="" width="500" height="300" align="center"/></p>
+<p>en tu directorio de trabajo para bajar y fusionar los cambios remotos.
+Para fusionar otra rama a tu rama activa (por ejemplo master), utiliza</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git merge &lt;branch&gt;
+</code></pre></div>
+<p>en ambos casos git intentará fusionar automáticamente los cambios. Desafortunadamente, no siempre será posible y se podrán producir conflictos. Tú eres responsable de fusionar esos conflictos manualmente al editar los archivos mostrados por git. Después de modificarlos, necesitas marcarlos como fusionados con</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git add &lt;filename&gt;
+</code></pre></div>
+<p>Antes de fusionar los cambios, puedes revisarlos usando</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git diff &lt;source_branch&gt; &lt;target_branch&gt;```
+</code></pre></div>
+<p><img src="https://static.javatpoint.com/tutorial/git/images/git-merge-and-merge-conflict.png" alt="" width="500" height="300" align="center"/></p>
+<h3 id="gitignore">gitignore</h3>
+<p>El archivo <code>.gitignore</code>, es un archivo de texto que le dice a Git qué archivos o carpetas ignorar en un proyecto.</p>
+<p>Un archivo local <code>.gitignore</code> generalmente se coloca en el directorio raíz de un proyecto. También puedes crear un archivo global <code>.gitignore</code>, y cualquier entrada en ese archivo se ignorará en todos tus repositorios de Git.</p>
+<p>Las entradas de este archivo también pueden seguir un patrón coincidente:</p>
+<ul>
+<li><code>*</code> se utiliza como una coincidencia comodín.</li>
+<li><code>/</code> se usa para ignorar las rutas relativas al archivo .gitignore.</li>
+<li><code>#</code> es usado para agregar comentarios</li>
+</ul>
+<p><img src="images/gitignore.jpg" alt="" width="300" height="300" align="center"/></p>
+<h3 id="reemplaza-cambios-locales">reemplaza cambios locales</h3>
+<p>En caso de que hagas algo mal (lo que seguramente nunca suceda ;) puedes reemplazar cambios locales usando el comando
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git checkout -- &lt;filename&gt;
+</code></pre></div></p>
+<p>Este comando reemplaza los cambios en tu directorio de trabajo con el último contenido de <code>HEAD</code>. Los cambios que ya han sido agregados al Index, así como también los nuevos archivos, se mantendrán sin cambio.</p>
+<p>Por otro lado, si quieres deshacer todos los cambios locales y commits, puedes traer la última versión del servidor y apuntar a tu copia local principal de esta forma</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git fetch origin
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>git reset --hard origin/master
+</code></pre></div>
+<h2 id="referencia">Referencia</h2>
+<ol>
+<li><a href="https://rogerdudler.github.io/git-guide/index.es.html">La guía sensilla</a></li>
+</ol>
+
+              
             </article>
           </div>
         </div>
@@ -414,6 +749,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../lecture_011_os/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Linux" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Linux
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../lecture_013_ide/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: IDE" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              IDE
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -493,12 +863,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/fralfaro/MAT281_2022/", "features": [], "search": "/fralfaro/MAT281_2022/assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="/fralfaro/MAT281_2022/assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
-        <script src="/fralfaro/MAT281_2022/javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

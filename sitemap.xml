@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://github.com/fralfaro/&lt;PROJECT&gt;/index/</loc>
-         <lastmod>2022-05-23</lastmod>
+         <loc>https://github.com/fralfaro/MAT281_2022/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_000_configuraciones/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_000_intro/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_011_os/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_012_python/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_013_ide/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_014_jupyter/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_015_git/</loc>
+         <lastmod>2022-05-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_016_colab/</loc>
+         <lastmod>2022-05-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

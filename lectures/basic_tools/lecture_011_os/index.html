@@ -10,19 +10,21 @@
         <meta name="author" content="Francisco Alfaro">
       
       
-      <link rel="icon" href="/fralfaro/MAT281_2022/assets/images/favicon.png">
+        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/lectures/basic_tools/lecture_011_os/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Home</title>
+        <title>Linux - Home</title>
       
     
     
-      <link rel="stylesheet" href="/fralfaro/MAT281_2022/assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="/fralfaro/MAT281_2022/assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -37,7 +39,7 @@
       
     
     
-    <script>__md_scope=new URL("/fralfaro/MAT281_2022/",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#linux" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -74,7 +81,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="/fralfaro/MAT281_2022/." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
+    <a href="../../.." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -93,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Linux
             
           </span>
         </div>
@@ -194,7 +201,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/fralfaro/MAT281_2022/." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
+    <a href="../../.." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -225,7 +232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -238,12 +245,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -266,7 +275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_000_intro/" class="md-nav__link">
+      <a href="../lecture_000_intro/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -280,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_000_configuraciones/" class="md-nav__link">
+      <a href="../lecture_000_configuraciones/" class="md-nav__link">
         Configuraciones
       </a>
     </li>
@@ -292,11 +301,142 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_011_os/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Linux
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-basicos-por-linea-de-comando" class="md-nav__link">
+    Comandos Básicos (por línea de comando)
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos Básicos (por línea de comando)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comando-pwd" class="md-nav__link">
+    comando pwd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-cd" class="md-nav__link">
+    comando cd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-ls" class="md-nav__link">
+    comando ls
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-cat" class="md-nav__link">
+    comando cat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-cp" class="md-nav__link">
+    comando cp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-mv" class="md-nav__link">
+    comando mv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-mkdir" class="md-nav__link">
+    comando mkdir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-touch" class="md-nav__link">
+    comando touch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-rmdir" class="md-nav__link">
+    comando rmdir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-rm" class="md-nav__link">
+    comando rm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -308,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_015_git/" class="md-nav__link">
+      <a href="../lecture_015_git/" class="md-nav__link">
         Git
       </a>
     </li>
@@ -322,7 +462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_013_ide/" class="md-nav__link">
+      <a href="../lecture_013_ide/" class="md-nav__link">
         IDE
       </a>
     </li>
@@ -336,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_012_python/" class="md-nav__link">
+      <a href="../lecture_012_python/" class="md-nav__link">
         Python
       </a>
     </li>
@@ -350,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_014_jupyter/" class="md-nav__link">
+      <a href="../lecture_014_jupyter/" class="md-nav__link">
         Jupyter Notebook
       </a>
     </li>
@@ -364,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fralfaro/MAT281_2022/lectures/basic_tools/lecture_016_colab/" class="md-nav__link">
+      <a href="../lecture_016_colab/" class="md-nav__link">
         Google Colab
       </a>
     </li>
@@ -395,6 +535,113 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-basicos-por-linea-de-comando" class="md-nav__link">
+    Comandos Básicos (por línea de comando)
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos Básicos (por línea de comando)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comando-pwd" class="md-nav__link">
+    comando pwd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-cd" class="md-nav__link">
+    comando cd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-ls" class="md-nav__link">
+    comando ls
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-cat" class="md-nav__link">
+    comando cat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-cp" class="md-nav__link">
+    comando cp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-mv" class="md-nav__link">
+    comando mv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-mkdir" class="md-nav__link">
+    comando mkdir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-touch" class="md-nav__link">
+    comando touch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-rmdir" class="md-nav__link">
+    comando rmdir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comando-rm" class="md-nav__link">
+    comando rm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -405,8 +652,110 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
 
+
+<h1 id="linux">Linux</h1>
+<p><img src="https://www.redeszone.net/app/uploads-redeszone.net/2017/11/instalar-linux-cosas.jpg" alt="" align="center" width="300" height="200" /></p>
+<h2 id="introduccion">Introducción</h2>
+<p><a href="https://en.wikipedia.org/wiki/Linux">GNU/Linux</a> es la denominación técnica y generalizada que reciben una serie de sistemas operativos de tipo Unix, que también suelen ser de código abierto, multiplataforma, multiusuario y multitarea.Estos sistemas operativos están formados mediante la combinación de varios proyectos, entre los cuales destaca el entorno GNU, encabezado por el programador estadounidense Richard Stallman junto a la Free Software Foundation, una fundación cuyo propósito es difundir el software libre (Open source), así como también el núcleo de sistema operativo conocido como <strong>«Linux»</strong>, encabezado por el programador finlandés <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a>.</p>
+<h2 id="comandos-basicos-por-linea-de-comando">Comandos Básicos (por línea de comando)</h2>
+<h3 id="comando-pwd">comando pwd</h3>
+<p>Usa el comando pwd para encontrar la ruta del directorio (carpeta) de trabajo actual en el que te encuentras. El comando devolverá una ruta absoluta (completa), que es básicamente una ruta de todos los directorios que comienzan con una barra diagonal (/) Un ejemplo de una ruta absoluta es <code>/home/nombredeusuario</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>!pwd
+</code></pre></div>
+<h3 id="comando-cd">comando cd</h3>
+<p>Para navegar por los archivos y directorios de Linux, usa el comando cd. Te pedirá la ruta completa o el nombre del directorio, dependiendo del directorio de trabajo actual en el que te encuentres.</p>
+<p>Supongamos que estás en <code>/home/nombredeusuario/Documentos</code> y deseas ir a Fotos, un subdirectorio de Documentos. Para hacerlo, simplemente escribe el siguiente comando: cd Fotos.</p>
+<p>Otro escenario es si deseas ir a un directorio completamente nuevo, por ejemplo, <code>/home/nombredeusuario/Peliculas</code>. En este caso, debes escribir cd seguido de la ruta absoluta del directorio: <code>cd /home/nombredeusuario/Peliculas</code>.</p>
+<p>Hay algunos atajos para ayudarte a navegar rápidamente:</p>
+<ul>
+<li><strong>cd ..</strong> (con dos puntos) para ir un directorio hacia arriba</li>
+<li><strong>cd</strong> para ir directamente a la carpeta de inicio</li>
+</ul>
+<p>Como nota al margen, el shell de Linux distingue entre mayúsculas y minúsculas. Por lo tanto, debes escribir el nombre del directorio de forma exacta.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>!cd /home/fralfaro/PycharmProjects &amp;&amp; pwd
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>!cd .. &amp;&amp; pwd
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>!cd &amp;&amp; pwd
+</code></pre></div>
+<h3 id="comando-ls">comando ls</h3>
+<p>El comando ls se usa para ver el contenido de un directorio. Por defecto, este comando mostrará el contenido de tu directorio de trabajo actual.</p>
+<p>Si deseas ver el contenido de otros directorios, escribe ls y luego la ruta del directorio. Por ejemplo, ingresa <code>ls /home/nombredeusuario/Documentos</code> para ver el contenido de Documentos.</p>
+<p>Hay variaciones que puedes usar con el comando ls:</p>
+<ul>
+<li><strong>ls -R</strong> también listará todos los archivos en los subdirectorios</li>
+<li><strong>ls -a</strong> mostrará los archivos ocultos</li>
+<li><strong>ls -al</strong> listará los archivos y directorios con información detallada como los permisos, el tamaño, el propietario, etc.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>!ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>!ls -R
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>!ls -a
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>!ls -al
+</code></pre></div>
+<h3 id="comando-cat">comando cat</h3>
+<p>Se utiliza para listar el contenido de un archivo en la salida estándar (sdout). Para ejecutar este comando, escribe cat seguido del nombre del archivo y su extensión. Por ejemplo: cat archivo.txt.</p>
+<p>Aquí hay otras formas de usar el comando cat:</p>
+<ul>
+<li><code>cat &gt; nombredearchivo</code> crea un nuevo archivo.</li>
+<li><code>cat nombredearchivo1 nombredearchivo2&gt;nombredearchivo3</code>une dos archivos (1 y 2) y almacena la salida de ellos en un nuevo archivo (3)</li>
+<li>convertir un archivo a mayúsculas o minúsculas, <code>cat nombredearchivo | tr a-z A-Z&gt; salida.txt</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>!cat archivo.txt
+</code></pre></div>
+<h3 id="comando-cp">comando cp</h3>
+<p>Usa el comando cp para copiar archivos del directorio actual a un directorio diferente. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>!cp archivo.txt archivo_02.txt
+</code></pre></div>
+<h3 id="comando-mv">comando mv</h3>
+<p>El uso principal del comando mv es mover archivos, aunque también se puede usar para cambiar el nombre de los archivos.</p>
+<p>Los argumentos en mv son similares al comando cp. Debes escribir mv, el nombre del archivo y el directorio destino. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>!mv archivo_02.txt linux
+</code></pre></div>
+<p>Para cambiar el nombre de los archivos, el comando de Linux es <code>mv nombreviejo.ext nombrenuevo.ext</code></p>
+<h3 id="comando-mkdir">comando mkdir</h3>
+<p>Usa el comando mkdir para crear un nuevo directorio: si escribes mkdir Musica, creará un directorio llamado Musica.</p>
+<p>También hay comandos adicionales de mkdir:</p>
+<ul>
+<li>Para generar un nuevo directorio dentro de otro directorio, usa este comando básico de Linux <code>mkdir Musica/Nuevoarchivo</code></li>
+<li>Usa la opción p (padres) para crear un directorio entre dos directorios existentes. Por ejemplo, <code>mkdir -p Musica/2020/Nuevoarchivo</code> creará el nuevo archivo «2020».</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>!mkdir Carpeta
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>!mkdir Carpeta/nueva_carpeta
+</code></pre></div>
+<h3 id="comando-touch">comando touch</h3>
+<p>El comando touch te permite crear un nuevo archivo en blanco a través de la línea de comando de Linux. Como ejemplo, ingresa <code>touch /home/nombredeusuario/Documentos/Web.html</code> para crear un archivo HTML titulado Web en el directorio Documentos.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>!touch Web.html
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>!ls
+</code></pre></div>
+<h3 id="comando-rmdir">comando rmdir</h3>
+<p>Si necesitas eliminar un directorio, usa el comando rmdir. Sin embargo, rmdir solo te permite eliminar directorios vacíos.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>!rmdir Carpeta
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>!rmdir Carpeta/nueva_carpeta
+</code></pre></div>
+<h3 id="comando-rm">comando rm</h3>
+<p>El comando rm se usa para eliminar directorios y el contenido dentro de ellos. Si solo deseas eliminar el directorio, como alternativa a rmdir, usa rm -r.</p>
+<blockquote>
+<p><strong>Nota</strong>: Ten mucho cuidado con este comando y verifica en qué directorio te encuentras. Este comando elimina todo y no se puede deshacer.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>!rm -r Carpeta 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>!rm Web.html linux/archivo_02.txt
+</code></pre></div>
+<h2 id="referencia">Referencia</h2>
+<ol>
+<li><a href="https://www.freecodecamp.org/news/linux-command-line-bash-tutorial/">The Ultimate Linux Command Line Guide - Full Bash Tutorial</a></li>
+<li><a href="https://www.hostinger.es/tutoriales/linux-comandos">35 comandos básicos de Linux que todo usuario debe saber</a></li>
+</ol>
+
+              
             </article>
           </div>
         </div>
@@ -414,6 +763,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../lecture_000_configuraciones/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Configuraciones" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Configuraciones
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../lecture_015_git/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Git" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Git
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -493,12 +877,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/fralfaro/MAT281_2022/", "features": [], "search": "/fralfaro/MAT281_2022/assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="/fralfaro/MAT281_2022/assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
-        <script src="/fralfaro/MAT281_2022/javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
