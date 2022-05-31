@@ -1,0 +1,75 @@
+# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+# Project information
+site_name: Home
+site_url: https://github.com/fralfaro/<PROJECT>
+site_author: Francisco Alfaro
+site_description:
+
+# Repository
+repo_name: fralfaro/<PROJECT>
+repo_url: https://github.com/fralfaro/<PROJECT>
+edit_uri: ''
+
+
+# Markdown extensions
+markdown_extensions:
+  - attr_list
+  - admonition
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+# Extra javascript
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Theme
+theme:
+  name: material
+  language: es
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: blue grey
+    accent: amber
+    toggle:
+      icon: material/lightbulb
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: blue grey
+    accent: amber
+    toggle:
+      icon: material/lightbulb-outline
+      name: Switch to dark mode
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/fralfaro
+    - icon: fontawesome/brands/gitlab
+      link: https://gitlab.com/fralfaro
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/faam/
+    - icon: fontawesome/brands/kaggle
+      link: https://www.kaggle.com/faamds
+    - icon: fontawesome/brands/medium
+      link: https://medium.com/@fralfaro
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/fralfaro/portfolio
+
+# TOC
+nav:
+    - Home: index.md
