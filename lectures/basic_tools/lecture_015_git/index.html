@@ -653,12 +653,12 @@
 <p>Una vez que ingrese, use el siguiente comando para establecer el nombre de usuario de git:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git config --global user.name &quot;tunombre&quot;
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>!git config --global user.name
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">!</span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span>
 </code></pre></div>
 <p>Recuerde sustituir el texto entre comillas por su nombre real. Ahora indique el correo electrónico del usuario para git:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git config --global user.email &quot;tuemail&quot;
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>!git config --global user.email
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">!</span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span>
 </code></pre></div>
 <h3 id="crea-un-repositorio-nuevo">crea un repositorio nuevo</h3>
 <p>Crea un directorio nuevo, ábrelo y ejecuta
@@ -675,7 +675,7 @@
 <p><img src="https://bobbelderbos.com/assets/git-clone.png" alt="" width="300" height="300" align="center"/></p>
 <h3 id="flujo-de-trabajo">flujo de trabajo</h3>
 <p>Tu repositorio local esta compuesto por tres "árboles" administrados por git. El primero es tu <code>Directorio de trabajo</code> que contiene los archivos, el segundo es el <code>Index</code> que actua como una zona intermedia, y el último es el <code>HEAD</code> que apunta al último commit realizado.
-<img src="images/trees.png" alt="" width="500" height="300" align="center"/></p>
+<img src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/basic_tools/images/trees.png" alt="" width="500" height="300" align="center"/></p>
 <h3 id="add-commit">add &amp; commit</h3>
 <p>Puedes registrar cambios (añadirlos al Index) usando</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git add &lt;filename&gt;
@@ -685,10 +685,10 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git commit -m &quot;Commit message&quot;
 </code></pre></div></p>
 <p>Ahora el archivo esta incluído en el <code>HEAD</code>, pero aún no en tu repositorio remoto.</p>
-<p><img src="images/flujo.jpg" alt="" width="300" height="500" align="center"/></p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/basic_tools/images/flujo.jpg" alt="" width="300" height="500" align="center"/></p>
 <h3 id="ramas-branches">ramas (branches)</h3>
 <p>Las ramas son utilizadas para desarrollar funcionalidades aisladas unas de otras. La rama master es la rama "por defecto" cuando creas un repositorio. Crea nuevas ramas durante el desarrollo y fusiónalas a la rama principal cuando termines.</p>
-<p><img src="images/branches.png" alt="" width="500" height="300" align="center"/></p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/basic_tools/images/branches.png" alt="" width="500" height="300" align="center"/></p>
 <p>Crea una nueva rama llamada "feature_x" y cámbiate a ella usando</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git checkout -b feature_x
 </code></pre></div>
@@ -726,7 +726,7 @@ Para fusionar otra rama a tu rama activa (por ejemplo master), utiliza</p>
 <li><code>/</code> se usa para ignorar las rutas relativas al archivo .gitignore.</li>
 <li><code>#</code> es usado para agregar comentarios</li>
 </ul>
-<p><img src="images/gitignore.jpg" alt="" width="300" height="300" align="center"/></p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/basic_tools/images/gitignore.jpg" alt="" width="300" height="300" align="center"/></p>
 <h3 id="reemplaza-cambios-locales">reemplaza cambios locales</h3>
 <p>En caso de que hagas algo mal (lo que seguramente nunca suceda ;) puedes reemplazar cambios locales usando el comando
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git checkout -- &lt;filename&gt;
@@ -842,15 +842,6 @@ Para fusionar otra rama a tu rama activa (por ejemplo master), utiliza</p>
     
     <a href="https://medium.com/@fralfaro" target="_blank" rel="noopener" title="medium.com" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M180.5 74.262C80.813 74.262 0 155.633 0 256s80.819 181.738 180.5 181.738S361 356.373 361 256 280.191 74.262 180.5 74.262Zm288.25 10.646c-49.845 0-90.245 76.619-90.245 171.095s40.406 171.1 90.251 171.1 90.251-76.619 90.251-171.1H559c0-94.503-40.4-171.095-90.248-171.095Zm139.506 17.821c-17.526 0-31.735 68.628-31.735 153.274s14.2 153.274 31.735 153.274S640 340.631 640 256c0-84.649-14.215-153.271-31.742-153.271Z"/></svg>
-    </a>
-  
-    
-    
-      
-      
-    
-    <a href="https://fralfaro.github.io/portfolio/" target="_blank" rel="noopener" title="fralfaro.github.io" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
     </a>
   
 </div>
