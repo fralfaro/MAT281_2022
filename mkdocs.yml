@@ -67,8 +67,7 @@ extra:
       link: https://www.kaggle.com/faamds
     - icon: fontawesome/brands/medium
       link: https://medium.com/@fralfaro
-    - icon: fontawesome/brands/github-alt
-      link: https://fralfaro.github.io/portfolio/
+
 
 # TOC
 nav:
