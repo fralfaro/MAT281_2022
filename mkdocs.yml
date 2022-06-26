@@ -73,11 +73,34 @@ extra:
 nav:
     - Home: index.md
     - Basic Tools:
-        - Introducción: lectures/basic_tools/lecture_000_intro.md
-        - Configuraciones: lectures/basic_tools/lecture_000_configuraciones.md
-        - Linux: lectures/basic_tools/lecture_011_os.md
-        - Git: lectures/basic_tools/lecture_015_git.md
-        - IDE: lectures/basic_tools/lecture_013_ide.md
-        - Python: lectures/basic_tools/lecture_012_python.md
-        - Jupyter Notebook: lectures/basic_tools/lecture_014_jupyter.md
-        - Google Colab: lectures/basic_tools/lecture_016_colab.md
+        - Introducción: lectures/basic_tools/basic_tools/lecture_000_intro.md
+        - Configuraciones: docs/lectures/basic_tools/basic_tools/lecture_000_configuraciones.md
+        - Linux: lectures/basic_tools/basic_tools/lecture_011_os.md
+        - Git: lectures/basic_tools/basic_tools/lecture_015_git.md
+        - IDE: lectures/basic_tools/basic_tools/lecture_013_ide.md
+        - Python: lectures/basic_tools/basic_tools/lecture_012_python.md
+        - Jupyter Notebook: lectures/basic_tools/basic_tools/lecture_014_jupyter.md
+        - Google Colab: lectures/basic_tools/basic_tools/lecture_016_colab.md
+    - Scientific Computing:
+        - Numpy: lectures/data_manipulation/scientific_computing/numpy.md
+        - Scipy: lectures/data_manipulation/scientific_computing/scipy.md
+        - Sympy: lectures/data_manipulation/scientific_computing/sympy.md
+    - Data manipulation:
+        - Introducción: lectures/data_manipulation/data_manipulation/base_datos.md
+        - Pandas: lectures/data_manipulation/data_manipulation/pandas.md
+        - Groupby: lectures/data_manipulation/data_manipulation/groupby.md
+        - Merge & Concat: lectures/data_manipulation/data_manipulation/merge_concat.md
+        - Pivot Tables: lectures/data_manipulation/data_manipulation/pivot.md
+    - Visualization:
+        - Introducción: lectures/data_manipulation/visualization/introduction.md
+        - Matplotlib: lectures/data_manipulation/visualization/matplotlib.md
+        - Seaborn: lectures/data_manipulation/visualization/seaborn.md
+    - Machine Learning:
+        - Introducción: lectures/ml/introduccion_ml/introduccion.md
+        - Regresión: lectures/ml/analisis_supervisado_regresion/02_regresion_lineal.md
+        - Clasificación: lectures/ml/analisis_supervisado_clasificacion/02_clasificacion.md
+        - Clustering: lectures/ml/analisis_no_supervisado/03_clustering.md
+        - Reducción Dimensionalidad: lectures/ml/analisis_no_supervisado/03_reduccion_dimensionalidad.md
+        - Overffiting: lectures/ml/overfitting/04_overfitting_underfitting.md
+        - Reducir Overfiting: lectures/ml/overfitting/04_reducir_overfitting.md
+        - Series Temporales: lectures/ml/time_series/05_series_temporales.md

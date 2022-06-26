@@ -70,6 +70,6 @@ target/
 *.directory
 *_build
 *ipynb_checkpoints
-docs/lectures/*/*.md
+docs/lectures/*/*/*.md
 public
 site
