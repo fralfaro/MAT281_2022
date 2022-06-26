@@ -46,6 +46,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/data_manipulation/base_datos/</loc>
+         <lastmod>2022-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/data_manipulation/groupby/</loc>
          <lastmod>2022-06-26</lastmod>
          <changefreq>daily</changefreq>
@@ -91,6 +96,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/visualization/introduccion/</loc>
+         <lastmod>2022-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/visualization/introduction/</loc>
          <lastmod>2022-06-26</lastmod>
          <changefreq>daily</changefreq>
@@ -127,6 +137,11 @@
     </url>
     <url>
          <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_supervisado_regresion/02_regresion_lineal/</loc>
+         <lastmod>2022-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/introduccion_ml/introduccion/</loc>
          <lastmod>2022-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
