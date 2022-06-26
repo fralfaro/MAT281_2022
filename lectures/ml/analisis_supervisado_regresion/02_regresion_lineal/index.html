@@ -1,0 +1,2141 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Francisco Alfaro">
+      
+      
+        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_supervisado_regresion/02_regresion_lineal/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Regresión - Home</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modelos-de-regression-lineal" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../.." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Home
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Regresión
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fralfaro/MAT281_2022" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fralfaro/MAT281_2022
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Home
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fralfaro/MAT281_2022" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fralfaro/MAT281_2022
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basic Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basic Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_000_intro/" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/lectures/basic_tools/basic_tools/lecture_000_configuraciones.md" class="md-nav__link">
+        Configuraciones
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_011_os/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_015_git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_013_ide/" class="md-nav__link">
+        IDE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_012_python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_014_jupyter/" class="md-nav__link">
+        Jupyter Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_016_colab/" class="md-nav__link">
+        Google Colab
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Scientific Computing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Scientific Computing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Scientific Computing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/scientific_computing/numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/scientific_computing/scipy/" class="md-nav__link">
+        Scipy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/scientific_computing/sympy/" class="md-nav__link">
+        Sympy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data manipulation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data manipulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/base_datos.md" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/groupby/" class="md-nav__link">
+        Groupby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/merge_concat/" class="md-nav__link">
+        Merge & Concat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/pivot/" class="md-nav__link">
+        Pivot Tables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Visualization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualization" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Visualization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/visualization/introduction/" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/visualization/matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/visualization/seaborn/" class="md-nav__link">
+        Seaborn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Machine Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Machine Learning" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduccion_ml/introduccion.md" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Regresión
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Regresión
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definicion" class="md-nav__link">
+    Definición
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-paremetros-metodo-de-minimos-cudrados" class="md-nav__link">
+    Mejores parémetros: Método de minimos cudrados
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seleccion-de-modelos" class="md-nav__link">
+    Selección de modelos
+  </a>
+  
+    <nav class="md-nav" aria-label="Selección de modelos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterio-de-informacion-de-akaike-aic" class="md-nav__link">
+    Criterio de información de Akaike (AIC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterio-de-informacion-bayesiano-bic" class="md-nav__link">
+    Criterio de información bayesiano (BIC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-cuadrado" class="md-nav__link">
+    R-cuadrado
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-de-un-modelo" class="md-nav__link">
+    Error de un modelo
+  </a>
+  
+    <nav class="md-nav" aria-label="Error de un modelo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definicion_1" class="md-nav__link">
+    Definición
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formas-de-medir-el-error-de-un-modelo" class="md-nav__link">
+    Formas de medir el error de un modelo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otros-estadisticos-interesantes-del-modelo" class="md-nav__link">
+    Otros estadísticos interesantes del modelo
+  </a>
+  
+    <nav class="md-nav" aria-label="Otros estadísticos interesantes del modelo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-f" class="md-nav__link">
+    Test F
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-omnibus" class="md-nav__link">
+    Test Omnibus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-durbin-watson" class="md-nav__link">
+    Test Durbin-Watson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-jarque-bera" class="md-nav__link">
+    Test Jarque-Bera
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aplicacion-con-python" class="md-nav__link">
+    Aplicación con python
+  </a>
+  
+    <nav class="md-nav" aria-label="Aplicación con python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-sencillo" class="md-nav__link">
+    Ejemplo sencillo
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo sencillo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-con-statsmodel" class="md-nav__link">
+    Ejemplo con Statsmodel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-del-error" class="md-nav__link">
+    Análisis del error
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis del error">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predicciones" class="md-nav__link">
+    Predicciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalidad-de-los-residuos" class="md-nav__link">
+    Normalidad de los residuos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outliers" class="md-nav__link">
+    Outliers
+  </a>
+  
+    <nav class="md-nav" aria-label="Outliers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-hacer-ante-la-presencia-de-outliers" class="md-nav__link">
+    ¿ Qué hacer ante la presencia de outliers?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusión
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analisis_supervisado_clasificacion/02_clasificacion/" class="md-nav__link">
+        Clasificación
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analisis_no_supervisado/03_clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analisis_no_supervisado/03_reduccion_dimensionalidad/" class="md-nav__link">
+        Reducción Dimensionalidad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overfitting/04_overfitting_underfitting/" class="md-nav__link">
+        Overffiting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overfitting/04_reducir_overfitting/" class="md-nav__link">
+        Reducir Overfiting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time_series/05_series_temporales/" class="md-nav__link">
+        Series Temporales
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definicion" class="md-nav__link">
+    Definición
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-paremetros-metodo-de-minimos-cudrados" class="md-nav__link">
+    Mejores parémetros: Método de minimos cudrados
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seleccion-de-modelos" class="md-nav__link">
+    Selección de modelos
+  </a>
+  
+    <nav class="md-nav" aria-label="Selección de modelos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterio-de-informacion-de-akaike-aic" class="md-nav__link">
+    Criterio de información de Akaike (AIC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterio-de-informacion-bayesiano-bic" class="md-nav__link">
+    Criterio de información bayesiano (BIC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-cuadrado" class="md-nav__link">
+    R-cuadrado
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-de-un-modelo" class="md-nav__link">
+    Error de un modelo
+  </a>
+  
+    <nav class="md-nav" aria-label="Error de un modelo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definicion_1" class="md-nav__link">
+    Definición
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formas-de-medir-el-error-de-un-modelo" class="md-nav__link">
+    Formas de medir el error de un modelo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otros-estadisticos-interesantes-del-modelo" class="md-nav__link">
+    Otros estadísticos interesantes del modelo
+  </a>
+  
+    <nav class="md-nav" aria-label="Otros estadísticos interesantes del modelo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-f" class="md-nav__link">
+    Test F
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-omnibus" class="md-nav__link">
+    Test Omnibus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-durbin-watson" class="md-nav__link">
+    Test Durbin-Watson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-jarque-bera" class="md-nav__link">
+    Test Jarque-Bera
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aplicacion-con-python" class="md-nav__link">
+    Aplicación con python
+  </a>
+  
+    <nav class="md-nav" aria-label="Aplicación con python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-sencillo" class="md-nav__link">
+    Ejemplo sencillo
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejemplo sencillo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-con-statsmodel" class="md-nav__link">
+    Ejemplo con Statsmodel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-del-error" class="md-nav__link">
+    Análisis del error
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis del error">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predicciones" class="md-nav__link">
+    Predicciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalidad-de-los-residuos" class="md-nav__link">
+    Normalidad de los residuos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outliers" class="md-nav__link">
+    Outliers
+  </a>
+  
+    <nav class="md-nav" aria-label="Outliers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-hacer-ante-la-presencia-de-outliers" class="md-nav__link">
+    ¿ Qué hacer ante la presencia de outliers?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusión
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="modelos-de-regression-lineal">Modelos de regressión lineal</h1>
+<h2 id="definicion">Definición</h2>
+<p>El <strong>modelo de regresión lineal general</strong> o <strong>modelo de regresión multiple</strong>,  supone que, 
+<span class="arithmatex">\(\boldsymbol{Y} =  \boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{\epsilon},\)</span> donde:</p>
+<ul>
+<li><span class="arithmatex">\(\boldsymbol{X} = (x_1,...,x_n)^{T}\)</span>: variable explicativa</li>
+<li><span class="arithmatex">\(\boldsymbol{Y} = (y_1,...,y_n)^{T}\)</span>: variable respuesta</li>
+<li><span class="arithmatex">\(\boldsymbol{\epsilon} = (\epsilon_1,...,\epsilon_n)^{T}\)</span>: error se asume un ruido blanco, es decir, <span class="arithmatex">\(\epsilon \sim \mathcal{N}( \boldsymbol{0},\sigma^2I)\)</span></li>
+<li><span class="arithmatex">\(\boldsymbol{\beta} = (\beta_1,...,\beta_n)^{T}\)</span>: coeficientes de regresión.</li>
+</ul>
+<p>La idea es tratar de establecer la relación entre las variables independientes y dependientes por medio de ajustar el mejor hyper plano con respecto a los puntos. </p>
+<p>Por ejemplo, para el caso de la <strong>regresión lineal simple</strong>, se tiene la siguiente estructura: <span class="arithmatex">\(y_i=\beta_0+\beta_1x_i+\epsilon_i.\)</span> En este caso, la regresión lineal corresponderá a la recta que mejor pasa por los puntos observados.</p>
+<p><img src="images/lr.webp" width="560" height="480" align="center"/></p>
+<p>Existen algunas situaciones donde los modelos lineales no son apropiados:</p>
+<ul>
+<li>El rango de valores de <span class="arithmatex">\(Y\)</span> está restringido (ejemplo: datos binarios o de conteos).</li>
+<li>La varianza de <span class="arithmatex">\(Y\)</span> depende de la media.</li>
+</ul>
+<h2 id="mejores-paremetros-metodo-de-minimos-cudrados">Mejores parémetros: Método de minimos cudrados</h2>
+<p>El <strong>método de mínimos cudrados</strong> es un método de optimización que busca encontrar la mejor aproximación mediante la minimización de los residuos al cuadrado, es decir, se buscar encontrar:</p>
+<div class="arithmatex">\[(P)\ \min \sum_{i=1}^n e_{i}^2 =\sum_{i=1}^n (y_{i}-f_{i}(x;\beta))^2   \]</div>
+<p>Para el caso de la regresión lineal simple, se busca una función <span class="arithmatex">\(<span class="arithmatex">\(f(x;\beta) = \beta_{0} + \beta_{1}x,\)</span>\)</span></p>
+<p>por lo tanto el problema que se debe resolver es el siguiente:</p>
+<div class="arithmatex">\[(P)\ \min \sum_{i=1}^n e_{i}^2 =\dfrac{1}{n}\sum_{i=1}^{n}\left ( y_{i}-(\beta_{0} + \beta_{1}x_{i})\right )^2\]</div>
+<p>Lo que significa, que para este problema, se debe encontrar <span class="arithmatex">\(\beta = (\beta_{0},\beta_{1})\)</span> que minimicen el problema de optimización. En este caso la solución viene dada por:</p>
+<div class="arithmatex">\[\hat{\beta}_{1} = \dfrac{\sum(x-\bar{x})(y-\bar{y})}{\sum(x-\bar{x})^2} = \rho (x,y)\ ; \  \hat{\beta}_{0} = \bar{y}-\hat{\beta}_{1} \bar{x} \]</div>
+<p>La metodología para encontrar los parámetros <span class="arithmatex">\(\beta\)</span> para el caso de la regresión lineal multiple se extienden de manera natural del modelo de regresión lineal multiple, cuya solución viene dada por:</p>
+<div class="arithmatex">\[\beta = (XX^{\top})^{-1}X^{\top}y\]</div>
+<h2 id="seleccion-de-modelos">Selección de modelos</h2>
+<h3 id="criterio-de-informacion-de-akaike-aic">Criterio de información de Akaike (AIC)</h3>
+<p>El <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">criterio de información de Akaike</a> (AIC) es una medida de la calidad relativa de un modelo estadístico, para un conjunto dado de datos. Como tal, el AIC proporciona un medio para la selección del modelo.</p>
+<p>AIC maneja un trade-off entre la bondad de ajuste del modelo y la complejidad del modelo. Se basa en la entropía de información: se ofrece una estimación relativa de la información perdida cuando se utiliza un modelo determinado para representar el proceso que genera los datos.</p>
+<p>AIC no proporciona una prueba de un modelo en el sentido de probar una hipótesis nula, es decir AIC no puede decir nada acerca de la calidad del modelo en un sentido absoluto. Si todos los modelos candidatos encajan mal, AIC no dará ningún aviso de ello.</p>
+<p>En el caso general, el AIC es</p>
+<div class="arithmatex">\[AIC = 2k-2\ln(L)\]</div>
+<p>donde <span class="arithmatex">\(k\)</span> es el número de parámetros en el modelo estadístico , y <span class="arithmatex">\(L\)</span> es el máximo valor de la función de verosimilitud para el modelo estimado.</p>
+<h3 id="criterio-de-informacion-bayesiano-bic">Criterio de información bayesiano (BIC)</h3>
+<p>En estadística, el <a href="https://en.wikipedia.org/wiki/Bayesian_information_criterion">criterio de información bayesiano</a> (BIC) o el más general criterio de Schwarz (SBC también, SBIC) es un criterio para la selección de modelos entre un conjunto finito de modelos. Se basa, en parte, de la función de probabilidad y que está estrechamente relacionado con el Criterio de Información de Akaike (AIC).</p>
+<p>Cuando el ajuste de modelos, es posible aumentar la probabilidad mediante la adición de parámetros, pero si lo hace puede resultar en sobreajuste. Tanto el BIC y AIC resuelven este problema mediante la introducción de un término de penalización para el número de parámetros en el modelo, el término de penalización es mayor en el BIC que en el AIC.</p>
+<p>El BIC fue desarrollado por Gideon E. Schwarz, quien dio un argumento bayesiano a favor de su adopción.1​ Akaike también desarrolló su propio formalismo Bayesiano, que ahora se conoce como la ABIC por Criterio de Información Bayesiano de Akaike "</p>
+<p>En el caso general, el BIC es</p>
+<div class="arithmatex">\[BIC =k\ln(n)-2\ln(L)\]</div>
+<p>donde <span class="arithmatex">\(k\)</span> es el número de parámetros en el modelo estadístico, <span class="arithmatex">\(n\)</span> es la cantidad de datos disponibles y <span class="arithmatex">\(L\)</span> es el máximo valor de la función de verosimilitud para el modelo estimado.</p>
+<h3 id="r-cuadrado">R-cuadrado</h3>
+<p>El <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">coeficiente de determinación</a> o <strong>R-cuadrado</strong> (<span class="arithmatex">\(r^2\)</span> ) , es un estadístico usado en el contexto de un modelo estadístico cuyo principal propósito es predecir futuros resultados o probar una hipótesis. El coeficiente determina la calidad del modelo para replicar los resultados, y la proporción de variación de los resultados que puede explicarse por el modelo.</p>
+<p>El valor del <span class="arithmatex">\(r^2\)</span> habitualmente entre 0 y 1, donde 0 significa una mala calidad de ajuste en el modelo y 1 corresponde a un ajuste lineal perfecto. A menudo, este estadístico es ocupado para modelos lineales.  </p>
+<p>Se define por la fórmula:</p>
+<div class="arithmatex">\[r^2 = \dfrac{SS_{reg}}{SS_{tot}} = 1 - \dfrac{SS_{res}}{SS_{tot}},\]</div>
+<p>donde:</p>
+<ul>
+<li>
+<p><strong><span class="arithmatex">\(SS_{reg}\)</span></strong> ( suma explicada de cuadrados (ESS)): <span class="arithmatex">\(\sum_{i}(\hat{y}-\bar{y})^2\)</span></p>
+</li>
+<li>
+<p><strong><span class="arithmatex">\(SS_{res}\)</span></strong>: ( suma residual de cuadrados (RSS)): <span class="arithmatex">\(\sum_{i}(y_{i}-\hat{y})^2 = \sum_{i}e_{i}^2\)</span></p>
+</li>
+<li>
+<p><strong><span class="arithmatex">\(SS_{tot}\)</span></strong>: ( varianza): <span class="arithmatex">\(\sum_{i}(y_{i}-\bar{y})\)</span>, donde: <span class="arithmatex">\(SS_{tot}=SS_{reg}+SS_{res}\)</span></p>
+</li>
+</ul>
+<p>En una forma general, se puede ver que <span class="arithmatex">\(r^2\)</span> está relacionado con la fracción de varianza inexplicada (FVU), ya que el segundo término compara la varianza inexplicada (varianza de los errores del modelo) con la varianza total (de los datos).</p>
+<p><img src="images/r2.png" width="480" height="360" align="rigt"/></p>
+<ul>
+<li>
+<p>Las áreas de los cuadrados azules representan los residuos cuadrados con respecto a la regresión lineal (<span class="arithmatex">\(SS_{tot}\)</span>). </p>
+</li>
+<li>
+<p>Las áreas de los cuadrados rojos representan los residuos al cuadrado con respecto al valor promedio (<span class="arithmatex">\(SS_{res}\)</span>).</p>
+</li>
+</ul>
+<p>Por otro lado, a medida que más variables explicativas se agregan al modelo, el <span class="arithmatex">\(r^2\)</span> aumenta de forma automática, es decir, entre más variables explicativas se agreguen, mejor será la calidad será el ajuste (un falso argumento).</p>
+<p>Es por ello que se define el <strong>R cuadrado ajustado</strong>, que viene a ser  una modificación del <span class="arithmatex">\(r^2\)</span>, ajustando por el número de variables explicativas en un modelo (<span class="arithmatex">\(p\)</span>) en relación con el número de puntos de datos (<span class="arithmatex">\(n\)</span>).  </p>
+<div class="arithmatex">\[r^2_{ajustado} = 1-(1-r^2)\dfrac{n-1}{n-p-1} ,\]</div>
+<h2 id="error-de-un-modelo">Error de un modelo</h2>
+<h4 id="definicion_1">Definición</h4>
+<p>El <strong>error</strong> corresponde a la diferencia entre el valor original y el valor predicho,es decir:</p>
+<div class="arithmatex">\[e_{i}=y_{i}-\hat{y}_{i} \]</div>
+<p><img src="images/error.png" width="480" height="360" align="rigt"/></p>
+<h3 id="formas-de-medir-el-error-de-un-modelo">Formas de medir el error de un modelo</h3>
+<p>Para medir el ajuste de un modelo se ocupan las denominadas <strong>funciones de distancias</strong> o <strong>métricas</strong>. Existen varias métricas, dentro de las cuales encontramos:</p>
+<ol>
+<li>
+<p><strong>Métricas absolutas</strong>: Las métricas absolutas o no escalada miden el error sin escalar los valores. Las métrica absolutas más ocupadas son:</p>
+<ul>
+<li><strong>Mean Absolute Error</strong> (MAE)</li>
+</ul>
+<div class="arithmatex">\[\textrm{MAE}(y,\hat{y}) = \dfrac{1}{n}\sum_{t=1}^{n}\left | y_{t}-\hat{y}_{t}\right |\]</div>
+<ul>
+<li><strong>Mean squared error</strong> (MSE):</li>
+</ul>
+<div class="arithmatex">\[\textrm{MSE}(y,\hat{y}) =\dfrac{1}{n}\sum_{t=1}^{n}\left ( y_{t}-\hat{y}_{t}\right )^2\]</div>
+</li>
+<li>
+<p><strong>Métricas Porcentuales</strong>: Las métricas porcentuales o escaladas miden el error de manera escalada, es decir, se busca acotar el error entre valores de 0 a 1, donde 0 significa que el ajuste es perfecto, mientras que 1 sería un mal ajuste. Cabe destacar que muchas veces las métricas porcentuales puden tener valores mayores a 1.Las métrica Porcentuales más ocupadas son:</p>
+<ul>
+<li><strong>Mean absolute percentage error</strong> (MAPE):</li>
+</ul>
+<div class="arithmatex">\[\textrm{MAPE}(y,\hat{y}) = \dfrac{1}{n}\sum_{t=1}^{n}\left | \frac{y_{t}-\hat{y}_{t}}{y_{t}} \right |\]</div>
+<ul>
+<li><strong>Symmetric mean absolute percentage error</strong> (sMAPE):</li>
+</ul>
+<div class="arithmatex">\[\textrm{sMAPE}(y,\hat{y}) = \dfrac{1}{n}\sum_{t=1}^{n} \frac{\left |y_{t}-\hat{y}_{t}\right |}{(\left | y_{t} \right |^2+\left | \hat{y}_{t} \right |^2)/2}\]</div>
+</li>
+</ol>
+<h2 id="otros-estadisticos-interesantes-del-modelo">Otros estadísticos interesantes del modelo</h2>
+<h3 id="test-f">Test F</h3>
+<p>EL <a href="http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm">test F</a> para regresión lineal prueba si alguna de las variables independientes en un modelo de regresión lineal múltiple es significativa.</p>
+<p>En términos de test de hipótesis, se quiere contrastar lo siguiente:</p>
+<ul>
+<li><span class="arithmatex">\(H_0: \beta_1 = \beta_2 = ... = \beta_{p-1} = 0\)</span></li>
+<li><span class="arithmatex">\(H_1: \beta_j ≠ 0\)</span>, para al menos un valor de <span class="arithmatex">\(j\)</span></li>
+</ul>
+<h3 id="test-omnibus">Test Omnibus</h3>
+<p>EL <a href="https://en.wikipedia.org/wiki/Omnibus_test">test Omnibus</a>esta relacionado con la simetría y curtosis del resido. Se espera ver un valor cercano a cero que indicaría normalidad. El Prob (Omnibus) realiza una prueba estadística que indica la probabilidad de que los residuos se distribuyan normalmente. </p>
+<h3 id="test-durbin-watson">Test Durbin-Watson</h3>
+<p>El <a href="https://www.statisticshowto.com/durbin-watson-test-coefficient/">Test Durbin-Watson</a> es un test de homocedasticidad. Para ver los límites relacionados de este test, se puede consultar la siguiente <a href="https://support.minitab.com/es-mx/minitab/18/help-and-how-to/modeling-statistics/regression/supporting-topics/model-assumptions/test-for-autocorrelation-by-using-the-durbin-watson-statistic/">tablas de valores</a>.</p>
+<h3 id="test-jarque-bera">Test Jarque-Bera</h3>
+<p>Como el <a href="https://en.wikipedia.org/wiki/Jarque%E2%80%93Bera_test">test Omnibus</a> en que prueba tanto el sesgo como la curtosis. Esperamos ver en esta prueba una confirmación de la prueba Omnibus. </p>
+<p><strong>IMPORTANTE</strong>:</p>
+<ul>
+<li>
+<p>Cabe destacar que el coeficiente <span class="arithmatex">\(r^2\)</span> funciona bien en el contexto del mundo de las regresiones lineales. Para el análisis de <strong>modelos no lineales</strong>, esto coeficiente pierde su interpretación.</p>
+</li>
+<li>
+<p>Se deja la siguiente <a href="http://reliawiki.org/index.php/Simple_Linear_Regression_Analysis">refrerencia</a> para comprender conceptos claves de test de hipótesis, intervalos de confianza, p-valor. Estos términos son escenciales para comprender la significancia del ajuste realizado.</p>
+</li>
+<li>
+<p>Existen muchas más métricas, pero estas son las más usulaes de encontrar. En el archivo <strong>metrics.py</strong> se definen las distintas métricas presentadas, las cuales serpan de utilidad más adelante.</p>
+</li>
+</ul>
+<h2 id="aplicacion-con-python">Aplicación con python</h2>
+<h3 id="ejemplo-sencillo">Ejemplo sencillo</h3>
+<p>Para comprender los modelos de regresión lineal, mostraremos un caso sencillo de uso. Para ello realizaremos un simulación de una recta, en el cual le agregaremos un ruido blanco.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># librerias</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>  <span class="c1"># Ver más columnas de los dataframes</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Ver gráficos de matplotlib en jupyter notebook/lab</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ejemplo sencillo</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> 
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># coeficientes</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># variable independiente</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span> <span class="c1"># media y desviacion estandar</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c1"># ruido blanco</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="n">x</span><span class="p">]</span>  <span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="c1"># variables dependientes</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># generar dataframe</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">y</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">})</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.543405</td>
+      <td>1.612417</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.278369</td>
+      <td>1.347058</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.424518</td>
+      <td>1.267849</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.844776</td>
+      <td>1.935274</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.004719</td>
+      <td>1.082601</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Grafiquemos los puntos en el plano cartesiano.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># grafico de puntos</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">)})</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">)</span>  
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_15_0.png" /></p>
+<p>Lo primero que debemos hacer es separar nuestro datos en los conjuntos de <strong>training set</strong> y <strong>test set</strong>.
+<strong>Concepto de  Train set y Test set</strong></p>
+<p>Al momento de entrenar los modelos de machine leraning, se debe tener un conjunto para poder entrenar el modelo y otro conjunto para poder evaluar el modelo. Es por esto que el conjunto de datos se separá en dos conjuntos: </p>
+<ul>
+<li>
+<p><strong>Train set</strong>: Conjunto de entrenamiento con el cual se entrenarán los algoritmos de machine learning.</p>
+</li>
+<li>
+<p><strong>Test set</strong>: Conjunto de testeo para averiguar la confiabilidad del modelo, es decir, cuan bueno es el ajuste del modelo.</p>
+</li>
+</ul>
+<p><img src="images/train.png" width="360" height="240" align="center"/></p>
+<p><strong>Tamaño ideal de cada conjunto</strong></p>
+<p>La respuesta depende fuertemente del tamaño del conjunto de datos. A modo de regla empírica, se considerará el tamaño óptimo basado en la siguiente tabla:</p>
+<table>
+<thead>
+<tr>
+<th>número de filas</th>
+<th>train set</th>
+<th>test set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entre 100-1000</td>
+<td>67%</td>
+<td>33%</td>
+</tr>
+<tr>
+<td>entre 1.000- 100.000</td>
+<td>80%</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>mayor a 100.000</td>
+<td>99%</td>
+<td>1%</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># import some data to play with</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">]]</span> <span class="c1"># we only take the first two features.</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># print rows train and test sets</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Separando informacion:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;numero de filas data original : &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;numero de filas train set     : &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;numero de filas test set      : &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Separando informacion:
+
+numero de filas data original :  100
+numero de filas train set     :  80
+numero de filas test set      :  20
+</code></pre></div>
+<p>Existen varias librerías para poder aplicar modelos de regresión, de los cuales la atención estará enfocada en las librerías de <code>statsmodels</code> y <code>sklearn</code>.</p>
+<h4 id="ejemplo-con-statsmodel">Ejemplo con Statsmodel</h4>
+<p>Para trabajar los modelos de <code>statsmodel</code>, basta con instanciar el comando <code>OLS</code>. El modelo <strong>no considera intercepto</strong>, por lo tanto, para agregar el intercepto, a las variables independientes se le debe agregar un vector de unos (tanto para el conjunto de entranamiento como de testeo).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</code></pre></div>
+<p>En <code>statsmodel</code> existe un comando para ver información del modelo en estudio mediante el comando <code>summary</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># resultados del modelo</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.894
+Model:                            OLS   Adj. R-squared:                  0.893
+Method:                 Least Squares   F-statistic:                     658.4
+Date:                Fri, 12 Mar 2021   Prob (F-statistic):           8.98e-40
+Time:                        15:12:04   Log-Likelihood:                 69.472
+No. Observations:                  80   AIC:                            -134.9
+Df Residuals:                      78   BIC:                            -130.2
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.9805      0.021     46.338      0.000       0.938       1.023
+x              1.0099      0.039     25.659      0.000       0.932       1.088
+==============================================================================
+Omnibus:                        0.424   Durbin-Watson:                   1.753
+Prob(Omnibus):                  0.809   Jarque-Bera (JB):                0.587
+Skew:                           0.102   Prob(JB):                        0.746
+Kurtosis:                       2.633   Cond. No.                         4.17
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</code></pre></div>
+<p>A continuación se dara una interpretación de esta tabla:</p>
+<p><strong>Descripción del Modelo</strong></p>
+<p>Estos son estadísticas relacionadas a la ejecución del modelo.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Descripión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dep. Variable</td>
+<td>Nombre de la variables dependiente</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>Nombre del modelo ocupado</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>Método para encontrar los parámetros óptimos</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Fecha de ejecución</td>
+</tr>
+<tr>
+<td>No. Observations</td>
+<td>Número de observaciones</td>
+</tr>
+<tr>
+<td>Df Residuals</td>
+<td>Grados de libertas de los residuos</td>
+</tr>
+<tr>
+<td>Df Model</td>
+<td>Grados de libertad del modelo</td>
+</tr>
+<tr>
+<td>Covariance Type</td>
+<td>Tipo de covarianza</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ajustes del Modelo</strong></p>
+<p>Estos son estadísticas relacionadas con la verosimilitud y la confiabilidad del modelo.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Descripión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-squared</td>
+<td>Valor del R-cuadrado</td>
+</tr>
+<tr>
+<td>Adj. R-squared</td>
+<td>Valor del R-cuadrado ajustado</td>
+</tr>
+<tr>
+<td>F-statistic</td>
+<td>Test para ver si todos los parámetros son iguales a cero</td>
+</tr>
+<tr>
+<td>Prob (F-statistic)</td>
+<td>Probabilidad Asociada al test</td>
+</tr>
+<tr>
+<td>Log-Likelihood</td>
+<td>Logaritmo de la función de verosimilitud</td>
+</tr>
+<tr>
+<td>AIC</td>
+<td>Valor del estadístico AIC</td>
+</tr>
+<tr>
+<td>BIC</td>
+<td>Valor del estadístico BIC</td>
+</tr>
+</tbody>
+</table>
+<p>En este caso, tanto el <strong>r-cuadrado</strong> como el <strong>r-cuadrado</strong> ajustado están cerca del 0.9, se tiene un buen ajuste lineal de los datos. Además, el <strong>test F</strong> nos da una probabilidad menor al 0.05, se rechaza la hipótess nula que los coeficientes son iguales de cero.</p>
+<p><strong>Parámetros del modelo</strong></p>
+<p>La tabla muestra los valores asociados a los parámetros del modelo</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>coef</th>
+<th>std err</th>
+<th>t</th>
+<th>P&gt;|t|</th>
+<th>[0.025</th>
+<th>0.975]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>const</td>
+<td>0.9805</td>
+<td>0.021</td>
+<td>46.338</td>
+<td>0.000</td>
+<td>0.938</td>
+<td>1.023</td>
+</tr>
+<tr>
+<td>x</td>
+<td>1.0099</td>
+<td>0.039</td>
+<td>25.659</td>
+<td>0.000</td>
+<td>0.932</td>
+<td>1.088</td>
+</tr>
+</tbody>
+</table>
+<p>Acá se tiene:</p>
+<ul>
+<li><strong>Variables</strong>: Las variables en estudio son <code>const</code> (intercepto) y <code>x</code>.</li>
+<li><strong>coef</strong>: Valor estimado del coeficiente.</li>
+<li><strong>std err</strong>: Desviación estandar del estimador.</li>
+<li><strong>t</strong>: t = estimate/std error.</li>
+<li><strong>P&gt;|t|</strong>:p-valor individual para cada parámetro para aceptar o rechazar hipótesis nula (parámetros significativamente distinto de cero).</li>
+<li><strong>[0.025 | 0.975]</strong>: Intervalo de confianza de los parámetros</li>
+</ul>
+<p>En este caso, los valores estimados son cercanos a 1 (algo esperable debido a la simulación realizadas), además, se observa que cada uno de los parámetros es significativamente distinto de cero.</p>
+<p><strong>Estadísticos interesantes del modelo</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Omnibus</td>
+<td>Prueba de la asimetría y curtosis de los residuos</td>
+</tr>
+<tr>
+<td>Prob(Omnibus)</td>
+<td>Probabilidad de que los residuos se distribuyan normalmente</td>
+</tr>
+<tr>
+<td>Skew</td>
+<td>Medida de simetría de los datos</td>
+</tr>
+<tr>
+<td>Kurtosis</td>
+<td>Medida de curvatura de los datos</td>
+</tr>
+<tr>
+<td>Durbin-Watson</td>
+<td>Pruebas de homocedasticidad</td>
+</tr>
+<tr>
+<td>Jarque-Bera (JB)</td>
+<td>Como la prueba Omnibus, prueba tanto el sesgo como la curtosis.</td>
+</tr>
+<tr>
+<td>Prob(JB)</td>
+<td>Probabilidad de que los residuos se distribuyan normalmente</td>
+</tr>
+<tr>
+<td>Cond. No.</td>
+<td>Número de condición. Mide la sensibilidad de la salida de una función en comparación con su entrada</td>
+</tr>
+</tbody>
+</table>
+<p>En este caso:</p>
+<ul>
+<li>
+<p>Tanto el test de Omnibus como el test  Jarque-Bera nos arroja una probabilidad cercana a uno, lo cual confirma la hipótesis que los residuos se distribuyen de manera normal. </p>
+</li>
+<li>
+<p>Para el test de Durbin-Watson, basados en la <a href="https://support.minitab.com/es-mx/minitab/18/help-and-how-to/modeling-statistics/regression/supporting-topics/model-assumptions/test-for-autocorrelation-by-using-the-durbin-watson-statistic/">tablas de valores</a>(tamaño de la muestra 80 y número de variables 2), se tiene que los límites para asumir que no existe correlación en los residuos es de: <span class="arithmatex">\([d_u,4-d_u]=[1.66,2.34]\)</span>, dado que el valor obtenido (1.753) se encuentra dentro de este rango, se concluye que no hay autocorrelación de los residuos.</p>
+</li>
+<li>
+<p>El <a href="https://en.wikipedia.org/wiki/Condition_number">número de condición</a> es pequeño (podemos asumir que menor a 30 es un buen resultado) por lo que podemos asumir que no hay colinealidad de los datos.</p>
+</li>
+</ul>
+<p>Ahora, para convencernos de manera visual de los resultados, realicemos un gráfico con el ajuste lineal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># grafico de puntos</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">height</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">)</span>  
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_31_0.png" /></p>
+<h3 id="analisis-del-error">Análisis del error</h3>
+<h4 id="predicciones">Predicciones</h4>
+<p>Ahora que ya se tiene el modelo entrenado y se ha analizado sus principales características, se pueden realizar predicciones de los valores que se desconocen, de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># predicciones</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">y_pred</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</code></pre></div>
+<p>Ahora, analizaremos las métricas de error asociado a las predicciones del modelo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">metrics_regression</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># ejemplo </span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        <span class="s1">&#39;yhat&#39;</span><span class="p">:</span> <span class="n">y_pred</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>        <span class="p">}</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Metricas para el regresor consumo_litros_milla:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="n">summary_metrics</span><span class="p">(</span><span class="n">df_temp</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Metricas para el regresor consumo_litros_milla:
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mae</th>
+      <th>mse</th>
+      <th>rmse</th>
+      <th>mape</th>
+      <th>maape</th>
+      <th>wmape</th>
+      <th>mmape</th>
+      <th>smape</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.1028</td>
+      <td>0.0171</td>
+      <td>0.1309</td>
+      <td>0.0677</td>
+      <td>0.0674</td>
+      <td>0.0666</td>
+      <td>0.0406</td>
+      <td>0.068</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h4 id="normalidad-de-los-residuos">Normalidad de los residuos</h4>
+<p>Basados en los distintos test (Durbin-Watson,Omnibus,Jarque-Bera ) se concluye que los residuos del modelo son un ruido blanco. Para convencernos de esto de manera gráfica, se realizan los siguientes gráficos de interés.</p>
+<p><strong>Función de Autocorrelación</strong></p>
+<p>La función de autocorrelación muestra que los residuos se encuentra dentro de la banda de valores críticos <span class="arithmatex">\((-0.2,0.2)\)</span>, concluyendo que no existe correlación entre los residuos.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">)})</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># funcion de autocorrelation</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">plot_acf</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_38_0.png" /></p>
+<p><strong>QQ-plot</strong></p>
+<p>La gráfica de <strong>qq-plot</strong> nos muestra una comparación en las distribución de los residuos respecto a una población con una distribución normal. En este caso, los puntos (que representan la distribución de los errores) se encuentran cercana a la recta (distribución normal), concluyendo que la distribución de los residuos sigue una distribución normal.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">qqplot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s2">&quot;45&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_40_0.png" /></p>
+<p><strong>Histograma</strong></p>
+<p>Esta es una comparación directa enntre la distribución de los residuos versus la distribución de una variable normal mediante un histograma.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">df_hist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span><span class="n">results</span><span class="o">.</span><span class="n">resid</span><span class="p">})</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">data</span><span class="o">=</span><span class="n">df_hist</span><span class="p">,</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>     <span class="n">bins</span><span class="o">=</span><span class="mi">15</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="p">)</span>  
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_42_0.png" /></p>
+<p>A modo de conclusión, es correcto asumir que los errores siguen la distribución de un ruido blanco, cumpliendo correctamente con los supuestos de la regresión lineal.</p>
+<h2 id="outliers">Outliers</h2>
+<p><img src="images/outlier.png" width="480" height="360" align="rigt"/></p>
+<p>Un outlier (o valor atípico) una observación que es numéricamente distante del resto de los datos. Las estadísticas derivadas de los conjuntos de datos que incluyen valores atípicos serán frecuentemente engañosas. Estos valores pueden afectar fuertemente al modelo de regresión logística. Veamos un ejemplo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ejemplo sencillo</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> 
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># coeficientes</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># variable independiente</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span> <span class="c1"># media y desviacion estandar</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c1"># ruido blanco</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="n">x</span><span class="p">]</span>  <span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="c1"># variables dependientes</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.1</span> <span class="c1"># contaminacion</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">y</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="n">x</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">+</span><span class="mi">1</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="n">y</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1"># etiqueta</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="n">outlier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="n">outlier</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="n">outlier</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1"># generar dataframe</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>    <span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>    <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">y</span><span class="p">,</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>    <span class="s1">&#39;outlier&#39;</span><span class="p">:</span><span class="n">outlier</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="p">})</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># grafico de puntos</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">)})</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;outlier&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;black&#39;</span><span class="p">]</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="p">)</span>  
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_47_0.png" /></p>
+<p>En este caso, se tiene dos tipos de outliers en este caso:</p>
+<ul>
+<li><strong>Significativos</strong>: Aquellos outliers que afectan la regresión cambiando la tendencia a este grupo de outliers (puntos rojos).</li>
+<li><strong>No significativo</strong>: Si bien son datos atípicos  puesto que se encuentran fuera de la nube de puntos, el ajuste de la regresión lineal no se ve afectado (puntos negros).</li>
+</ul>
+<p>Veamos el ajuste lineal.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># grafico de puntos</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="n">height</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="p">)</span>  
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_49_0.png" /></p>
+<p>Otro gráfico de interés, es el <a href="https://songhuiming.github.io/pages/2016/11/27/linear-regression-in-python-outliers-leverage-detect/">gráfico de influencia</a>, que analiza la distancia de Cook de los residuos.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># modelos de influencia</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">]]</span> <span class="c1"># we only take the first two features.</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">influence_plot</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_regresion_lineal_files/02_regresion_lineal_51_0.png" /></p>
+<p>Los puntos <strong>grandes</strong> se interpretan como puntos que tienen una alta influencia sobre la regresión lineal, mientras aquellos puntos <strong>pequeños</strong> tienen una influencia menor.</p>
+<h4 id="que-hacer-ante-la-presencia-de-outliers">¿ Qué hacer ante la presencia de outliers?</h4>
+<p>En este caso, la recta se ve fuertemente afectadas por estos valores. Para estos casos se pueden hacer varias cosas:</p>
+<ul>
+<li>
+<p><strong>Eliminación de los outliers</strong>: Una vez identificado los outliers (algo que no es tan trivial de identificar para datos multivariables), se puden eliminar y seguir con el paso de modelado.</p>
+<ul>
+<li><strong>Ventajas</strong>: Fácil de trabajar la data para los modelos que dependen fuertemente de la media de los datos.</li>
+<li><strong>Desventajas</strong>: Para el caso multivariables no es tán trivial encontrar outliers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Modelos más robustos a outliers</strong>: Se pueden aplicar otros modelos de regresión cuya estimación de los parámetros, no se vea afectado por los valores de outliers.</p>
+<ul>
+<li><strong>Ventajas</strong>: El análisis se vuelve independiente de los datos.</li>
+<li><strong>Desventajas</strong>: Modelos más costoso computacionalmente y/o más complejos de implementar.</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusion">Conclusión</h2>
+<ul>
+<li>Los modelos de regresión lineal son una gran herramienta para realizar predicciones.</li>
+<li>Los outliers afectan considerablemente a la regresión lineal, por lo que se debn buscar estrategias para abordar esta problemática.</li>
+<li>En esta oportunidad se hizo un detalle técnico de disntintos estádisticos asociados a la regresión líneal (apuntando a un análisis inferencial ), no obstante, en los próximos modelos, se estará interesado en analizar las predicciones del modelo y los errores asociados a ella, por lo cual los aspectos técnico quedarán como lecturas complementarias.</li>
+<li>Existen varios casos donde los modelos de regresión líneal no realizan un correcto ajuste de los datos, pero es una gran herramienta para comenzar.</li>
+</ul>
+<h2 id="referencia">Referencia</h2>
+<ol>
+<li><a href="https://realpython.com/linear-regression-in-python/">Linear Regression in Python</a></li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../../../data_manipulation/visualization/seaborn/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Seaborn" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Seaborn
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../analisis_supervisado_clasificacion/02_clasificacion/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Clasificación" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Clasificación
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/fralfaro" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://gitlab.com/fralfaro" target="_blank" rel="noopener" title="gitlab.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m510.486 284.482-27.262-83.963c.012.038.016.077.028.115-.013-.044-.021-.088-.033-.132v-.01L429.1 33.871a21.328 21.328 0 0 0-20.445-14.6A21.038 21.038 0 0 0 388.466 34l-51.372 158.154H175L123.533 33.989a21.033 21.033 0 0 0-20.183-14.715h-.113A21.467 21.467 0 0 0 82.86 34L28.888 200.475l-.008.021c-.013.042-.019.084-.033.127.012-.038.017-.077.029-.115L1.514 284.482a30.6 30.6 0 0 0 11.117 34.283l236.262 171.662c.035.026.074.041.109.067.1.072.2.146.3.214-.1-.065-.187-.136-.282-.2.015.012.033.02.05.031l.041.024h.006a11.992 11.992 0 0 0 1.137.7c.054.03.1.068.157.1.033.016.064.038.1.054s.053.02.077.032.038.015.056.023c.044.021.092.034.136.057.205.1.421.178.633.264.2.082.389.177.592.248l.025.011c.034.012.064.028.1.04s.083.032.125.046l.05.012c.053.016.11.024.163.039.019.006.042.009.063.015.284.086.579.148.872.213.115.026.225.062.341.083.017 0 .032.009.05.012.038.008.073.021.112.027.062.011.122.031.186.04.049.007.1 0 .151.012h.033a11.918 11.918 0 0 0 1.7.136h.019a11.971 11.971 0 0 0 1.7-.136h.033c.05-.008.1 0 .153-.012s.124-.029.187-.04c.038-.006.073-.019.11-.027.017 0 .032-.009.049-.012.118-.023.231-.059.349-.084.288-.064.578-.126.861-.21.019-.006.039-.008.059-.014.055-.017.113-.024.169-.041.016-.006.035-.007.051-.012.044-.013.086-.032.129-.047s.063-.028.1-.041l.026-.01c.214-.076.417-.175.627-.261s.394-.154.584-.245c.047-.023.1-.036.142-.059.018-.009.04-.015.058-.024s.053-.02.078-.033.068-.04.1-.056c.056-.028.106-.069.161-.1a12.341 12.341 0 0 0 1.132-.695c.029-.02.062-.035.092-.056.008-.006.017-.009.024-.015.035-.026.076-.043.11-.068l236.3-171.666a30.6 30.6 0 0 0 11.107-34.281ZM408.8 49.48l46.342 142.674H362.46Zm-305.6 0 46.428 142.675h-92.68ZM26.817 299.251a6.526 6.526 0 0 1-2.361-7.308l20.34-62.42L193.835 420.6Zm38.245-82.972h92.411l65.881 202.941Zm183.416 273.83c-.047-.038-.092-.079-.138-.118l-.028-.026a8.366 8.366 0 0 1-.268-.231c-.172-.15-.341-.3-.5-.462.014.012.029.022.043.035l.055.046a12.191 12.191 0 0 0 1.091.929l.012.011c.018.013.033.03.051.045-.107-.075-.216-.148-.318-.229Zm7.514-48.482L217.226 322.21l-34.387-105.931h146.414Zm7.935 48.107c-.091.079-.178.157-.27.233l-.032.028c-.047.038-.091.079-.136.117-.1.08-.209.152-.313.229.018-.013.033-.032.053-.044l.009-.009a11.69 11.69 0 0 0 1.086-.926c.014-.013.03-.024.044-.036s.038-.03.054-.047c-.16.156-.322.307-.495.455Zm90.7-273.455h92.4l-18.91 24.23-139.468 178.7Zm130.567 82.967L318.2 420.563l149.084-191.025 20.258 62.393a6.528 6.528 0 0 1-2.353 7.315Z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/faam/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.kaggle.com/faamds" target="_blank" rel="noopener" title="www.kaggle.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M304.2 501.5 158.4 320.3 298.2 185c2.6-2.7 1.7-10.5-5.3-10.5h-69.2c-3.5 0-7 1.8-10.5 5.3L80.9 313.5V7.5q0-7.5-7.5-7.5H21.5Q14 0 14 7.5v497q0 7.5 7.5 7.5h51.9q7.5 0 7.5-7.5v-109l30.8-29.3 110.5 140.6c3 3.5 6.5 5.3 10.5 5.3h66.9q5.25 0 6-3z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://medium.com/@fralfaro" target="_blank" rel="noopener" title="medium.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M180.5 74.262C80.813 74.262 0 155.633 0 256s80.819 181.738 180.5 181.738S361 356.373 361 256 280.191 74.262 180.5 74.262Zm288.25 10.646c-49.845 0-90.245 76.619-90.245 171.095s40.406 171.1 90.251 171.1 90.251-76.619 90.251-171.1H559c0-94.503-40.4-171.095-90.248-171.095Zm139.506 17.821c-17.526 0-31.735 68.628-31.735 153.274s14.2 153.274 31.735 153.274S640 340.631 640 256c0-84.649-14.215-153.271-31.742-153.271Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

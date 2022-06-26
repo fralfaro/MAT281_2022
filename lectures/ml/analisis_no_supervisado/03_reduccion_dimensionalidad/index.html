@@ -1,0 +1,3613 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Francisco Alfaro">
+      
+      
+        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_no_supervisado/03_reduccion_dimensionalidad/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Reducción Dimensionalidad - Home</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reduccion-de-dimensionalidad" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../.." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Home
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reducción Dimensionalidad
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fralfaro/MAT281_2022" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fralfaro/MAT281_2022
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Home
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fralfaro/MAT281_2022" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fralfaro/MAT281_2022
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basic Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basic Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_000_intro/" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/lectures/basic_tools/basic_tools/lecture_000_configuraciones.md" class="md-nav__link">
+        Configuraciones
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_011_os/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_015_git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_013_ide/" class="md-nav__link">
+        IDE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_012_python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_014_jupyter/" class="md-nav__link">
+        Jupyter Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic_tools/basic_tools/lecture_016_colab/" class="md-nav__link">
+        Google Colab
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Scientific Computing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Scientific Computing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Scientific Computing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/scientific_computing/numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/scientific_computing/scipy/" class="md-nav__link">
+        Scipy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/scientific_computing/sympy/" class="md-nav__link">
+        Sympy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data manipulation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data manipulation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data manipulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/base_datos.md" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/groupby/" class="md-nav__link">
+        Groupby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/merge_concat/" class="md-nav__link">
+        Merge & Concat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/data_manipulation/pivot/" class="md-nav__link">
+        Pivot Tables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Visualization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Visualization" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Visualization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/visualization/introduction/" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/visualization/matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data_manipulation/visualization/seaborn/" class="md-nav__link">
+        Seaborn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Machine Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Machine Learning" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduccion_ml/introduccion.md" class="md-nav__link">
+        Introducción
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analisis_supervisado_regresion/02_regresion_lineal/" class="md-nav__link">
+        Regresión
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analisis_supervisado_clasificacion/02_clasificacion/" class="md-nav__link">
+        Clasificación
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Reducción Dimensionalidad
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Reducción Dimensionalidad
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algoritmos-de-reduccion-de-la-dimensionalidad" class="md-nav__link">
+    Algoritmos de reducción de la dimensionalidad
+  </a>
+  
+    <nav class="md-nav" aria-label="Algoritmos de reducción de la dimensionalidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-algebra-lineal" class="md-nav__link">
+    Métodos de álgebra lineal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiples-metodos-de-aprendizaje" class="md-nav__link">
+    Múltiples métodos de aprendizaje
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pca" class="md-nav__link">
+    PCA
+  </a>
+  
+    <nav class="md-nav" aria-label="PCA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpretacion-geometrica-de-las-componentes-principales" class="md-nav__link">
+    Interpretación geométrica de las componentes principales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculo-de-las-componentes-principales" class="md-nav__link">
+    Cálculo de las componentes principales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-del-pca" class="md-nav__link">
+    Características del PCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proporcion-de-varianza-explicada" class="md-nav__link">
+    Proporción de varianza explicada
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numero-optimo-de-componentes-principales" class="md-nav__link">
+    Número óptimo de componentes principales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion" class="md-nav__link">
+    Aplicación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t-distributed-stochastic-neighbor-embedding-t-sne" class="md-nav__link">
+    t-Distributed Stochastic Neighbor Embedding (t-SNE)
+  </a>
+  
+    <nav class="md-nav" aria-label="t-Distributed Stochastic Neighbor Embedding (t-SNE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparando-con-pca" class="md-nav__link">
+    Comparando con PCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion" class="md-nav__link">
+    Explicación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion_1" class="md-nav__link">
+    Aplicación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otros-metodos-de-reduccion-de-dimensionalidad" class="md-nav__link">
+    Otros métodos de reducción de dimensionalidad
+  </a>
+  
+    <nav class="md-nav" aria-label="Otros métodos de reducción de dimensionalidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion_2" class="md-nav__link">
+    Aplicación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overfitting/04_overfitting_underfitting/" class="md-nav__link">
+        Overffiting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overfitting/04_reducir_overfitting/" class="md-nav__link">
+        Reducir Overfiting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time_series/05_series_temporales/" class="md-nav__link">
+        Series Temporales
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algoritmos-de-reduccion-de-la-dimensionalidad" class="md-nav__link">
+    Algoritmos de reducción de la dimensionalidad
+  </a>
+  
+    <nav class="md-nav" aria-label="Algoritmos de reducción de la dimensionalidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-de-algebra-lineal" class="md-nav__link">
+    Métodos de álgebra lineal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiples-metodos-de-aprendizaje" class="md-nav__link">
+    Múltiples métodos de aprendizaje
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pca" class="md-nav__link">
+    PCA
+  </a>
+  
+    <nav class="md-nav" aria-label="PCA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpretacion-geometrica-de-las-componentes-principales" class="md-nav__link">
+    Interpretación geométrica de las componentes principales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculo-de-las-componentes-principales" class="md-nav__link">
+    Cálculo de las componentes principales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-del-pca" class="md-nav__link">
+    Características del PCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proporcion-de-varianza-explicada" class="md-nav__link">
+    Proporción de varianza explicada
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numero-optimo-de-componentes-principales" class="md-nav__link">
+    Número óptimo de componentes principales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion" class="md-nav__link">
+    Aplicación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t-distributed-stochastic-neighbor-embedding-t-sne" class="md-nav__link">
+    t-Distributed Stochastic Neighbor Embedding (t-SNE)
+  </a>
+  
+    <nav class="md-nav" aria-label="t-Distributed Stochastic Neighbor Embedding (t-SNE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparando-con-pca" class="md-nav__link">
+    Comparando con PCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion" class="md-nav__link">
+    Explicación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion_1" class="md-nav__link">
+    Aplicación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otros-metodos-de-reduccion-de-dimensionalidad" class="md-nav__link">
+    Otros métodos de reducción de dimensionalidad
+  </a>
+  
+    <nav class="md-nav" aria-label="Otros métodos de reducción de dimensionalidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion_2" class="md-nav__link">
+    Aplicación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    Referencia
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="reduccion-de-dimensionalidad">Reducción de dimensionalidad</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>En aprendizaje automático y estadísticas <a href="https://es.wikipedia.org/wiki/Reducci%C3%B3n_de_dimensionalidad">reducción de dimensionalidad</a>  es el proceso de reducción del número de variables aleatorias que se trate, y se puede dividir en selección de función y extracción de función</p>
+<p>Sin embargo, se puede utilizar como un paso de preprocesamiento de transformación de datos para algoritmos de aprendizaje automático en conjuntos de datos de modelado predictivo de clasificación y regresión con algoritmos de aprendizaje supervisado.</p>
+<p>Hay muchos algoritmos de reducción de dimensionalidad entre los que elegir y no existe el mejor algoritmo para todos los casos. En cambio, es una buena idea explorar una variedad de algoritmos de reducción de dimensionalidad y diferentes configuraciones para cada algoritmo.</p>
+<h2 id="algoritmos-de-reduccion-de-la-dimensionalidad">Algoritmos de reducción de la dimensionalidad</h2>
+<p>Hay muchos algoritmos que pueden ser usados para la reducción de la dimensionalidad.</p>
+<p>Dos clases principales de métodos son los que se extraen del álgebra lineal y los que se extraen del aprendizaje múltiple.</p>
+<h3 id="metodos-de-algebra-lineal">Métodos de álgebra lineal</h3>
+<p>Los métodos de factorización matricial extraídos del campo del álgebra lineal pueden utilizarse para la dimensionalidad. Algunos de los métodos más populares incluyen:</p>
+<ul>
+<li>Análisis de los componentes principales</li>
+<li>Descomposición del valor singular</li>
+<li>Factorización de matriz no negativa</li>
+</ul>
+<h3 id="multiples-metodos-de-aprendizaje">Múltiples métodos de aprendizaje</h3>
+<p>Los múltiples métodos de aprendizaje buscan una proyección de dimensiones inferiores de alta entrada dimensional que capte las propiedades salientes de los datos de entrada.</p>
+<p>Algunos de los métodos más populares incluyen:</p>
+<ul>
+<li>Isomap Embedding</li>
+<li>Locally Linear Embedding</li>
+<li>Multidimensional Scaling</li>
+<li>Spectral Embedding</li>
+<li>t-distributed Stochastic Neighbor Embedding (t-sne)</li>
+</ul>
+<p>Cada algoritmo ofrece un enfoque diferente para el desafío de descubrir las relaciones naturales en los datos de dimensiones inferiores.</p>
+<p>No hay un mejor algoritmo de reducción de la dimensionalidad, y no hay una manera fácil de encontrar el mejor algoritmo para sus datos sin usar experimentos controlados.</p>
+<p>Debido a la importancia que se tiene en el mundo del machine lerning, se dará un explicación formal del método de PCA y luego se dará una breve reseña de los demás métodos.</p>
+<h2 id="pca">PCA</h2>
+<p>El análisis de componentes principales (Principal Component Analysis PCA) es un método de reducción de dimensionalidad que permite simplificar la complejidad de espacios con múltiples dimensiones a la vez que conserva su información.</p>
+<p>Supóngase que existe una muestra con  <span class="arithmatex">\(n\)</span>  individuos cada uno con  <span class="arithmatex">\(p\)</span>  variables ( <span class="arithmatex">\(X_1\)</span>,...,<span class="arithmatex">\(X_p\)</span>), es decir, el espacio muestral tiene  <span class="arithmatex">\(p\)</span>  dimensiones. PCA permite encontrar un número de factores subyacentes  (<span class="arithmatex">\(z&lt;p\)</span>)  que explican aproximadamente lo mismo que las  <span class="arithmatex">\(p\)</span>  variables originales. Donde antes se necesitaban  <span class="arithmatex">\(p\)</span>  valores para caracterizar a cada individuo, ahora bastan  <span class="arithmatex">\(z\)</span>  valores. Cada una de estas  <span class="arithmatex">\(z\)</span>  nuevas variables recibe el nombre de componente principal.</p>
+<p><img src="images/pca_01.png" width="600" height="480" align="center"/></p>
+<p>El método de PCA permite por lo tanto "condensar" la información aportada por múltiples variables en solo unas pocas componentes. Aun así, no hay que olvidar que sigue siendo necesario disponer del valor de las variables originales para calcular las componentes. Dos de las principales aplicaciones del PCA son la visualización y el preprocesado de predictores previo ajuste de modelos supervisados.</p>
+<h3 id="interpretacion-geometrica-de-las-componentes-principales">Interpretación geométrica de las componentes principales</h3>
+<p>Una forma intuitiva de entender el proceso de PCA es interpretar las componentes principales desde un punto de vista geométrico. Supóngase un conjunto de observaciones para las que se dispone de dos variables ( <span class="arithmatex">\(X_1\)</span>, <span class="arithmatex">\(X_2\)</span> ). El vector que define la primera componente principal (<span class="arithmatex">\(Z_1\)</span> ) sigue la dirección en la que las observaciones tienen más varianza (línea roja). La proyección de cada observación sobre esa dirección equivale al valor de la primera componente para dicha observación (principal component score,  <span class="arithmatex">\(z_{i1}\)</span> ).</p>
+<p><img src="images/pca_02.png" width="600" height="480" align="center"/></p>
+<p>La segunda componente ( <span class="arithmatex">\(Z_2\)</span> ) sigue la segunda dirección en la que los datos muestran mayor varianza y que no está correlacionada con la primera componente. La condición de no correlación entre componentes principales equivale a decir que sus direcciones son perpendiculares/ortogonales.</p>
+<p><img src="images/pca_03.png" width="600" height="480" align="center"/></p>
+<h3 id="calculo-de-las-componentes-principales">Cálculo de las componentes principales</h3>
+<p>Cada componente principal ( <span class="arithmatex">\(Z_i\)</span> ) se obtiene por combinación lineal de las variables originales. Se pueden entender como nuevas variables obtenidas al combinar de una determinada forma las variables originales. La primera componente principal de un grupo de variables ( <span class="arithmatex">\(X_1,...,X_p\)</span> ) es la combinación lineal normalizada de dichas variables que tiene mayor varianza:</p>
+<div class="arithmatex">\[ Z_1 = \phi_{11}X_1 + ... + \phi_{p1}X_p\]</div>
+<p>Que la combinación lineal sea normalizada implica que:</p>
+<div class="arithmatex">\[\sum_{j=1}^p \phi^2_{j1} = 1\]</div>
+<p>Los términos  <span class="arithmatex">\(\phi_{11},...,\phi_{p1}\)</span>  reciben en el nombre de loadings y son los que definen las componentes. Por ejemplo,  <span class="arithmatex">\(\phi_{11}\)</span>  es el loading de la variable  <span class="arithmatex">\(X_1\)</span>  de la primera componente principal. Los loadings pueden interpretarse como el peso/importancia que tiene cada variable en cada componente y, por lo tanto, ayudan a conocer que tipo de información recoge cada una de las componentes.</p>
+<p>Dado un set de datos  <span class="arithmatex">\(X\)</span>  con <span class="arithmatex">\(n\)</span> observaciones y <span class="arithmatex">\(p\)</span> variables, el proceso a seguir para calcular la primera componente principal es:</p>
+<ul>
+<li>
+<p>Centrar las variables: se resta a cada valor la media de la variable a la que pertenece. Con esto se consigue que todas las variables tengan media cero.</p>
+</li>
+<li>
+<p>Se resuelve un problema de optimización para encontrar el valor de los loadings con los que se maximiza la varianza. Una forma de resolver esta optimización es mediante el cálculo de eigenvector-eigenvalue de la matriz de covarianzas.</p>
+</li>
+</ul>
+<p>Una vez calculada la primera componente ( <span class="arithmatex">\(Z_1\)</span> ), se calcula la segunda ( <span class="arithmatex">\(Z_2\)</span> ) repitiendo el mismo proceso pero añadiendo la condición de que la combinación lineal no pude estar correlacionada con la primera componente. Esto equivale a decir que  <span class="arithmatex">\(Z_1\)</span>  y  <span class="arithmatex">\(Z_2\)</span>  tienen que ser perpendiculares. EL proceso se repite de forma iterativa hasta calcular todas las posibles componentes (<em>min(<span class="arithmatex">\(n-1, p\)</span>)</em>) o hasta que se decida detener el proceso. El orden de importancia de las componentes viene dado por la magnitud del eigenvalue asociado a cada eigenvector.</p>
+<h3 id="caracteristicas-del-pca">Características del PCA</h3>
+<ul>
+<li><strong>Escalado de las variables</strong>: El proceso de PCA identifica las direcciones con mayor varianza.</li>
+<li><strong>Reproducibilidad de las componentes</strong>: El proceso de PCA estándar es determinista, genera siempre las mismas componentes principales, es decir, el valor de los loadings resultantes es el mismo.</li>
+<li><strong>Influencia de outliers</strong>: Al trabajar con varianzas, el método PCA es muy sensible a outliers, por lo que es recomendable estudiar si los hay. La detección de valores atípicos con respecto a una determinada dimensión es algo relativamente sencillo de hacer mediante comprobaciones gráficas. </li>
+</ul>
+<h3 id="proporcion-de-varianza-explicada">Proporción de varianza explicada</h3>
+<p>Una de las preguntas más frecuentes que surge tras realizar un PCA es: ¿Cuánta información presente en el set de datos original se pierde al proyectar las observaciones en un espacio de menor dimensión? o lo que es lo mismo ¿Cuanta información es capaz de capturar cada una de las componentes principales obtenidas? Para contestar a estas preguntas se recurre a la proporción de varianza explicada por cada componente principal.</p>
+<p>Asumiendo que las variables se han normalizado para tener media cero, la varianza total presente en el set de datos se define como</p>
+<div class="arithmatex">\[\sum_{j=1}^p Var(X_j) = \dfrac{1}{n}\sum_{j=1}^p\sum_{i=1}^nx_{ij}^2\]</div>
+<p>y la varianza explicada por la componente m es</p>
+<div class="arithmatex">\[\dfrac{1}{n}\sum_{i=1}^n z_{im}^2 = \dfrac{1}{n}\sum_{i=1}^n (\sum_{j=1}^p \phi_{jm}x_{ij})^2\]</div>
+<p>Por lo tanto, la proporción de varianza explicada por la componente m viene dada por el ratio</p>
+<div class="arithmatex">\[ \dfrac{\sum_{i=1}^n (\sum_{j=1}^p \phi_{jm}x_{ij})^2}{\sum_{j=1}^p\sum_{i=1}^nx_{ij}^2}\]</div>
+<p>Tanto la proporción de varianza explicada, como la proporción de varianza explicada acumulada, son dos valores de gran utilidad a la hora de decidir el número de componentes principales a utilizar en los análisis posteriores. Si se calculan todas las componentes principales de un set de datos, entonces, aunque transformada, se está almacenando toda la información presente en los datos originales. El sumatorio de la proporción de varianza explicada acumulada de todas las componentes es siempre 1.</p>
+<h3 id="numero-optimo-de-componentes-principales">Número óptimo de componentes principales</h3>
+<p>Por lo general, dada una matriz de datos de dimensiones <span class="arithmatex">\(n \times p\)</span>, el número de componentes principales que se pueden calcular es como máximo de <span class="arithmatex">\(n-1\)</span> o <span class="arithmatex">\(p\)</span> (el menor de los dos valores es el limitante). Sin embargo, siendo el objetivo del PCA reducir la dimensionalidad, suelen ser de interés utilizar el número mínimo de componentes que resultan suficientes para explicar los datos. No existe una respuesta o método único que permita identificar cual es el número óptimo de componentes principales a utilizar. Una forma de proceder muy extendida consiste en evaluar la proporción de varianza explicada acumulada y seleccionar el número de componentes mínimo a partir del cual el incremento deja de ser sustancial.</p>
+<p><img src="images/pca_04.png" width="600" height="480" align="center"/></p>
+<h3 id="aplicacion">Aplicación</h3>
+<p>El método Principal Components Regression PCR consiste en ajustar un modelo de regresión lineal por mínimos cuadrados empleando como predictores las componentes generadas a partir de un Principal Component Analysis (PCA). De esta forma, con un número reducido de componentes se puede explicar la mayor parte de la varianza de los datos.</p>
+<p>En los estudios observacionales, es frecuente disponer de un número elevado de variables que se pueden emplear como predictores, sin embargo, esto no implica necesariamente que se disponga de mucha información. Si las variables están correlacionadas entre ellas, la información que aportan es redundante y además, se incumple la condición de no colinealidad necesaria en la regresión por mínimos cuadrados. Dado que el PCA es útil eliminando información redundante, si se emplean como predictores las componentes principales, se puede mejorar el modelo de regresión. Es importante tener en cuenta que, si bien el Principal Components Regression reduce el número de predictores del modelo, no se puede considerar como un método de selección de variables ya que todas ellas se necesitan para el cálculo de las componentes. La identificación del número óptimo de componentes principales que se emplean como predictores en PCR puede identificarse por validación cruzada.</p>
+<blockquote>
+<p><strong>Datos</strong>: El set de datos <code>USArrests</code> contiene el porcentaje de asaltos (Assault), asesinatos (Murder) y secuestros (Rape) por cada 100,000 habitantes para cada uno de los 50 estados de USA (1973). Además, también incluye el porcentaje de la población de cada estado que vive en zonas rurales (UrbanPoP).</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># librerias</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>  <span class="c1"># Ver más columnas de los dataframes</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Ver gráficos de matplotlib en jupyter notebook/lab</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RepeatedStratifiedKFold</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">scale</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Datos</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/USArrests.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="s1">&#39;index&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Murder</th>
+      <th>Assault</th>
+      <th>UrbanPop</th>
+      <th>Rape</th>
+    </tr>
+    <tr>
+      <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>13.2</td>
+      <td>236</td>
+      <td>58</td>
+      <td>21.2</td>
+    </tr>
+    <tr>
+      <th>Alaska</th>
+      <td>10.0</td>
+      <td>263</td>
+      <td>48</td>
+      <td>44.5</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>8.1</td>
+      <td>294</td>
+      <td>80</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>8.8</td>
+      <td>190</td>
+      <td>50</td>
+      <td>19.5</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>9.0</td>
+      <td>276</td>
+      <td>91</td>
+      <td>40.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Veamos una exploración inicial de los datos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Media de cada variable&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">datos</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>----------------------
+Media de cada variable
+----------------------
+
+
+
+
+
+Murder        7.788
+Assault     170.760
+UrbanPop     65.540
+Rape         21.232
+dtype: float64
+</code></pre></div>
+<p>La media de las variables muestra que hay tres veces más secuestros que asesinatos y 8 veces más asaltos que secuestros.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Varianza de cada variable&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">datos</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>-------------------------
+Varianza de cada variable
+-------------------------
+
+
+
+
+
+Murder        18.970465
+Assault     6945.165714
+UrbanPop     209.518776
+Rape          87.729159
+dtype: float64
+</code></pre></div>
+<p>La varianza es muy distinta entre las variables, en el caso de Assault, la varianza es varios órdenes de magnitud superior al resto.</p>
+<p>Si no se estandarizan las variables para que tengan media cero y desviación estándar de uno antes de realizar el estudio PCA, la variable Assault, que tiene una media y dispersión muy superior al resto, dominará la mayoría de las componentes principales.</p>
+<p><strong>Modelo PCA</strong></p>
+<p>La clase <code>sklearn.decomposition.PCA</code> incorpora las principales funcionalidades que se necesitan a la hora de trabajar con modelos PCA. El argumento <code>n_components</code> determina el número de componentes calculados. Si se indica None, se calculan todas las posibles (min(filas, columnas) - 1).</p>
+<p>Por defecto, <code>PCA()</code> centra los valores pero no los escala. Esto es importante ya que, si las variables tienen distinta dispersión, como en este caso, es necesario escalarlas. Una forma de hacerlo es combinar un <code>StandardScaler()</code> y un <code>PCA()</code> dentro de un <code>pipeline</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Entrenamiento modelo PCA con escalado de los datos</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># ==============================================================================</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">pca_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">PCA</span><span class="p">())</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">pca_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Se extrae el modelo entrenado del pipeline</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">modelo_pca</span> <span class="o">=</span> <span class="n">pca_pipe</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;pca&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>Una vez entrenado el objeto <code>PCA</code>, pude accederse a toda la información de las componentes creadas.</p>
+<p><code>components_</code> contiene el valor de los loadings  𝜙  que definen cada componente (eigenvector). Las filas se corresponden con las componentes principals (ordenadas de mayor a menor varianza explicada). Las filas se corresponden con las variables de entrada.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Se combierte el array a dataframe para añadir nombres a los ejes.</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">data</span>    <span class="o">=</span> <span class="n">modelo_pca</span><span class="o">.</span><span class="n">components_</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">columns</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">index</span>   <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="s1">&#39;PC4&#39;</span><span class="p">]</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">)</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Murder</th>
+      <th>Assault</th>
+      <th>UrbanPop</th>
+      <th>Rape</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PC1</th>
+      <td>0.535899</td>
+      <td>0.583184</td>
+      <td>0.278191</td>
+      <td>0.543432</td>
+    </tr>
+    <tr>
+      <th>PC2</th>
+      <td>0.418181</td>
+      <td>0.187986</td>
+      <td>-0.872806</td>
+      <td>-0.167319</td>
+    </tr>
+    <tr>
+      <th>PC3</th>
+      <td>-0.341233</td>
+      <td>-0.268148</td>
+      <td>-0.378016</td>
+      <td>0.817778</td>
+    </tr>
+    <tr>
+      <th>PC4</th>
+      <td>0.649228</td>
+      <td>-0.743407</td>
+      <td>0.133878</td>
+      <td>0.089024</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Analizar con detalle el vector de loadings que forma cada componente puede ayudar a interpretar qué tipo de información recoge cada una de ellas. Por ejemplo, la primera componente es el resultado de la siguiente combinación lineal de las variables originales:</p>
+<div class="arithmatex">\[PC1=0.535899 Murder+0.583184 Assault+0.278191 UrbanPop+0.543432 Rape\]</div>
+<p>Los pesos asignados en la primera componente a las variables Assault, Murder y Rape son aproximadamente iguales entre ellos y superiores al asignado a UrbanPoP. Esto significa que la primera componente recoge mayoritariamente la información correspondiente a los delitos. En la segunda componente, es la variable UrbanPoP es la que tiene con diferencia mayor peso, por lo que se corresponde principalmente con el nivel de urbanización del estado. Si bien en este ejemplo la interpretación de las componentes es bastante clara, no en todos los casos ocurre lo mismo, sobre todo a medida que aumenta el número de variables.</p>
+<p>La influencia de las variables en cada componente analizarse visualmente con un gráfico de tipo heatmap.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Heatmap componentes</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># ==============================================================================</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">componentes</span> <span class="o">=</span> <span class="n">modelo_pca</span><span class="o">.</span><span class="n">components_</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">componentes</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span> <span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">modelo_pca</span><span class="o">.</span><span class="n">n_components_</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</code></pre></div>
+<p><img alt="png" src="../03_reduccion_dimensionalidad_files/03_reduccion_dimensionalidad_23_0.png" /></p>
+<p>Una vez calculadas las componentes principales, se puede conocer la varianza explicada por cada una de ellas, la proporción respecto al total y la proporción de varianza acumulada. Esta información está almacenada en los atributos <code>explained_variance_</code> y <code>explained_variance_ratio_</code> del modelo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># graficar varianza por componente</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">percent_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">modelo_pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">decimals</span> <span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="s1">&#39;PC4&#39;</span><span class="p">]</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">percent_variance</span><span class="p">,</span> <span class="n">tick_label</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">modelo_pca</span><span class="o">.</span><span class="n">n_components_</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Componente principal&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Por. varianza explicada&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porcentaje de varianza explicada por cada componente&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../03_reduccion_dimensionalidad_files/03_reduccion_dimensionalidad_25_0.png" /></p>
+<p>Ahora realizamos el gráfico pero respecto a la suma acumulada. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># graficar varianza por la suma acumulada de los componente</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">percent_variance_cum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">percent_variance</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC1+PC2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC1+PC2+PC3&#39;</span><span class="p">,</span> <span class="s1">&#39;PC1+PC2+PC3+PC4&#39;</span><span class="p">]</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="n">percent_variance_cum</span><span class="p">,</span> <span class="n">tick_label</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percentate of Variance Explained&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component Cumsum&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PCA Scree Plot&#39;</span><span class="p">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../03_reduccion_dimensionalidad_files/03_reduccion_dimensionalidad_27_0.png" /></p>
+<p>Si se empleasen únicamente las dos primeras componentes se conseguiría explicar el 87% de la varianza observada.</p>
+<p><strong>Transformación</strong></p>
+<p>Una vez entrenado el modelo, con el método <code>transform()</code> se puede reducir la dimensionalidad de nuevas observaciones proyectándolas en el espacio definido por las componentes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Proyección de las observaciones de entrenamiento</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># ==============================================================================</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">proyecciones</span> <span class="o">=</span> <span class="n">pca_pipe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">datos</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">proyecciones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">proyecciones</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="s1">&#39;PC4&#39;</span><span class="p">],</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">index</span>   <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">index</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">proyecciones</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>PC3</th>
+      <th>PC4</th>
+    </tr>
+    <tr>
+      <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>0.985566</td>
+      <td>1.133392</td>
+      <td>-0.444269</td>
+      <td>0.156267</td>
+    </tr>
+    <tr>
+      <th>Alaska</th>
+      <td>1.950138</td>
+      <td>1.073213</td>
+      <td>2.040003</td>
+      <td>-0.438583</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>1.763164</td>
+      <td>-0.745957</td>
+      <td>0.054781</td>
+      <td>-0.834653</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>-0.141420</td>
+      <td>1.119797</td>
+      <td>0.114574</td>
+      <td>-0.182811</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>2.523980</td>
+      <td>-1.542934</td>
+      <td>0.598557</td>
+      <td>-0.341996</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>La transformación es el resultado de multiplicar los vectores que definen cada componente con el valor de las variables. Puede calcularse de forma manual:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">proyecciones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">modelo_pca</span><span class="o">.</span><span class="n">components_</span><span class="p">,</span> <span class="n">scale</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">proyecciones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">proyecciones</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="s1">&#39;PC3&#39;</span><span class="p">,</span> <span class="s1">&#39;PC4&#39;</span><span class="p">])</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">proyecciones</span> <span class="o">=</span> <span class="n">proyecciones</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">proyecciones</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>PC3</th>
+      <th>PC4</th>
+    </tr>
+    <tr>
+      <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>0.985566</td>
+      <td>1.133392</td>
+      <td>-0.444269</td>
+      <td>0.156267</td>
+    </tr>
+    <tr>
+      <th>Alaska</th>
+      <td>1.950138</td>
+      <td>1.073213</td>
+      <td>2.040003</td>
+      <td>-0.438583</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>1.763164</td>
+      <td>-0.745957</td>
+      <td>0.054781</td>
+      <td>-0.834653</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>-0.141420</td>
+      <td>1.119797</td>
+      <td>0.114574</td>
+      <td>-0.182811</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>2.523980</td>
+      <td>-1.542934</td>
+      <td>0.598557</td>
+      <td>-0.341996</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Reconstrucción</strong></p>
+<p>Puede revertirse la transformación y reconstruir el valor inicial con el método inverse_transform(). Es importante tener en cuenta que, la reconstrucción, solo será completa si se han incluido todas las componentes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Recostruccion de las proyecciones</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># ==============================================================================</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">recostruccion</span> <span class="o">=</span> <span class="n">pca_pipe</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">proyecciones</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">recostruccion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>                    <span class="n">recostruccion</span><span class="p">,</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>                    <span class="n">columns</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>                    <span class="n">index</span>   <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">index</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">)</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valores originales&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">display</span><span class="p">(</span><span class="n">recostruccion</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valores reconstruidos&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------------&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="n">display</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>------------------
+Valores originales
+------------------
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Murder</th>
+      <th>Assault</th>
+      <th>UrbanPop</th>
+      <th>Rape</th>
+    </tr>
+    <tr>
+      <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>13.2</td>
+      <td>236.0</td>
+      <td>58.0</td>
+      <td>21.2</td>
+    </tr>
+    <tr>
+      <th>Alaska</th>
+      <td>10.0</td>
+      <td>263.0</td>
+      <td>48.0</td>
+      <td>44.5</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>8.1</td>
+      <td>294.0</td>
+      <td>80.0</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>8.8</td>
+      <td>190.0</td>
+      <td>50.0</td>
+      <td>19.5</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>9.0</td>
+      <td>276.0</td>
+      <td>91.0</td>
+      <td>40.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code>---------------------
+Valores reconstruidos
+---------------------
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Murder</th>
+      <th>Assault</th>
+      <th>UrbanPop</th>
+      <th>Rape</th>
+    </tr>
+    <tr>
+      <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>13.2</td>
+      <td>236</td>
+      <td>58</td>
+      <td>21.2</td>
+    </tr>
+    <tr>
+      <th>Alaska</th>
+      <td>10.0</td>
+      <td>263</td>
+      <td>48</td>
+      <td>44.5</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>8.1</td>
+      <td>294</td>
+      <td>80</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>8.8</td>
+      <td>190</td>
+      <td>50</td>
+      <td>19.5</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>9.0</td>
+      <td>276</td>
+      <td>91</td>
+      <td>40.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="t-distributed-stochastic-neighbor-embedding-t-sne">t-Distributed Stochastic Neighbor Embedding (t-SNE)</h2>
+<p>t-Distributed Stochastic Neighbor Embedding (t-SNE)  es una técnica no lineal no supervisada utilizada principalmente para la exploración de datos y la visualización de datos de alta dimensión.</p>
+<p>En términos más simples, tSNE le da una sensación o intuición de cómo se organizan los datos en un espacio de alta dimensión. Fue desarrollado por Laurens van der Maatens y Geoffrey Hinton en 2008.</p>
+<h3 id="comparando-con-pca">Comparando con PCA</h3>
+<p>Si está familiarizado con Análisis de componentes principales (PCA), entonces como yo , probablemente se esté preguntando la diferencia entre PCA y tSNE.</p>
+<p>Lo primero a tener en cuenta es que PCA se desarrolló en 1933, mientras que tSNE se desarrolló en 2008. Mucho ha cambiado en el mundo de la ciencia de datos desde 1933, principalmente en el ámbito del cálculo y el tamaño de los datos.</p>
+<p>En segundo lugar, PCA es una técnica de reducción de dimensión lineal que busca maximizar la varianza y preserva las distancias pares grandes. En otras palabras, las cosas que son diferentes terminan muy separadas. Esto puede conducir a una visualización deficiente, especialmente cuando se trata de estructuras distribuidoras no lineales. Piense en una estructura múltiple como cualquier forma geométrica como: cilindro, bola, curva, etc.</p>
+<p>tSNE difiere de PCA al preservar solo pequeñas distancias por pares o similitudes locales, mientras que PCA se preocupa por preservar distancias pares grandes para maximizar la varianza.</p>
+<p>Laurens ilustra bastante bien el enfoque PCA y tSNE utilizando el conjunto de datos Swiss Roll en la Figura 1 [1].</p>
+<p>Puede ver que debido a la no linealidad de este conjunto de datos de juguete (múltiple) y la preservación de grandes distancias, PCA conservaría incorrectamente la estructura de los datos.</p>
+<p><img src="images/tsne_01.png" align="center"/></p>
+<blockquote>
+<p>Figura 1 – Dataset de rollo suizo. Conservar la distancia pequeña con tSNE (línea continua) frente a la maximización de la variación PCA [1]</p>
+</blockquote>
+<h3 id="explicacion">Explicación</h3>
+<p>Ahora que sabemos por qué podríamos usar tSNE sobre PCA, analicemos cómo funciona tSNE. El algoritmo tSNE calcula una medida de similitud entre pares de instancias en el espacio de alta dimensión y en el espacio de baja dimensión. Luego trata de optimizar estas dos medidas de similitud usando una función de costo. Vamos a dividirlo en 3 pasos básicos.</p>
+<ol>
+<li>Paso 1, mide similitudes entre puntos en el espacio de alta dimensión. Piense en un conjunto de puntos de datos dispersos en un espacio 2D (Figura 2).</li>
+</ol>
+<p>Para cada punto de datos (xi) centraremos una distribución Gaussiana sobre ese punto. Luego medimos la densidad de todos los puntos (xj) bajo esa distribución Gaussiana. Luego renormalize para todos los puntos.</p>
+<p>Esto nos da un conjunto de probabilidades (Pij) para todos los puntos. Esas probabilidades son proporcionales a las similitudes.</p>
+<p>Todo lo que eso significa es que si los puntos de datos x1 y x2 tienen valores iguales bajo este círculo gaussiano, entonces sus proporciones y similitudes son iguales y, por lo tanto, tienes similitudes locales en la estructura de este espacio de alta dimensión.</p>
+<p>La distribución gaussiana o el círculo se pueden manipular usando lo que se llama perplejidad, que influye en la varianza de la distribución (tamaño del círculo) y esencialmente en el número de vecinos más cercanos. El rango normal para la perplejidad está entre 5 y 50 [2].</p>
+<p><img src="images/tsne_02.png" align="center"/></p>
+<blockquote>
+<p>Figura 2 – Medición de similitudes por pares en el espacio de alta dimensión</p>
+</blockquote>
+<p>Figura 2 – Medición de similitudes por pares en el espacio de alta dimensión
+2. El paso 2 es similar al paso 1, pero en lugar de usar una distribución gaussiana se usa una distribución t de Student con un grado de libertad, que también se conoce como la distribución de Cauchy (Figura 3). Esto nos da un segundo conjunto de probabilidades (<span class="arithmatex">\(Q_{ij}\)</span>) en el espacio de baja dimensión.</p>
+<p>Como puede ver, la distribución t de Student tiene colas más pesadas que la distribución normal. Las colas pesadas permiten un mejor modelado de distancias muy separadas.</p>
+<p><img src="images/tsne_03.png" align="center"/></p>
+<blockquote>
+<p>Figura 3 – Distribución noraml vs t-student</p>
+</blockquote>
+<ol>
+<li>El último paso es que queremos que este conjunto de probabilidades del espacio de baja dimensión (<span class="arithmatex">\(Q_{ij}\)</span>) refleje las del espacio de alta dimensión (<span class="arithmatex">\(P_{ij}\)</span>) de la mejor manera posible.</li>
+</ol>
+<p>Queremos que las dos estructuras de mapa sean similares. Medimos la diferencia entre las distribuciones de probabilidad de los espacios bidimensionales utilizando la divergencia de Kullback-Liebler (KL).</p>
+<p>No incluiré mucho en KL, excepto que es un enfoque asimétrico que compara de manera eficiente los grandes valores <span class="arithmatex">\(P_{ij}\)</span> y <span class="arithmatex">\(Q_{ij}\)</span>. Finalmente, utilizamos el descenso de gradiente para minimizar nuestra función de costo KL.</p>
+<h3 id="aplicacion_1">Aplicación</h3>
+<p>Laurens van der Maaten menciona el uso de tSNE en áreas como investigación del clima, seguridad informática, bioinformática, investigación del cáncer, etc. tSNE podría usarse en datos de alta dimensión y luego el resultado de esas dimensiones se convierte en insumos para algún otro modelo de clasificación .</p>
+<p>Además, tSNE podría usarse para investigar, aprender o evaluar la segmentación. Muchas veces seleccionamos la cantidad de segmentos antes del modelado o iteramos después de los resultados. tSNE a menudo puede mostrar una separación clara en los datos.</p>
+<p>Esto se puede usar antes de usar su modelo de segmentación para seleccionar un número de clúster o después para evaluar si sus segmentos realmente se mantienen. tSNE, sin embargo, no es un enfoque de agrupamiento, ya que no conserva las entradas como PCA y los valores a menudo pueden cambiar entre ejecuciones, por lo que es pura exploración.</p>
+<p>A continuación se procede a comparar de manera  visual los algoritmos de PCA y tSNE en el conjunto de datos <code>Digits</code> .</p>
+<blockquote>
+<p><strong>Datos</strong>: El conjunto de datos contiene imágenes de dígitos escritos a mano: 10 clases donde cada clase se refiere a un dígito. Los programas de preprocesamiento puestos a disposición por NIST se utilizaron para extraer mapas de bits normalizados de dígitos escritos a mano de un formulario preimpreso. De un total de 43 personas, 30 contribuyeron al conjunto de entrenamiento y diferentes 13 al conjunto de prueba. Los mapas de bits de 32x32 se dividen en bloques no superpuestos de 4x4 y se cuenta el número de píxeles en cada bloque. Esto genera una matriz de entrada de 8x8 donde cada elemento es un número entero en el rango 0..16. Esto reduce la dimensionalidad y da invariancia a pequeñas distorsiones.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Load Python Libraries</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">digits</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+      <th>40</th>
+      <th>41</th>
+      <th>42</th>
+      <th>43</th>
+      <th>44</th>
+      <th>45</th>
+      <th>46</th>
+      <th>47</th>
+      <th>48</th>
+      <th>49</th>
+      <th>50</th>
+      <th>51</th>
+      <th>52</th>
+      <th>53</th>
+      <th>54</th>
+      <th>55</th>
+      <th>56</th>
+      <th>57</th>
+      <th>58</th>
+      <th>59</th>
+      <th>60</th>
+      <th>61</th>
+      <th>62</th>
+      <th>63</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>13.0</td>
+      <td>9.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>13.0</td>
+      <td>15.0</td>
+      <td>10.0</td>
+      <td>15.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>12.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>12.0</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>14.0</td>
+      <td>5.0</td>
+      <td>10.0</td>
+      <td>12.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>13.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>12.0</td>
+      <td>13.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>11.0</td>
+      <td>16.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+      <td>16.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>15.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>11.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>15.0</td>
+      <td>12.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>16.0</td>
+      <td>15.0</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>13.0</td>
+      <td>8.0</td>
+      <td>16.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>15.0</td>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>13.0</td>
+      <td>15.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>13.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
+      <td>11.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>11.0</td>
+      <td>16.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>15.0</td>
+      <td>13.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>13.0</td>
+      <td>6.0</td>
+      <td>15.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>13.0</td>
+      <td>13.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>15.0</td>
+      <td>11.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>12.0</td>
+      <td>12.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>14.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>13.0</td>
+      <td>13.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>13.0</td>
+      <td>6.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>16.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>16.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>15.0</td>
+      <td>16.0</td>
+      <td>13.0</td>
+      <td>16.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>16.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># PCA</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">embedding</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">X_transform</span> <span class="o">=</span> <span class="n">embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">df_pca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_transform</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Score1&#39;</span><span class="p">,</span><span class="s1">&#39;Score2&#39;</span><span class="p">])</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">df_pca</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Plot Digits PCA</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Set style of scatterplot</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="c1"># Create scatterplot of dataframe</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Score1&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>           <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Score2&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>           <span class="n">data</span><span class="o">=</span><span class="n">df_pca</span><span class="p">,</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>           <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>           <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>           <span class="n">height</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>           <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>           <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">0.3</span><span class="p">})</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PCA Results: Digits&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="s1">&#39;14&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Prin Comp 1&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prin Comp 2&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../03_reduccion_dimensionalidad_files/03_reduccion_dimensionalidad_43_0.png" /></p>
+<p>Al graficar las dos componentes principales del método PCA, se observa que no existe una clara distinción entre la distintas clases (solo se ve un gran cúmulo de puntos mezclados). </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># tsne</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">embedding</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="n">X_transform</span> <span class="o">=</span> <span class="n">embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">df_tsne</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_transform</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_DIM_1_&#39;</span><span class="p">,</span><span class="s1">&#39;_DIM_2_&#39;</span><span class="p">])</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="n">df_tsne</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Plot Digits t-SNE</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;_DIM_1_&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>           <span class="n">y</span><span class="o">=</span><span class="s1">&#39;_DIM_2_&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>           <span class="n">data</span><span class="o">=</span><span class="n">df_tsne</span><span class="p">,</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>           <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>           <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>           <span class="n">height</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>           <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>           <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">0.3</span><span class="p">})</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;t-SNE Results: Digits&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="s1">&#39;14&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Dimension 2&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../03_reduccion_dimensionalidad_files/03_reduccion_dimensionalidad_46_0.png" /></p>
+<p>Para el caso del método TSNE, se observa una diferenciación entre los grupos de estudios (aspecto que fue muy distinto al momento de analizar el método del PCA).</p>
+<blockquote>
+<p><strong>Observación</strong>: Si bien se muestra donde el método TSNE logra ser superior en aspecto de reducción de dimensionalidad que el método PCA, no significa que para distintos experimientos se tengan los mismo resultados.</p>
+</blockquote>
+<h2 id="otros-metodos-de-reduccion-de-dimensionalidad">Otros métodos de reducción de dimensionalidad</h2>
+<p>Existen otro métodos de reducción de dimencionalidad, a continuación se deja una referencia con la descripción de cada uno de estos algoritmos.</p>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html">Descomposición del valor singular </a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html">Non-Negative Matrix Factorization </a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.Isomap.html">Isomap Embedding </a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.LocallyLinearEmbedding.html">Locally Linear Embedding </a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html">Multidimensional Scaling </a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.SpectralEmbedding.html">Spectral Embedding </a></li>
+</ul>
+<h3 id="aplicacion_2">Aplicación</h3>
+<p>En este ejemplo se quiere aprovechar las bondades de aplicar la reducción de dimensionalidad para ocupar un modelo de clasificación (en este caso, el modelo de regresión logística). Para ello se ocupará el conjunto de datos <code>meatspec.csv</code></p>
+<blockquote>
+<p><strong>Datos</strong>: El departamento de calidad de una empresa de alimentación se encarga de medir el contenido en grasa de la carne que comercializa. Este estudio se realiza mediante técnicas de analítica química, un proceso relativamente costoso en tiempo y recursos. Una alternativa que permitiría reducir costes y optimizar tiempo es emplear un espectrofotómetro (instrumento capaz de detectar la absorbancia que tiene un material a diferentes tipos de luz en función de sus características) e inferir el contenido en grasa a partir de sus medidas.</p>
+<p>Antes de dar por válida esta nueva técnica, la empresa necesita comprobar qué margen de error tiene respecto al análisis químico. Para ello, se mide el espectro de absorbancia a 100 longitudes de onda en 215 muestras de carne, cuyo contenido en grasa se obtiene también por análisis químico, y se entrena un modelo con el objetivo de predecir el contenido en grasa a partir de los valores dados por el espectrofotómetro.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Librerias</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span><span class="p">,</span><span class="n">TruncatedSVD</span><span class="p">,</span><span class="n">NMF</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">Isomap</span><span class="p">,</span><span class="n">LocallyLinearEmbedding</span><span class="p">,</span><span class="n">MDS</span><span class="p">,</span><span class="n">SpectralEmbedding</span><span class="p">,</span><span class="n">TSNE</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="kn">from</span> <span class="nn">metrics_regression</span> <span class="kn">import</span> <span class="n">summary_metrics</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Datos</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/meatspec.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>V1</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>V4</th>
+      <th>V5</th>
+      <th>V6</th>
+      <th>V7</th>
+      <th>V8</th>
+      <th>V9</th>
+      <th>V10</th>
+      <th>V11</th>
+      <th>V12</th>
+      <th>V13</th>
+      <th>V14</th>
+      <th>V15</th>
+      <th>V16</th>
+      <th>V17</th>
+      <th>V18</th>
+      <th>V19</th>
+      <th>V20</th>
+      <th>V21</th>
+      <th>V22</th>
+      <th>V23</th>
+      <th>V24</th>
+      <th>V25</th>
+      <th>V26</th>
+      <th>V27</th>
+      <th>V28</th>
+      <th>V29</th>
+      <th>V30</th>
+      <th>V31</th>
+      <th>V32</th>
+      <th>V33</th>
+      <th>V34</th>
+      <th>V35</th>
+      <th>V36</th>
+      <th>V37</th>
+      <th>V38</th>
+      <th>V39</th>
+      <th>V40</th>
+      <th>V41</th>
+      <th>V42</th>
+      <th>V43</th>
+      <th>V44</th>
+      <th>V45</th>
+      <th>V46</th>
+      <th>V47</th>
+      <th>V48</th>
+      <th>V49</th>
+      <th>V50</th>
+      <th>V51</th>
+      <th>V52</th>
+      <th>V53</th>
+      <th>V54</th>
+      <th>V55</th>
+      <th>V56</th>
+      <th>V57</th>
+      <th>V58</th>
+      <th>V59</th>
+      <th>V60</th>
+      <th>V61</th>
+      <th>V62</th>
+      <th>V63</th>
+      <th>V64</th>
+      <th>V65</th>
+      <th>V66</th>
+      <th>V67</th>
+      <th>V68</th>
+      <th>V69</th>
+      <th>V70</th>
+      <th>V71</th>
+      <th>V72</th>
+      <th>V73</th>
+      <th>V74</th>
+      <th>V75</th>
+      <th>V76</th>
+      <th>V77</th>
+      <th>V78</th>
+      <th>V79</th>
+      <th>V80</th>
+      <th>V81</th>
+      <th>V82</th>
+      <th>V83</th>
+      <th>V84</th>
+      <th>V85</th>
+      <th>V86</th>
+      <th>V87</th>
+      <th>V88</th>
+      <th>V89</th>
+      <th>V90</th>
+      <th>V91</th>
+      <th>V92</th>
+      <th>V93</th>
+      <th>V94</th>
+      <th>V95</th>
+      <th>V96</th>
+      <th>V97</th>
+      <th>V98</th>
+      <th>V99</th>
+      <th>V100</th>
+      <th>fat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.61776</td>
+      <td>2.61814</td>
+      <td>2.61859</td>
+      <td>2.61912</td>
+      <td>2.61981</td>
+      <td>2.62071</td>
+      <td>2.62186</td>
+      <td>2.62334</td>
+      <td>2.62511</td>
+      <td>2.62722</td>
+      <td>2.62964</td>
+      <td>2.63245</td>
+      <td>2.63565</td>
+      <td>2.63933</td>
+      <td>2.64353</td>
+      <td>2.64825</td>
+      <td>2.65350</td>
+      <td>2.65937</td>
+      <td>2.66585</td>
+      <td>2.67281</td>
+      <td>2.68008</td>
+      <td>2.68733</td>
+      <td>2.69427</td>
+      <td>2.70073</td>
+      <td>2.70684</td>
+      <td>2.71281</td>
+      <td>2.71914</td>
+      <td>2.72628</td>
+      <td>2.73462</td>
+      <td>2.74416</td>
+      <td>2.75466</td>
+      <td>2.76568</td>
+      <td>2.77679</td>
+      <td>2.78790</td>
+      <td>2.79949</td>
+      <td>2.81225</td>
+      <td>2.82706</td>
+      <td>2.84356</td>
+      <td>2.86106</td>
+      <td>2.87857</td>
+      <td>2.89497</td>
+      <td>2.90924</td>
+      <td>2.92085</td>
+      <td>2.93015</td>
+      <td>2.93846</td>
+      <td>2.94771</td>
+      <td>2.96019</td>
+      <td>2.97831</td>
+      <td>3.00306</td>
+      <td>3.03506</td>
+      <td>3.07428</td>
+      <td>3.11963</td>
+      <td>3.16868</td>
+      <td>3.21771</td>
+      <td>3.26254</td>
+      <td>3.29988</td>
+      <td>3.32847</td>
+      <td>3.34899</td>
+      <td>3.36342</td>
+      <td>3.37379</td>
+      <td>3.38152</td>
+      <td>3.38741</td>
+      <td>3.39164</td>
+      <td>3.39418</td>
+      <td>3.39490</td>
+      <td>3.39366</td>
+      <td>3.39045</td>
+      <td>3.38541</td>
+      <td>3.37869</td>
+      <td>3.37041</td>
+      <td>3.36073</td>
+      <td>3.34979</td>
+      <td>3.33769</td>
+      <td>3.32443</td>
+      <td>3.31013</td>
+      <td>3.29487</td>
+      <td>3.27891</td>
+      <td>3.26232</td>
+      <td>3.24542</td>
+      <td>3.22828</td>
+      <td>3.21080</td>
+      <td>3.19287</td>
+      <td>3.17433</td>
+      <td>3.15503</td>
+      <td>3.13475</td>
+      <td>3.11339</td>
+      <td>3.09116</td>
+      <td>3.06850</td>
+      <td>3.04596</td>
+      <td>3.02393</td>
+      <td>3.00247</td>
+      <td>2.98145</td>
+      <td>2.96072</td>
+      <td>2.94013</td>
+      <td>2.91978</td>
+      <td>2.89966</td>
+      <td>2.87964</td>
+      <td>2.85960</td>
+      <td>2.83940</td>
+      <td>2.81920</td>
+      <td>22.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.83454</td>
+      <td>2.83871</td>
+      <td>2.84283</td>
+      <td>2.84705</td>
+      <td>2.85138</td>
+      <td>2.85587</td>
+      <td>2.86060</td>
+      <td>2.86566</td>
+      <td>2.87093</td>
+      <td>2.87661</td>
+      <td>2.88264</td>
+      <td>2.88898</td>
+      <td>2.89577</td>
+      <td>2.90308</td>
+      <td>2.91097</td>
+      <td>2.91953</td>
+      <td>2.92873</td>
+      <td>2.93863</td>
+      <td>2.94929</td>
+      <td>2.96072</td>
+      <td>2.97272</td>
+      <td>2.98493</td>
+      <td>2.99690</td>
+      <td>3.00833</td>
+      <td>3.01920</td>
+      <td>3.02990</td>
+      <td>3.04101</td>
+      <td>3.05345</td>
+      <td>3.06777</td>
+      <td>3.08416</td>
+      <td>3.10221</td>
+      <td>3.12106</td>
+      <td>3.13983</td>
+      <td>3.15810</td>
+      <td>3.17623</td>
+      <td>3.19519</td>
+      <td>3.21584</td>
+      <td>3.23747</td>
+      <td>3.25889</td>
+      <td>3.27835</td>
+      <td>3.29384</td>
+      <td>3.30362</td>
+      <td>3.30681</td>
+      <td>3.30393</td>
+      <td>3.29700</td>
+      <td>3.28925</td>
+      <td>3.28409</td>
+      <td>3.28505</td>
+      <td>3.29326</td>
+      <td>3.30923</td>
+      <td>3.33267</td>
+      <td>3.36251</td>
+      <td>3.39661</td>
+      <td>3.43188</td>
+      <td>3.46492</td>
+      <td>3.49295</td>
+      <td>3.51458</td>
+      <td>3.53004</td>
+      <td>3.54067</td>
+      <td>3.54797</td>
+      <td>3.55306</td>
+      <td>3.55675</td>
+      <td>3.55921</td>
+      <td>3.56045</td>
+      <td>3.56034</td>
+      <td>3.55876</td>
+      <td>3.55571</td>
+      <td>3.55132</td>
+      <td>3.54585</td>
+      <td>3.53950</td>
+      <td>3.53235</td>
+      <td>3.52442</td>
+      <td>3.51583</td>
+      <td>3.50668</td>
+      <td>3.49700</td>
+      <td>3.48683</td>
+      <td>3.47626</td>
+      <td>3.46552</td>
+      <td>3.45501</td>
+      <td>3.44481</td>
+      <td>3.43477</td>
+      <td>3.42465</td>
+      <td>3.41419</td>
+      <td>3.40303</td>
+      <td>3.39082</td>
+      <td>3.37731</td>
+      <td>3.36265</td>
+      <td>3.34745</td>
+      <td>3.33245</td>
+      <td>3.31818</td>
+      <td>3.30473</td>
+      <td>3.29186</td>
+      <td>3.27921</td>
+      <td>3.26655</td>
+      <td>3.25369</td>
+      <td>3.24045</td>
+      <td>3.22659</td>
+      <td>3.21181</td>
+      <td>3.19600</td>
+      <td>3.17942</td>
+      <td>40.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.58284</td>
+      <td>2.58458</td>
+      <td>2.58629</td>
+      <td>2.58808</td>
+      <td>2.58996</td>
+      <td>2.59192</td>
+      <td>2.59401</td>
+      <td>2.59627</td>
+      <td>2.59873</td>
+      <td>2.60131</td>
+      <td>2.60414</td>
+      <td>2.60714</td>
+      <td>2.61029</td>
+      <td>2.61361</td>
+      <td>2.61714</td>
+      <td>2.62089</td>
+      <td>2.62486</td>
+      <td>2.62909</td>
+      <td>2.63361</td>
+      <td>2.63835</td>
+      <td>2.64330</td>
+      <td>2.64838</td>
+      <td>2.65354</td>
+      <td>2.65870</td>
+      <td>2.66375</td>
+      <td>2.66880</td>
+      <td>2.67383</td>
+      <td>2.67892</td>
+      <td>2.68411</td>
+      <td>2.68937</td>
+      <td>2.69470</td>
+      <td>2.70012</td>
+      <td>2.70563</td>
+      <td>2.71141</td>
+      <td>2.71775</td>
+      <td>2.72490</td>
+      <td>2.73344</td>
+      <td>2.74327</td>
+      <td>2.75433</td>
+      <td>2.76642</td>
+      <td>2.77931</td>
+      <td>2.79272</td>
+      <td>2.80649</td>
+      <td>2.82064</td>
+      <td>2.83541</td>
+      <td>2.85121</td>
+      <td>2.86872</td>
+      <td>2.88905</td>
+      <td>2.91289</td>
+      <td>2.94088</td>
+      <td>2.97325</td>
+      <td>3.00946</td>
+      <td>3.04780</td>
+      <td>3.08554</td>
+      <td>3.11947</td>
+      <td>3.14696</td>
+      <td>3.16677</td>
+      <td>3.17938</td>
+      <td>3.18631</td>
+      <td>3.18924</td>
+      <td>3.18950</td>
+      <td>3.18801</td>
+      <td>3.18498</td>
+      <td>3.18039</td>
+      <td>3.17411</td>
+      <td>3.16611</td>
+      <td>3.15641</td>
+      <td>3.14512</td>
+      <td>3.13241</td>
+      <td>3.11843</td>
+      <td>3.10329</td>
+      <td>3.08714</td>
+      <td>3.07014</td>
+      <td>3.05237</td>
+      <td>3.03393</td>
+      <td>3.01504</td>
+      <td>2.99569</td>
+      <td>2.97612</td>
+      <td>2.95642</td>
+      <td>2.93660</td>
+      <td>2.91667</td>
+      <td>2.89655</td>
+      <td>2.87622</td>
+      <td>2.85563</td>
+      <td>2.83474</td>
+      <td>2.81361</td>
+      <td>2.79235</td>
+      <td>2.77113</td>
+      <td>2.75015</td>
+      <td>2.72956</td>
+      <td>2.70934</td>
+      <td>2.68951</td>
+      <td>2.67009</td>
+      <td>2.65112</td>
+      <td>2.63262</td>
+      <td>2.61461</td>
+      <td>2.59718</td>
+      <td>2.58034</td>
+      <td>2.56404</td>
+      <td>2.54816</td>
+      <td>8.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.82286</td>
+      <td>2.82460</td>
+      <td>2.82630</td>
+      <td>2.82814</td>
+      <td>2.83001</td>
+      <td>2.83192</td>
+      <td>2.83392</td>
+      <td>2.83606</td>
+      <td>2.83842</td>
+      <td>2.84097</td>
+      <td>2.84374</td>
+      <td>2.84664</td>
+      <td>2.84975</td>
+      <td>2.85307</td>
+      <td>2.85661</td>
+      <td>2.86038</td>
+      <td>2.86437</td>
+      <td>2.86860</td>
+      <td>2.87308</td>
+      <td>2.87789</td>
+      <td>2.88301</td>
+      <td>2.88832</td>
+      <td>2.89374</td>
+      <td>2.89917</td>
+      <td>2.90457</td>
+      <td>2.90991</td>
+      <td>2.91521</td>
+      <td>2.92043</td>
+      <td>2.92565</td>
+      <td>2.93082</td>
+      <td>2.93604</td>
+      <td>2.94128</td>
+      <td>2.94658</td>
+      <td>2.95202</td>
+      <td>2.95777</td>
+      <td>2.96419</td>
+      <td>2.97159</td>
+      <td>2.98045</td>
+      <td>2.99090</td>
+      <td>3.00284</td>
+      <td>3.01611</td>
+      <td>3.03048</td>
+      <td>3.04579</td>
+      <td>3.06194</td>
+      <td>3.07889</td>
+      <td>3.09686</td>
+      <td>3.11629</td>
+      <td>3.13775</td>
+      <td>3.16217</td>
+      <td>3.19068</td>
+      <td>3.22376</td>
+      <td>3.26172</td>
+      <td>3.30379</td>
+      <td>3.34793</td>
+      <td>3.39093</td>
+      <td>3.42920</td>
+      <td>3.45998</td>
+      <td>3.48227</td>
+      <td>3.49687</td>
+      <td>3.50558</td>
+      <td>3.51026</td>
+      <td>3.51221</td>
+      <td>3.51215</td>
+      <td>3.51036</td>
+      <td>3.50682</td>
+      <td>3.50140</td>
+      <td>3.49398</td>
+      <td>3.48457</td>
+      <td>3.47333</td>
+      <td>3.46041</td>
+      <td>3.44595</td>
+      <td>3.43005</td>
+      <td>3.41285</td>
+      <td>3.39450</td>
+      <td>3.37511</td>
+      <td>3.35482</td>
+      <td>3.33376</td>
+      <td>3.31204</td>
+      <td>3.28986</td>
+      <td>3.26730</td>
+      <td>3.24442</td>
+      <td>3.22117</td>
+      <td>3.19757</td>
+      <td>3.17357</td>
+      <td>3.14915</td>
+      <td>3.12429</td>
+      <td>3.09908</td>
+      <td>3.07366</td>
+      <td>3.04825</td>
+      <td>3.02308</td>
+      <td>2.99820</td>
+      <td>2.97367</td>
+      <td>2.94951</td>
+      <td>2.92576</td>
+      <td>2.90251</td>
+      <td>2.87988</td>
+      <td>2.85794</td>
+      <td>2.83672</td>
+      <td>2.81617</td>
+      <td>2.79622</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.78813</td>
+      <td>2.78989</td>
+      <td>2.79167</td>
+      <td>2.79350</td>
+      <td>2.79538</td>
+      <td>2.79746</td>
+      <td>2.79984</td>
+      <td>2.80254</td>
+      <td>2.80553</td>
+      <td>2.80890</td>
+      <td>2.81272</td>
+      <td>2.81704</td>
+      <td>2.82184</td>
+      <td>2.82710</td>
+      <td>2.83294</td>
+      <td>2.83945</td>
+      <td>2.84664</td>
+      <td>2.85458</td>
+      <td>2.86331</td>
+      <td>2.87280</td>
+      <td>2.88291</td>
+      <td>2.89335</td>
+      <td>2.90374</td>
+      <td>2.91371</td>
+      <td>2.92305</td>
+      <td>2.93187</td>
+      <td>2.94060</td>
+      <td>2.94986</td>
+      <td>2.96035</td>
+      <td>2.97241</td>
+      <td>2.98606</td>
+      <td>3.00097</td>
+      <td>3.01652</td>
+      <td>3.03220</td>
+      <td>3.04793</td>
+      <td>3.06413</td>
+      <td>3.08153</td>
+      <td>3.10078</td>
+      <td>3.12185</td>
+      <td>3.14371</td>
+      <td>3.16510</td>
+      <td>3.18470</td>
+      <td>3.20140</td>
+      <td>3.21477</td>
+      <td>3.22544</td>
+      <td>3.23505</td>
+      <td>3.24586</td>
+      <td>3.26027</td>
+      <td>3.28063</td>
+      <td>3.30889</td>
+      <td>3.34543</td>
+      <td>3.39019</td>
+      <td>3.44198</td>
+      <td>3.49800</td>
+      <td>3.55407</td>
+      <td>3.60534</td>
+      <td>3.64789</td>
+      <td>3.68011</td>
+      <td>3.70272</td>
+      <td>3.71815</td>
+      <td>3.72863</td>
+      <td>3.73574</td>
+      <td>3.74059</td>
+      <td>3.74357</td>
+      <td>3.74453</td>
+      <td>3.74336</td>
+      <td>3.73991</td>
+      <td>3.73418</td>
+      <td>3.72638</td>
+      <td>3.71676</td>
+      <td>3.70553</td>
+      <td>3.69289</td>
+      <td>3.67900</td>
+      <td>3.66396</td>
+      <td>3.64785</td>
+      <td>3.63085</td>
+      <td>3.61305</td>
+      <td>3.59463</td>
+      <td>3.57582</td>
+      <td>3.55695</td>
+      <td>3.53796</td>
+      <td>3.51880</td>
+      <td>3.49936</td>
+      <td>3.47938</td>
+      <td>3.45869</td>
+      <td>3.43711</td>
+      <td>3.41458</td>
+      <td>3.39129</td>
+      <td>3.36772</td>
+      <td>3.34450</td>
+      <td>3.32201</td>
+      <td>3.30025</td>
+      <td>3.27907</td>
+      <td>3.25831</td>
+      <td>3.23784</td>
+      <td>3.21765</td>
+      <td>3.19766</td>
+      <td>3.17770</td>
+      <td>3.15770</td>
+      <td>3.13753</td>
+      <td>25.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>El set de datos contiene 101 columnas. Las 100 primeras, nombradas como  <span class="arithmatex">\(V_1,...,V_{100}\)</span>  recogen el valor de absorbancia para cada una de las 100 longitudes de onda analizadas (predictores), y la columna fat el contenido en grasa medido por técnicas químicas (variable respuesta).</p>
+<p>Muchas de las variables están altamente correlacionadas (correlación absoluta &gt; 0.8), lo que supone un problema a la hora de emplear modelos de regresión lineal.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Correlación entre columnas numéricas</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">def</span> <span class="nf">tidy_corr_matrix</span><span class="p">(</span><span class="n">corr_mat</span><span class="p">):</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="sd">    Función para convertir una matriz de correlación de pandas en formato tidy</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="sd">    &#39;&#39;&#39;</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="n">corr_mat</span> <span class="o">=</span> <span class="n">corr_mat</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="n">corr_mat</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;variable_1&#39;</span><span class="p">,</span><span class="s1">&#39;variable_2&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">]</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="n">corr_mat</span> <span class="o">=</span> <span class="n">corr_mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">corr_mat</span><span class="p">[</span><span class="s1">&#39;variable_1&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">corr_mat</span><span class="p">[</span><span class="s1">&#39;variable_2&#39;</span><span class="p">],</span> <span class="p">:]</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="n">corr_mat</span><span class="p">[</span><span class="s1">&#39;abs_r&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">corr_mat</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">])</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="n">corr_mat</span> <span class="o">=</span> <span class="n">corr_mat</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;abs_r&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>    <span class="k">return</span><span class="p">(</span><span class="n">corr_mat</span><span class="p">)</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">])</span> \
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>              <span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="n">display</span><span class="p">(</span><span class="n">tidy_corr_matrix</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable_1</th>
+      <th>variable_2</th>
+      <th>r</th>
+      <th>abs_r</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1019</th>
+      <td>V11</td>
+      <td>V10</td>
+      <td>0.999996</td>
+      <td>0.999996</td>
+    </tr>
+    <tr>
+      <th>919</th>
+      <td>V10</td>
+      <td>V11</td>
+      <td>0.999996</td>
+      <td>0.999996</td>
+    </tr>
+    <tr>
+      <th>1021</th>
+      <td>V11</td>
+      <td>V12</td>
+      <td>0.999996</td>
+      <td>0.999996</td>
+    </tr>
+    <tr>
+      <th>1121</th>
+      <td>V12</td>
+      <td>V11</td>
+      <td>0.999996</td>
+      <td>0.999996</td>
+    </tr>
+    <tr>
+      <th>917</th>
+      <td>V10</td>
+      <td>V9</td>
+      <td>0.999996</td>
+      <td>0.999996</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Se procede aplicar el modelo de regresión lineal .</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># División de los datos en train y test</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">X</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;fat&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">y</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">]</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>                                        <span class="n">X</span><span class="p">,</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>                                        <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>                                        <span class="n">train_size</span>   <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>                                        <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1234</span><span class="p">,</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>                                        <span class="n">shuffle</span>      <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>                                    <span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Creación y entrenamiento del modelo</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">modelo</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>LinearRegression(normalize=True)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Predicciones test</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">predicciones</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">predicciones</span> <span class="o">=</span> <span class="n">predicciones</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="c1"># Error de test del modelo </span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>    <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="s1">&#39;yhat&#39;</span><span class="p">:</span><span class="n">predicciones</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="p">})</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="n">df_summary</span> <span class="o">=</span> <span class="n">summary_metrics</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="n">df_summary</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mae</th>
+      <th>mse</th>
+      <th>rmse</th>
+      <th>mape</th>
+      <th>maape</th>
+      <th>wmape</th>
+      <th>mmape</th>
+      <th>smape</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.0904</td>
+      <td>14.743</td>
+      <td>3.8397</td>
+      <td>0.1616</td>
+      <td>0.1484</td>
+      <td>0.1088</td>
+      <td>0.1362</td>
+      <td>0.1665</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Ahora se ocuparan los modelos de reducción de dimensionalidad para entrenar el modelo de regresión lineal. Para ello se ocuparan los distintos algoritmos mencionados. Lo primero es crear una función que pueda realizar esta tarea de manera automática.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># funcion de reduccion de dimensionalidad y aplicacion de la regresion lineal</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="k">def</span> <span class="nf">dr_pipeline</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model_dr</span><span class="p">):</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="c1"># datos</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;fat&#39;</span><span class="p">)</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">]</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="c1"># reduccion de la dimensionalidad</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>    <span class="n">embedding</span> <span class="o">=</span> <span class="n">model_dr</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>                                        <span class="n">X</span><span class="p">,</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>                                        <span class="n">y</span><span class="p">,</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>                                        <span class="n">train_size</span>   <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>                                        <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1234</span><span class="p">,</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>                                        <span class="n">shuffle</span>      <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>                                    <span class="p">)</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>    <span class="c1"># Creación y entrenamiento del modelo</span>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>    <span class="n">modelo</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a>    <span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a>
+<a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a>
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a>    <span class="c1"># Predicciones test</span>
+<a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a>    <span class="n">predicciones</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a>    <span class="n">predicciones</span> <span class="o">=</span> <span class="n">predicciones</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a>
+<a id="__codelineno-26-31" name="__codelineno-26-31" href="#__codelineno-26-31"></a>    <span class="c1"># Error de test del modelo </span>
+<a id="__codelineno-26-32" name="__codelineno-26-32" href="#__codelineno-26-32"></a>    <span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-26-33" name="__codelineno-26-33" href="#__codelineno-26-33"></a>        <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span>
+<a id="__codelineno-26-34" name="__codelineno-26-34" href="#__codelineno-26-34"></a>        <span class="s1">&#39;yhat&#39;</span><span class="p">:</span><span class="n">predicciones</span>
+<a id="__codelineno-26-35" name="__codelineno-26-35" href="#__codelineno-26-35"></a>    <span class="p">})</span>
+<a id="__codelineno-26-36" name="__codelineno-26-36" href="#__codelineno-26-36"></a>
+<a id="__codelineno-26-37" name="__codelineno-26-37" href="#__codelineno-26-37"></a>    <span class="n">df_summary</span> <span class="o">=</span> <span class="n">summary_metrics</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)</span>
+<a id="__codelineno-26-38" name="__codelineno-26-38" href="#__codelineno-26-38"></a>
+<a id="__codelineno-26-39" name="__codelineno-26-39" href="#__codelineno-26-39"></a>    <span class="k">return</span> <span class="n">df_summary</span>
+</code></pre></div>
+<p><strong>Enfoque: Algebra lineal</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">modelos_algebra_lineal</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="p">(</span><span class="s1">&#39;PCA&#39;</span><span class="p">,</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="p">(</span><span class="s1">&#39;SVD&#39;</span><span class="p">,</span><span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="p">(</span><span class="s1">&#39;NMF&#39;</span><span class="p">,</span><span class="n">NMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="p">]</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">modelos_algebra_lineal</span><span class="p">]</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">dr_pipeline</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">modelos_algebra_lineal</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/home/fralfaro/.cache/pypoetry/virtualenvs/mat281-2021-kaeOORRv-py3.8/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:312: FutureWarning: The &#39;init&#39; value, when &#39;init=None&#39; and n_components is less than n_samples and n_features, will be changed from &#39;nndsvd&#39; to &#39;nndsvda&#39; in 1.1 (renaming of 0.26).
+  warnings.warn((&quot;The &#39;init&#39; value, when &#39;init=None&#39; and &quot;
+/home/fralfaro/.cache/pypoetry/virtualenvs/mat281-2021-kaeOORRv-py3.8/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1090: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+  warnings.warn(&quot;Maximum number of iterations %d reached. Increase it to&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">df_algebra_lineal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">df_algebra_lineal</span><span class="p">[</span><span class="s1">&#39;metodo&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">names</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">df_algebra_lineal</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mae</th>
+      <th>mse</th>
+      <th>rmse</th>
+      <th>mape</th>
+      <th>maape</th>
+      <th>wmape</th>
+      <th>mmape</th>
+      <th>smape</th>
+      <th>metodo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.8050</td>
+      <td>12.2999</td>
+      <td>3.5071</td>
+      <td>0.2869</td>
+      <td>0.2169</td>
+      <td>0.1460</td>
+      <td>0.2183</td>
+      <td>0.2140</td>
+      <td>PCA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.6344</td>
+      <td>11.3195</td>
+      <td>3.3645</td>
+      <td>0.2605</td>
+      <td>0.2023</td>
+      <td>0.1372</td>
+      <td>0.1987</td>
+      <td>0.1979</td>
+      <td>SVD</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.5327</td>
+      <td>16.4079</td>
+      <td>4.0507</td>
+      <td>0.4956</td>
+      <td>0.2859</td>
+      <td>0.1839</td>
+      <td>0.3594</td>
+      <td>0.2930</td>
+      <td>NMF</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Enfoque: Manifold Learning</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">modelos_manifold</span><span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="p">(</span><span class="s1">&#39;Isomap&#39;</span><span class="p">,</span><span class="n">Isomap</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="p">(</span><span class="s1">&#39;LocallyLinearEmbedding&#39;</span><span class="p">,</span> <span class="n">LocallyLinearEmbedding</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="p">(</span><span class="s1">&#39;MDS&#39;</span><span class="p">,</span>  <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="p">(</span><span class="s1">&#39;SpectralEmbedding&#39;</span><span class="p">,</span> <span class="n">SpectralEmbedding</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="p">(</span><span class="s1">&#39;TSNE&#39;</span><span class="p">,</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="p">]</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">modelos_manifold</span><span class="p">]</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">dr_pipeline</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">modelos_manifold</span><span class="p">]</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="n">df_manifold</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="n">df_manifold</span><span class="p">[</span><span class="s1">&#39;metodo&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">names</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="n">df_manifold</span>
+</code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mae</th>
+      <th>mse</th>
+      <th>rmse</th>
+      <th>mape</th>
+      <th>maape</th>
+      <th>wmape</th>
+      <th>mmape</th>
+      <th>smape</th>
+      <th>metodo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9.4021</td>
+      <td>133.7433</td>
+      <td>11.5647</td>
+      <td>0.9914</td>
+      <td>0.5142</td>
+      <td>0.4895</td>
+      <td>0.7646</td>
+      <td>0.5491</td>
+      <td>Isomap</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9.1329</td>
+      <td>130.6913</td>
+      <td>11.4320</td>
+      <td>0.8865</td>
+      <td>0.5235</td>
+      <td>0.4755</td>
+      <td>0.6995</td>
+      <td>0.5447</td>
+      <td>LocallyLinearEmbedding</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.6519</td>
+      <td>109.5706</td>
+      <td>10.4676</td>
+      <td>0.7519</td>
+      <td>0.4474</td>
+      <td>0.3984</td>
+      <td>0.5787</td>
+      <td>0.4857</td>
+      <td>MDS</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.9529</td>
+      <td>130.9545</td>
+      <td>11.4435</td>
+      <td>0.8330</td>
+      <td>0.5061</td>
+      <td>0.4661</td>
+      <td>0.6646</td>
+      <td>0.5261</td>
+      <td>SpectralEmbedding</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9.0884</td>
+      <td>132.0296</td>
+      <td>11.4904</td>
+      <td>0.8893</td>
+      <td>0.5175</td>
+      <td>0.4732</td>
+      <td>0.6946</td>
+      <td>0.5405</td>
+      <td>TSNE</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>En este caso en particular, funciona de mejor forma aplicar los métodos de descomposición del <strong>Algebra Lineal</strong> en relación de los métodos de <strong>Manifold Learning</strong>. La enseñanza que se lleva de esto que, dependiendo del volumen de datos que se trabaje, la capidad de cómputo y las habilidades de programación suficiente, se pueden probar y automatizar varios de estos métodos. Por supuesto, quedará como responsabilidad del programador buscar el criterio para poder seleccionar el mejor método (dependiendo del caso en estudio).</p>
+<h2 id="referencia">Referencia</h2>
+<ol>
+<li><a href="https://www.aprendemachinelearning.com/comprende-principal-component-analysis/">In Depth: Principal Component Analysis</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/unsupervised_reduction.html">Unsupervised dimensionality reduction</a></li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../03_clustering/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Clustering" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Clustering
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../overfitting/04_overfitting_underfitting/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Overffiting" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Overffiting
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/fralfaro" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://gitlab.com/fralfaro" target="_blank" rel="noopener" title="gitlab.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m510.486 284.482-27.262-83.963c.012.038.016.077.028.115-.013-.044-.021-.088-.033-.132v-.01L429.1 33.871a21.328 21.328 0 0 0-20.445-14.6A21.038 21.038 0 0 0 388.466 34l-51.372 158.154H175L123.533 33.989a21.033 21.033 0 0 0-20.183-14.715h-.113A21.467 21.467 0 0 0 82.86 34L28.888 200.475l-.008.021c-.013.042-.019.084-.033.127.012-.038.017-.077.029-.115L1.514 284.482a30.6 30.6 0 0 0 11.117 34.283l236.262 171.662c.035.026.074.041.109.067.1.072.2.146.3.214-.1-.065-.187-.136-.282-.2.015.012.033.02.05.031l.041.024h.006a11.992 11.992 0 0 0 1.137.7c.054.03.1.068.157.1.033.016.064.038.1.054s.053.02.077.032.038.015.056.023c.044.021.092.034.136.057.205.1.421.178.633.264.2.082.389.177.592.248l.025.011c.034.012.064.028.1.04s.083.032.125.046l.05.012c.053.016.11.024.163.039.019.006.042.009.063.015.284.086.579.148.872.213.115.026.225.062.341.083.017 0 .032.009.05.012.038.008.073.021.112.027.062.011.122.031.186.04.049.007.1 0 .151.012h.033a11.918 11.918 0 0 0 1.7.136h.019a11.971 11.971 0 0 0 1.7-.136h.033c.05-.008.1 0 .153-.012s.124-.029.187-.04c.038-.006.073-.019.11-.027.017 0 .032-.009.049-.012.118-.023.231-.059.349-.084.288-.064.578-.126.861-.21.019-.006.039-.008.059-.014.055-.017.113-.024.169-.041.016-.006.035-.007.051-.012.044-.013.086-.032.129-.047s.063-.028.1-.041l.026-.01c.214-.076.417-.175.627-.261s.394-.154.584-.245c.047-.023.1-.036.142-.059.018-.009.04-.015.058-.024s.053-.02.078-.033.068-.04.1-.056c.056-.028.106-.069.161-.1a12.341 12.341 0 0 0 1.132-.695c.029-.02.062-.035.092-.056.008-.006.017-.009.024-.015.035-.026.076-.043.11-.068l236.3-171.666a30.6 30.6 0 0 0 11.107-34.281ZM408.8 49.48l46.342 142.674H362.46Zm-305.6 0 46.428 142.675h-92.68ZM26.817 299.251a6.526 6.526 0 0 1-2.361-7.308l20.34-62.42L193.835 420.6Zm38.245-82.972h92.411l65.881 202.941Zm183.416 273.83c-.047-.038-.092-.079-.138-.118l-.028-.026a8.366 8.366 0 0 1-.268-.231c-.172-.15-.341-.3-.5-.462.014.012.029.022.043.035l.055.046a12.191 12.191 0 0 0 1.091.929l.012.011c.018.013.033.03.051.045-.107-.075-.216-.148-.318-.229Zm7.514-48.482L217.226 322.21l-34.387-105.931h146.414Zm7.935 48.107c-.091.079-.178.157-.27.233l-.032.028c-.047.038-.091.079-.136.117-.1.08-.209.152-.313.229.018-.013.033-.032.053-.044l.009-.009a11.69 11.69 0 0 0 1.086-.926c.014-.013.03-.024.044-.036s.038-.03.054-.047c-.16.156-.322.307-.495.455Zm90.7-273.455h92.4l-18.91 24.23-139.468 178.7Zm130.567 82.967L318.2 420.563l149.084-191.025 20.258 62.393a6.528 6.528 0 0 1-2.353 7.315Z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/faam/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.kaggle.com/faamds" target="_blank" rel="noopener" title="www.kaggle.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M304.2 501.5 158.4 320.3 298.2 185c2.6-2.7 1.7-10.5-5.3-10.5h-69.2c-3.5 0-7 1.8-10.5 5.3L80.9 313.5V7.5q0-7.5-7.5-7.5H21.5Q14 0 14 7.5v497q0 7.5 7.5 7.5h51.9q7.5 0 7.5-7.5v-109l30.8-29.3 110.5 140.6c3 3.5 6.5 5.3 10.5 5.3h66.9q5.25 0 6-3z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://medium.com/@fralfaro" target="_blank" rel="noopener" title="medium.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M180.5 74.262C80.813 74.262 0 155.633 0 256s80.819 181.738 180.5 181.738S361 356.373 361 256 280.191 74.262 180.5 74.262Zm288.25 10.646c-49.845 0-90.245 76.619-90.245 171.095s40.406 171.1 90.251 171.1 90.251-76.619 90.251-171.1H559c0-94.503-40.4-171.095-90.248-171.095Zm139.506 17.821c-17.526 0-31.735 68.628-31.735 153.274s14.2 153.274 31.735 153.274S640 340.631 640 256c0-84.649-14.215-153.271-31.742-153.271Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
