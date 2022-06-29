@@ -608,8 +608,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencia" class="md-nav__link">
-    Referencia
+  <a href="#referencias" class="md-nav__link">
+    Referencias
   </a>
   
 </li>
@@ -705,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../visualization/introduction/" class="md-nav__link">
+      <a href="../../visualization/introduction.ipynb" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -797,6 +797,20 @@
     <li class="md-nav__item">
       <a href="../../../ml/analisis_supervisado_regresion/02_regresion_lineal/" class="md-nav__link">
         Modelos de regressión lineal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ml/analisis_supervisado_regresion/02_modelos_regresion/" class="md-nav__link">
+        Modelos de regressión multiple
       </a>
     </li>
   
@@ -1016,8 +1030,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencia" class="md-nav__link">
-    Referencia
+  <a href="#referencias" class="md-nav__link">
+    Referencias
   </a>
   
 </li>
@@ -4151,7 +4165,7 @@ DatetimeIndex([&#39;2019-01-01 00:00:00&#39;, &#39;2019-01-01 04:00:00&#39;,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -4168,11 +4182,11 @@ DatetimeIndex([&#39;2019-01-01 00:00:00&#39;, &#39;2019-01-01 04:00:00&#39;,
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># empty dataframe</span>
 <span class="n">df_empty</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_empty</span><span class="p">)</span>
+<span class="n">df_empty</span>
 </pre></div>
 <div id="cell-30" class="clipboard-copy-txt"># empty dataframe
 df_empty = pd.DataFrame()
-print(df_empty)</div>
+df_empty</div>
     
         </div>
     </div>
@@ -4190,15 +4204,37 @@ print(df_empty)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Empty DataFrame
-Columns: []
-Index: []
-</pre>
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -4212,7 +4248,7 @@ Index: []
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -4236,7 +4272,7 @@ Index: []
     
     <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">,</span> <span class="s2">&quot;apellido&quot;</span><span class="p">,</span> <span class="s2">&quot;edad&quot;</span><span class="p">]</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+<span class="n">df_list</span>
 </pre></div>
 <div id="cell-31" class="clipboard-copy-txt"># dataframe with list
 df_list = pd.DataFrame(
@@ -4247,7 +4283,7 @@ df_list = pd.DataFrame(
     
     columns = ["nombre", "apellido", "edad"]
 )
-print(df_list)</div>
+df_list</div>
     
         </div>
     </div>
@@ -4265,15 +4301,52 @@ print(df_list)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>      nombre     apellido  edad
-0  nombre_01  apellido_01    60
-1  nombre_02  apellido_02    14
-</pre>
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nombre</th>
+      <th>apellido</th>
+      <th>edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>nombre_01</td>
+      <td>apellido_01</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>nombre_02</td>
+      <td>apellido_02</td>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -4287,7 +4360,7 @@ print(df_list)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -4311,7 +4384,7 @@ print(df_list)</div>
     <span class="p">}</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">df_dct</span><span class="p">)</span>
+<span class="n">df_dct</span>
 </pre></div>
 <div id="cell-32" class="clipboard-copy-txt"># dataframe with dct
 df_dct =  pd.DataFrame(
@@ -4322,7 +4395,7 @@ df_dct =  pd.DataFrame(
     }
 )
 
-print(df_dct)</div>
+df_dct</div>
     
         </div>
     </div>
@@ -4340,15 +4413,52 @@ print(df_dct)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>      nombre     apellido  edad
-0  nombre_01  apellido_01    60
-1  nombre_02  apellido_02    14
-</pre>
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nombre</th>
+      <th>apellido</th>
+      <th>edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>nombre_01</td>
+      <td>apellido_01</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>nombre_02</td>
+      <td>apellido_02</td>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -4383,7 +4493,7 @@ print(df_dct)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -4403,14 +4513,14 @@ print(df_dct)</div>
     <span class="s1">&#39;https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/data/player_data.csv&#39;</span><span class="p">,</span> <span class="c1"># path</span>
     <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span> <span class="c1"># separation</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="p">)</span>
+<span class="n">player_data</span>
 </pre></div>
 <div id="cell-33" class="clipboard-copy-txt"># load data
 player_data = pd.read_csv(
     'https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/data/player_data.csv', # path
     sep="," # separation
 )
-print(player_data)</div>
+player_data</div>
     
         </div>
     </div>
@@ -4428,39 +4538,167 @@ print(player_data)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>                     name  year_start  year_end position height  weight  \
-0          Alaa Abdelnaby        1991      1995      F-C   6-10   240.0   
-1         Zaid Abdul-Aziz        1969      1978      C-F    6-9   235.0   
-2     Kareem Abdul-Jabbar        1970      1989        C    7-2   225.0   
-3      Mahmoud Abdul-Rauf        1991      2001        G    6-1   162.0   
-4       Tariq Abdul-Wahad        1998      2003        F    6-6   223.0   
-...                   ...         ...       ...      ...    ...     ...   
-4545           Ante Zizic        2018      2018      F-C   6-11   250.0   
-4546             Jim Zoet        1983      1983        C    7-1   240.0   
-4547            Bill Zopf        1971      1971        G    6-1   170.0   
-4548          Ivica Zubac        2017      2018        C    7-1   265.0   
-4549           Matt Zunic        1949      1949      G-F    6-3   195.0   
 
-             birth_date                                college  
-0         June 24, 1968                        Duke University  
-1         April 7, 1946                  Iowa State University  
-2        April 16, 1947  University of California, Los Angeles  
-3         March 9, 1969             Louisiana State University  
-4      November 3, 1974              San Jose State University  
-...                 ...                                    ...  
-4545    January 4, 1997                                    NaN  
-4546  December 20, 1953                  Kent State University  
-4547       June 7, 1948                    Duquesne University  
-4548     March 18, 1997                                    NaN  
-4549  December 19, 1919           George Washington University  
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-[4550 rows x 8 columns]
-</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>birth_date</th>
+      <th>college</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alaa Abdelnaby</td>
+      <td>1991</td>
+      <td>1995</td>
+      <td>F-C</td>
+      <td>6-10</td>
+      <td>240.0</td>
+      <td>June 24, 1968</td>
+      <td>Duke University</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Zaid Abdul-Aziz</td>
+      <td>1969</td>
+      <td>1978</td>
+      <td>C-F</td>
+      <td>6-9</td>
+      <td>235.0</td>
+      <td>April 7, 1946</td>
+      <td>Iowa State University</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Kareem Abdul-Jabbar</td>
+      <td>1970</td>
+      <td>1989</td>
+      <td>C</td>
+      <td>7-2</td>
+      <td>225.0</td>
+      <td>April 16, 1947</td>
+      <td>University of California, Los Angeles</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mahmoud Abdul-Rauf</td>
+      <td>1991</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>6-1</td>
+      <td>162.0</td>
+      <td>March 9, 1969</td>
+      <td>Louisiana State University</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tariq Abdul-Wahad</td>
+      <td>1998</td>
+      <td>2003</td>
+      <td>F</td>
+      <td>6-6</td>
+      <td>223.0</td>
+      <td>November 3, 1974</td>
+      <td>San Jose State University</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4545</th>
+      <td>Ante Zizic</td>
+      <td>2018</td>
+      <td>2018</td>
+      <td>F-C</td>
+      <td>6-11</td>
+      <td>250.0</td>
+      <td>January 4, 1997</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4546</th>
+      <td>Jim Zoet</td>
+      <td>1983</td>
+      <td>1983</td>
+      <td>C</td>
+      <td>7-1</td>
+      <td>240.0</td>
+      <td>December 20, 1953</td>
+      <td>Kent State University</td>
+    </tr>
+    <tr>
+      <th>4547</th>
+      <td>Bill Zopf</td>
+      <td>1971</td>
+      <td>1971</td>
+      <td>G</td>
+      <td>6-1</td>
+      <td>170.0</td>
+      <td>June 7, 1948</td>
+      <td>Duquesne University</td>
+    </tr>
+    <tr>
+      <th>4548</th>
+      <td>Ivica Zubac</td>
+      <td>2017</td>
+      <td>2018</td>
+      <td>C</td>
+      <td>7-1</td>
+      <td>265.0</td>
+      <td>March 18, 1997</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4549</th>
+      <td>Matt Zunic</td>
+      <td>1949</td>
+      <td>1949</td>
+      <td>G-F</td>
+      <td>6-3</td>
+      <td>195.0</td>
+      <td>December 19, 1919</td>
+      <td>George Washington University</td>
+    </tr>
+  </tbody>
+</table>
+<p>4550 rows × 8 columns</p>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -4503,11 +4741,11 @@ print(player_data)</div>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># primeras silas</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;first 5 rows:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 <div id="cell-34" class="clipboard-copy-txt"># primeras silas
 print("first 5 rows:")
-print(player_data.head(5))</div>
+player_data.head(5)</div>
     
         </div>
     </div>
@@ -4530,21 +4768,107 @@ print(player_data.head(5))</div>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>first 5 rows:
-                  name  year_start  year_end position height  weight  \
-0       Alaa Abdelnaby        1991      1995      F-C   6-10   240.0   
-1      Zaid Abdul-Aziz        1969      1978      C-F    6-9   235.0   
-2  Kareem Abdul-Jabbar        1970      1989        C    7-2   225.0   
-3   Mahmoud Abdul-Rauf        1991      2001        G    6-1   162.0   
-4    Tariq Abdul-Wahad        1998      2003        F    6-6   223.0   
-
-         birth_date                                college  
-0     June 24, 1968                        Duke University  
-1     April 7, 1946                  Iowa State University  
-2    April 16, 1947  University of California, Los Angeles  
-3     March 9, 1969             Louisiana State University  
-4  November 3, 1974              San Jose State University  
 </pre>
 </div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>birth_date</th>
+      <th>college</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alaa Abdelnaby</td>
+      <td>1991</td>
+      <td>1995</td>
+      <td>F-C</td>
+      <td>6-10</td>
+      <td>240.0</td>
+      <td>June 24, 1968</td>
+      <td>Duke University</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Zaid Abdul-Aziz</td>
+      <td>1969</td>
+      <td>1978</td>
+      <td>C-F</td>
+      <td>6-9</td>
+      <td>235.0</td>
+      <td>April 7, 1946</td>
+      <td>Iowa State University</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Kareem Abdul-Jabbar</td>
+      <td>1970</td>
+      <td>1989</td>
+      <td>C</td>
+      <td>7-2</td>
+      <td>225.0</td>
+      <td>April 16, 1947</td>
+      <td>University of California, Los Angeles</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mahmoud Abdul-Rauf</td>
+      <td>1991</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>6-1</td>
+      <td>162.0</td>
+      <td>March 9, 1969</td>
+      <td>Louisiana State University</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tariq Abdul-Wahad</td>
+      <td>1998</td>
+      <td>2003</td>
+      <td>F</td>
+      <td>6-6</td>
+      <td>223.0</td>
+      <td>November 3, 1974</td>
+      <td>San Jose State University</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 </div>
 
 </div>
@@ -4575,11 +4899,11 @@ print(player_data.head(5))</div>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># ultimas filas</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">last 5 rows:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 <div id="cell-35" class="clipboard-copy-txt"># ultimas filas
 print("\nlast 5 rows:")
-print(player_data.tail(5))</div>
+player_data.tail(5)</div>
     
         </div>
     </div>
@@ -4603,21 +4927,107 @@ print(player_data.tail(5))</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
 last 5 rows:
-             name  year_start  year_end position height  weight  \
-4545   Ante Zizic        2018      2018      F-C   6-11   250.0   
-4546     Jim Zoet        1983      1983        C    7-1   240.0   
-4547    Bill Zopf        1971      1971        G    6-1   170.0   
-4548  Ivica Zubac        2017      2018        C    7-1   265.0   
-4549   Matt Zunic        1949      1949      G-F    6-3   195.0   
-
-             birth_date                       college  
-4545    January 4, 1997                           NaN  
-4546  December 20, 1953         Kent State University  
-4547       June 7, 1948           Duquesne University  
-4548     March 18, 1997                           NaN  
-4549  December 19, 1919  George Washington University  
 </pre>
 </div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>birth_date</th>
+      <th>college</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4545</th>
+      <td>Ante Zizic</td>
+      <td>2018</td>
+      <td>2018</td>
+      <td>F-C</td>
+      <td>6-11</td>
+      <td>250.0</td>
+      <td>January 4, 1997</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4546</th>
+      <td>Jim Zoet</td>
+      <td>1983</td>
+      <td>1983</td>
+      <td>C</td>
+      <td>7-1</td>
+      <td>240.0</td>
+      <td>December 20, 1953</td>
+      <td>Kent State University</td>
+    </tr>
+    <tr>
+      <th>4547</th>
+      <td>Bill Zopf</td>
+      <td>1971</td>
+      <td>1971</td>
+      <td>G</td>
+      <td>6-1</td>
+      <td>170.0</td>
+      <td>June 7, 1948</td>
+      <td>Duquesne University</td>
+    </tr>
+    <tr>
+      <th>4548</th>
+      <td>Ivica Zubac</td>
+      <td>2017</td>
+      <td>2018</td>
+      <td>C</td>
+      <td>7-1</td>
+      <td>265.0</td>
+      <td>March 18, 1997</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4549</th>
+      <td>Matt Zunic</td>
+      <td>1949</td>
+      <td>1949</td>
+      <td>G-F</td>
+      <td>6-3</td>
+      <td>195.0</td>
+      <td>December 19, 1919</td>
+      <td>George Washington University</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 </div>
 
 </div>
@@ -4722,11 +5132,11 @@ type of dataframe:
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># tipo por columnas</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">type of columns:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 <div id="cell-37" class="clipboard-copy-txt"># tipo por columnas
 print("\ntype of columns:")
-print(player_data.dtypes)</div>
+player_data.dtypes</div>
     
         </div>
     </div>
@@ -4750,7 +5160,20 @@ print(player_data.dtypes)</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
 type of columns:
-name           object
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>name           object
 year_start      int64
 year_end        int64
 position       object
@@ -4758,9 +5181,9 @@ height         object
 weight        float64
 birth_date     object
 college        object
-dtype: object
-</pre>
+dtype: object</pre>
 </div>
+
 </div>
 
 </div>
@@ -4791,11 +5214,11 @@ dtype: object
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># dimension</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">shape:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 <div id="cell-38" class="clipboard-copy-txt"># dimension
 print("\nshape:")
-print(player_data.shape)</div>
+player_data.shape</div>
     
         </div>
     </div>
@@ -4819,9 +5242,22 @@ print(player_data.shape)</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
 shape:
-(4550, 8)
 </pre>
 </div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(4550, 8)</pre>
+</div>
+
 </div>
 
 </div>
@@ -4852,11 +5288,11 @@ shape:
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># nombre de las columnas</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">cols:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 <div id="cell-39" class="clipboard-copy-txt"># nombre de las columnas
 print("\ncols:")
-print(player_data.columns)</div>
+player_data.columns</div>
     
         </div>
     </div>
@@ -4880,11 +5316,24 @@ print(player_data.columns)</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
 cols:
-Index([&#39;name&#39;, &#39;year_start&#39;, &#39;year_end&#39;, &#39;position&#39;, &#39;height&#39;, &#39;weight&#39;,
-       &#39;birth_date&#39;, &#39;college&#39;],
-      dtype=&#39;object&#39;)
 </pre>
 </div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>Index([&#39;name&#39;, &#39;year_start&#39;, &#39;year_end&#39;, &#39;position&#39;, &#39;height&#39;, &#39;weight&#39;,
+       &#39;birth_date&#39;, &#39;college&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
 </div>
 
 </div>
@@ -4915,11 +5364,11 @@ Index([&#39;name&#39;, &#39;year_start&#39;, &#39;year_end&#39;, &#39;position&#
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># indice</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">index:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 <div id="cell-40" class="clipboard-copy-txt"># indice
 print("\nindex:")
-print(player_data.index)</div>
+player_data.index</div>
     
         </div>
     </div>
@@ -4943,9 +5392,22 @@ print(player_data.index)</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
 index:
-RangeIndex(start=0, stop=4550, step=1)
 </pre>
 </div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>RangeIndex(start=0, stop=4550, step=1)</pre>
+</div>
+
 </div>
 
 </div>
@@ -4976,11 +5438,11 @@ RangeIndex(start=0, stop=4550, step=1)
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># acceder a la columna posicion</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">column &#39;position&#39;: &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-41" class="clipboard-copy-txt"># acceder a la columna posicion
 print("\ncolumn 'position': ")
-print(player_data['position'].head())</div>
+player_data['position'].head()</div>
     
         </div>
     </div>
@@ -5004,14 +5466,27 @@ print(player_data['position'].head())</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
 column &#39;position&#39;: 
-0    F-C
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>0    F-C
 1    C-F
 2      C
 3      G
 4      F
-Name: position, dtype: object
-</pre>
+Name: position, dtype: object</pre>
 </div>
+
 </div>
 
 </div>
@@ -5042,11 +5517,11 @@ Name: position, dtype: object
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cambiar nombre de una o varias columnas</span>
 <span class="n">player_data</span> <span class="o">=</span> <span class="n">player_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;birth_date&quot;</span><span class="p">:</span> <span class="s2">&quot;Birth&quot;</span><span class="p">,</span> <span class="s2">&quot;college&quot;</span><span class="p">:</span> <span class="s2">&quot;College&quot;</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-42" class="clipboard-copy-txt"># cambiar nombre de una o varias columnas
 player_data = player_data.rename(columns={"birth_date": "Birth", "college": "College"})
-print(player_data.head())</div>
+player_data.head()</div>
     
         </div>
     </div>
@@ -5064,25 +5539,100 @@ print(player_data.head())</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>                  name  year_start  year_end position height  weight  \
-0       Alaa Abdelnaby        1991      1995      F-C   6-10   240.0   
-1      Zaid Abdul-Aziz        1969      1978      C-F    6-9   235.0   
-2  Kareem Abdul-Jabbar        1970      1989        C    7-2   225.0   
-3   Mahmoud Abdul-Rauf        1991      2001        G    6-1   162.0   
-4    Tariq Abdul-Wahad        1998      2003        F    6-6   223.0   
 
-              Birth                                College  
-0     June 24, 1968                        Duke University  
-1     April 7, 1946                  Iowa State University  
-2    April 16, 1947  University of California, Los Angeles  
-3     March 9, 1969             Louisiana State University  
-4  November 3, 1974              San Jose State University  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>Birth</th>
+      <th>College</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alaa Abdelnaby</td>
+      <td>1991</td>
+      <td>1995</td>
+      <td>F-C</td>
+      <td>6-10</td>
+      <td>240.0</td>
+      <td>June 24, 1968</td>
+      <td>Duke University</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Zaid Abdul-Aziz</td>
+      <td>1969</td>
+      <td>1978</td>
+      <td>C-F</td>
+      <td>6-9</td>
+      <td>235.0</td>
+      <td>April 7, 1946</td>
+      <td>Iowa State University</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Kareem Abdul-Jabbar</td>
+      <td>1970</td>
+      <td>1989</td>
+      <td>C</td>
+      <td>7-2</td>
+      <td>225.0</td>
+      <td>April 16, 1947</td>
+      <td>University of California, Los Angeles</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mahmoud Abdul-Rauf</td>
+      <td>1991</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>6-1</td>
+      <td>162.0</td>
+      <td>March 9, 1969</td>
+      <td>Louisiana State University</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tariq Abdul-Wahad</td>
+      <td>1998</td>
+      <td>2003</td>
+      <td>F</td>
+      <td>6-6</td>
+      <td>223.0</td>
+      <td>November 3, 1974</td>
+      <td>San Jose State University</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -5113,11 +5663,11 @@ print(player_data.head())</div>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># fijar columna especifica como indice</span>
 <span class="n">player_data</span> <span class="o">=</span> <span class="n">player_data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-43" class="clipboard-copy-txt"># fijar columna especifica como indice
 player_data = player_data.set_index(["name"])
-print(player_data.head())</div>
+player_data.head()</div>
     
         </div>
     </div>
@@ -5135,27 +5685,104 @@ print(player_data.head())</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>                     year_start  year_end position height  weight  \
-name                                                                
-Alaa Abdelnaby             1991      1995      F-C   6-10   240.0   
-Zaid Abdul-Aziz            1969      1978      C-F    6-9   235.0   
-Kareem Abdul-Jabbar        1970      1989        C    7-2   225.0   
-Mahmoud Abdul-Rauf         1991      2001        G    6-1   162.0   
-Tariq Abdul-Wahad          1998      2003        F    6-6   223.0   
 
-                                Birth                                College  
-name                                                                          
-Alaa Abdelnaby          June 24, 1968                        Duke University  
-Zaid Abdul-Aziz         April 7, 1946                  Iowa State University  
-Kareem Abdul-Jabbar    April 16, 1947  University of California, Los Angeles  
-Mahmoud Abdul-Rauf      March 9, 1969             Louisiana State University  
-Tariq Abdul-Wahad    November 3, 1974              San Jose State University  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>Birth</th>
+      <th>College</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alaa Abdelnaby</th>
+      <td>1991</td>
+      <td>1995</td>
+      <td>F-C</td>
+      <td>6-10</td>
+      <td>240.0</td>
+      <td>June 24, 1968</td>
+      <td>Duke University</td>
+    </tr>
+    <tr>
+      <th>Zaid Abdul-Aziz</th>
+      <td>1969</td>
+      <td>1978</td>
+      <td>C-F</td>
+      <td>6-9</td>
+      <td>235.0</td>
+      <td>April 7, 1946</td>
+      <td>Iowa State University</td>
+    </tr>
+    <tr>
+      <th>Kareem Abdul-Jabbar</th>
+      <td>1970</td>
+      <td>1989</td>
+      <td>C</td>
+      <td>7-2</td>
+      <td>225.0</td>
+      <td>April 16, 1947</td>
+      <td>University of California, Los Angeles</td>
+    </tr>
+    <tr>
+      <th>Mahmoud Abdul-Rauf</th>
+      <td>1991</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>6-1</td>
+      <td>162.0</td>
+      <td>March 9, 1969</td>
+      <td>Louisiana State University</td>
+    </tr>
+    <tr>
+      <th>Tariq Abdul-Wahad</th>
+      <td>1998</td>
+      <td>2003</td>
+      <td>F</td>
+      <td>6-6</td>
+      <td>223.0</td>
+      <td>November 3, 1974</td>
+      <td>San Jose State University</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -5186,11 +5813,11 @@ Tariq Abdul-Wahad    November 3, 1974              San Jose State University
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># ordenar dataframe por columna especifica</span>
 <span class="n">player_data</span> <span class="o">=</span> <span class="n">player_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-44" class="clipboard-copy-txt"># ordenar dataframe por columna especifica
 player_data = player_data.sort_values("weight")
-print(player_data.head())</div>
+player_data.head()</div>
     
         </div>
     </div>
@@ -5208,27 +5835,104 @@ print(player_data.head())</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[44]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>               year_start  year_end position height  weight            Birth  \
-name                                                                           
-Penny Early          1969      1969        G    5-3   114.0     May 30, 1943   
-Spud Webb            1986      1998        G    5-6   133.0    July 13, 1963   
-Earl Boykins         1999      2012        G    5-5   135.0     June 2, 1976   
-Muggsy Bogues        1988      2001        G    5-3   136.0  January 9, 1965   
-Chet Aubuchon        1947      1947        G   5-10   137.0     May 18, 1916   
 
-                                       College  
-name                                            
-Penny Early                                NaN  
-Spud Webb      North Carolina State University  
-Earl Boykins       Eastern Michigan University  
-Muggsy Bogues           Wake Forest University  
-Chet Aubuchon        Michigan State University  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>Birth</th>
+      <th>College</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Penny Early</th>
+      <td>1969</td>
+      <td>1969</td>
+      <td>G</td>
+      <td>5-3</td>
+      <td>114.0</td>
+      <td>May 30, 1943</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Spud Webb</th>
+      <td>1986</td>
+      <td>1998</td>
+      <td>G</td>
+      <td>5-6</td>
+      <td>133.0</td>
+      <td>July 13, 1963</td>
+      <td>North Carolina State University</td>
+    </tr>
+    <tr>
+      <th>Earl Boykins</th>
+      <td>1999</td>
+      <td>2012</td>
+      <td>G</td>
+      <td>5-5</td>
+      <td>135.0</td>
+      <td>June 2, 1976</td>
+      <td>Eastern Michigan University</td>
+    </tr>
+    <tr>
+      <th>Muggsy Bogues</th>
+      <td>1988</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>5-3</td>
+      <td>136.0</td>
+      <td>January 9, 1965</td>
+      <td>Wake Forest University</td>
+    </tr>
+    <tr>
+      <th>Chet Aubuchon</th>
+      <td>1947</td>
+      <td>1947</td>
+      <td>G</td>
+      <td>5-10</td>
+      <td>137.0</td>
+      <td>May 18, 1916</td>
+      <td>Michigan State University</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -5258,10 +5962,10 @@ Chet Aubuchon        Michigan State University
             </clipboard-copy>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># resumen de la información </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">))</span> <span class="c1"># player_data.describe()</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="c1"># player_data.describe()</span>
 </pre></div>
 <div id="cell-45" class="clipboard-copy-txt"># resumen de la información 
-print(player_data.describe(include='all')) # player_data.describe()</div>
+player_data.describe(include='all')# player_data.describe()</div>
     
         </div>
     </div>
@@ -5279,37 +5983,154 @@ print(player_data.describe(include='all')) # player_data.describe()</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[45]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>         year_start     year_end position height       weight  \
-count   4550.000000  4550.000000     4549   4549  4544.000000   
-unique          NaN          NaN        7     28          NaN   
-top             NaN          NaN        G    6-7          NaN   
-freq            NaN          NaN     1574    473          NaN   
-mean    1985.076264  1989.272527      NaN    NaN   208.908011   
-std       20.974188    21.874761      NaN    NaN    26.268662   
-min     1947.000000  1947.000000      NaN    NaN   114.000000   
-25%     1969.000000  1973.000000      NaN    NaN   190.000000   
-50%     1986.000000  1992.000000      NaN    NaN   210.000000   
-75%     2003.000000  2009.000000      NaN    NaN   225.000000   
-max     2018.000000  2018.000000      NaN    NaN   360.000000   
 
-                    Birth                 College  
-count                4519                    4248  
-unique               4161                     473  
-top     February 23, 1945  University of Kentucky  
-freq                    3                      99  
-mean                  NaN                     NaN  
-std                   NaN                     NaN  
-min                   NaN                     NaN  
-25%                   NaN                     NaN  
-50%                   NaN                     NaN  
-75%                   NaN                     NaN  
-max                   NaN                     NaN  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>Birth</th>
+      <th>College</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>4550.000000</td>
+      <td>4550.000000</td>
+      <td>4549</td>
+      <td>4549</td>
+      <td>4544.000000</td>
+      <td>4519</td>
+      <td>4248</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7</td>
+      <td>28</td>
+      <td>NaN</td>
+      <td>4161</td>
+      <td>473</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>G</td>
+      <td>6-7</td>
+      <td>NaN</td>
+      <td>February 23, 1945</td>
+      <td>University of Kentucky</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1574</td>
+      <td>473</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1985.076264</td>
+      <td>1989.272527</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>208.908011</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>20.974188</td>
+      <td>21.874761</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.268662</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1947.000000</td>
+      <td>1947.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>114.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1969.000000</td>
+      <td>1973.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>190.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1986.000000</td>
+      <td>1992.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>210.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2003.000000</td>
+      <td>2009.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>225.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2018.000000</td>
+      <td>2018.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>360.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -5364,10 +6185,10 @@ max                   NaN                     NaN
             </clipboard-copy>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># ocupar comando .notnull().all(axis=1)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 <div id="cell-46" class="clipboard-copy-txt"># ocupar comando .notnull().all(axis=1)
-print(player_data.notnull().all(axis=1).head(10))</div>
+player_data.notnull().all(axis=1).head(10)</div>
     
         </div>
     </div>
@@ -5385,10 +6206,12 @@ print(player_data.notnull().all(axis=1).head(10))</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
 <pre>name
 Penny Early        False
 Spud Webb           True
@@ -5400,9 +6223,9 @@ Angelo Musi         True
 Ernie Calverley     True
 Tyler Ulis          True
 Lionel Malamed      True
-dtype: bool
-</pre>
+dtype: bool</pre>
 </div>
+
 </div>
 
 </div>
@@ -5446,12 +6269,12 @@ dtype: bool
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># ocupar masking</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">player_data</span> <span class="o">=</span> <span class="n">player_data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-47" class="clipboard-copy-txt"># ocupar masking
 mask = lambda df: df.notnull().all(axis=1)
 player_data = player_data[mask]
-print(player_data.head())</div>
+player_data.head()</div>
     
         </div>
     </div>
@@ -5469,27 +6292,104 @@ print(player_data.head())</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>               year_start  year_end position height  weight            Birth  \
-name                                                                           
-Spud Webb            1986      1998        G    5-6   133.0    July 13, 1963   
-Earl Boykins         1999      2012        G    5-5   135.0     June 2, 1976   
-Muggsy Bogues        1988      2001        G    5-3   136.0  January 9, 1965   
-Chet Aubuchon        1947      1947        G   5-10   137.0     May 18, 1916   
-Greg Grant           1990      1996        G    5-7   140.0  August 29, 1966   
 
-                                       College  
-name                                            
-Spud Webb      North Carolina State University  
-Earl Boykins       Eastern Michigan University  
-Muggsy Bogues           Wake Forest University  
-Chet Aubuchon        Michigan State University  
-Greg Grant            Trenton State University  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>Birth</th>
+      <th>College</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Spud Webb</th>
+      <td>1986</td>
+      <td>1998</td>
+      <td>G</td>
+      <td>5-6</td>
+      <td>133.0</td>
+      <td>July 13, 1963</td>
+      <td>North Carolina State University</td>
+    </tr>
+    <tr>
+      <th>Earl Boykins</th>
+      <td>1999</td>
+      <td>2012</td>
+      <td>G</td>
+      <td>5-5</td>
+      <td>135.0</td>
+      <td>June 2, 1976</td>
+      <td>Eastern Michigan University</td>
+    </tr>
+    <tr>
+      <th>Muggsy Bogues</th>
+      <td>1988</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>5-3</td>
+      <td>136.0</td>
+      <td>January 9, 1965</td>
+      <td>Wake Forest University</td>
+    </tr>
+    <tr>
+      <th>Chet Aubuchon</th>
+      <td>1947</td>
+      <td>1947</td>
+      <td>G</td>
+      <td>5-10</td>
+      <td>137.0</td>
+      <td>May 18, 1916</td>
+      <td>Michigan State University</td>
+    </tr>
+    <tr>
+      <th>Greg Grant</th>
+      <td>1990</td>
+      <td>1996</td>
+      <td>G</td>
+      <td>5-7</td>
+      <td>140.0</td>
+      <td>August 29, 1966</td>
+      <td>Trenton State University</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -5531,10 +6431,10 @@ Greg Grant            Trenton State University
             </clipboard-copy>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;year_end&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;year_start&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-48" class="clipboard-copy-txt">player_data['duration'] = player_data['year_end'] - player_data['year_start']
-print(player_data.head())</div>
+player_data.head()</div>
     
         </div>
     </div>
@@ -5552,27 +6452,111 @@ print(player_data.head())</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>               year_start  year_end position height  weight            Birth  \
-name                                                                           
-Spud Webb            1986      1998        G    5-6   133.0    July 13, 1963   
-Earl Boykins         1999      2012        G    5-5   135.0     June 2, 1976   
-Muggsy Bogues        1988      2001        G    5-3   136.0  January 9, 1965   
-Chet Aubuchon        1947      1947        G   5-10   137.0     May 18, 1916   
-Greg Grant           1990      1996        G    5-7   140.0  August 29, 1966   
 
-                                       College  duration  
-name                                                      
-Spud Webb      North Carolina State University        12  
-Earl Boykins       Eastern Michigan University        13  
-Muggsy Bogues           Wake Forest University        13  
-Chet Aubuchon        Michigan State University         0  
-Greg Grant            Trenton State University         6  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>Birth</th>
+      <th>College</th>
+      <th>duration</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Spud Webb</th>
+      <td>1986</td>
+      <td>1998</td>
+      <td>G</td>
+      <td>5-6</td>
+      <td>133.0</td>
+      <td>July 13, 1963</td>
+      <td>North Carolina State University</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>Earl Boykins</th>
+      <td>1999</td>
+      <td>2012</td>
+      <td>G</td>
+      <td>5-5</td>
+      <td>135.0</td>
+      <td>June 2, 1976</td>
+      <td>Eastern Michigan University</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>Muggsy Bogues</th>
+      <td>1988</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>5-3</td>
+      <td>136.0</td>
+      <td>January 9, 1965</td>
+      <td>Wake Forest University</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>Chet Aubuchon</th>
+      <td>1947</td>
+      <td>1947</td>
+      <td>G</td>
+      <td>5-10</td>
+      <td>137.0</td>
+      <td>May 18, 1916</td>
+      <td>Michigan State University</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Greg Grant</th>
+      <td>1990</td>
+      <td>1996</td>
+      <td>G</td>
+      <td>5-7</td>
+      <td>140.0</td>
+      <td>August 29, 1966</td>
+      <td>Trenton State University</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -5614,10 +6598,10 @@ Greg Grant            Trenton State University         6
             </clipboard-copy>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;birth_date_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;Birth&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%B </span><span class="si">%d</span><span class="s2">, %Y&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-49" class="clipboard-copy-txt">player_data['birth_date_dt'] = pd.to_datetime(player_data['Birth'], format="%B %d, %Y")
-print(player_data.head())</div>
+player_data.head()</div>
     
         </div>
     </div>
@@ -5635,27 +6619,118 @@ print(player_data.head())</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>               year_start  year_end position height  weight            Birth  \
-name                                                                           
-Spud Webb            1986      1998        G    5-6   133.0    July 13, 1963   
-Earl Boykins         1999      2012        G    5-5   135.0     June 2, 1976   
-Muggsy Bogues        1988      2001        G    5-3   136.0  January 9, 1965   
-Chet Aubuchon        1947      1947        G   5-10   137.0     May 18, 1916   
-Greg Grant           1990      1996        G    5-7   140.0  August 29, 1966   
 
-                                       College  duration birth_date_dt  
-name                                                                    
-Spud Webb      North Carolina State University        12    1963-07-13  
-Earl Boykins       Eastern Michigan University        13    1976-06-02  
-Muggsy Bogues           Wake Forest University        13    1965-01-09  
-Chet Aubuchon        Michigan State University         0    1916-05-18  
-Greg Grant            Trenton State University         6    1966-08-29  
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_start</th>
+      <th>year_end</th>
+      <th>position</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>Birth</th>
+      <th>College</th>
+      <th>duration</th>
+      <th>birth_date_dt</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Spud Webb</th>
+      <td>1986</td>
+      <td>1998</td>
+      <td>G</td>
+      <td>5-6</td>
+      <td>133.0</td>
+      <td>July 13, 1963</td>
+      <td>North Carolina State University</td>
+      <td>12</td>
+      <td>1963-07-13</td>
+    </tr>
+    <tr>
+      <th>Earl Boykins</th>
+      <td>1999</td>
+      <td>2012</td>
+      <td>G</td>
+      <td>5-5</td>
+      <td>135.0</td>
+      <td>June 2, 1976</td>
+      <td>Eastern Michigan University</td>
+      <td>13</td>
+      <td>1976-06-02</td>
+    </tr>
+    <tr>
+      <th>Muggsy Bogues</th>
+      <td>1988</td>
+      <td>2001</td>
+      <td>G</td>
+      <td>5-3</td>
+      <td>136.0</td>
+      <td>January 9, 1965</td>
+      <td>Wake Forest University</td>
+      <td>13</td>
+      <td>1965-01-09</td>
+    </tr>
+    <tr>
+      <th>Chet Aubuchon</th>
+      <td>1947</td>
+      <td>1947</td>
+      <td>G</td>
+      <td>5-10</td>
+      <td>137.0</td>
+      <td>May 18, 1916</td>
+      <td>Michigan State University</td>
+      <td>0</td>
+      <td>1916-05-18</td>
+    </tr>
+    <tr>
+      <th>Greg Grant</th>
+      <td>1990</td>
+      <td>1996</td>
+      <td>G</td>
+      <td>5-7</td>
+      <td>140.0</td>
+      <td>August 29, 1966</td>
+      <td>Trenton State University</td>
+      <td>6</td>
+      <td>1966-08-29</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -5697,10 +6772,10 @@ Greg Grant            Trenton State University         6    1966-08-29
             </clipboard-copy>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">positions</span> <span class="o">=</span> <span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+<span class="n">positions</span>
 </pre></div>
 <div id="cell-50" class="clipboard-copy-txt">positions = player_data['position'].unique()
-print(positions)</div>
+positions</div>
     
         </div>
     </div>
@@ -5718,13 +6793,15 @@ print(positions)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[&#39;G&#39; &#39;G-F&#39; &#39;F-G&#39; &#39;F&#39; &#39;F-C&#39; &#39;C-F&#39; &#39;C&#39;]
-</pre>
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>array([&#39;G&#39;, &#39;G-F&#39;, &#39;F-G&#39;, &#39;F&#39;, &#39;F-C&#39;, &#39;C-F&#39;, &#39;C&#39;], dtype=object)</pre>
 </div>
+
 </div>
 
 </div>
@@ -5781,7 +6858,7 @@ print(positions)</div>
     <span class="n">nba_position_duration</span><span class="p">[</span><span class="n">position</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_duration</span>
     
 <span class="c1"># retornar serie</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">nba_position_duration</span><span class="p">)</span>
+<span class="n">nba_position_duration</span>
 </pre></div>
 <div id="cell-51" class="clipboard-copy-txt"># Iterar sobre cada posición y encontrar el mayor valor.
 nba_position_duration = dict()
@@ -5799,7 +6876,7 @@ for position in positions:
     nba_position_duration[position] = max_duration
     
 # retornar serie
-print(nba_position_duration)</div>
+nba_position_duration</div>
     
         </div>
     </div>
@@ -5817,13 +6894,21 @@ print(nba_position_duration)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;G&#39;: 235.0, &#39;G-F&#39;: 240.0, &#39;F-G&#39;: 245.0, &#39;F&#39;: 284.0, &#39;F-C&#39;: 290.0, &#39;C-F&#39;: 280.0, &#39;C&#39;: 360.0}
-</pre>
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>{&#39;G&#39;: 235.0,
+ &#39;G-F&#39;: 240.0,
+ &#39;F-G&#39;: 245.0,
+ &#39;F&#39;: 284.0,
+ &#39;F-C&#39;: 290.0,
+ &#39;C-F&#39;: 280.0,
+ &#39;C&#39;: 360.0}</pre>
 </div>
+
 </div>
 
 </div>
@@ -5838,7 +6923,7 @@ print(nba_position_duration)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="referencia">Referencia<a class="anchor-link" href="#referencia">&#182;</a></h2><ol>
+<h2 id="referencias">Referencias<a class="anchor-link" href="#referencias">&#182;</a></h2><ol>
 <li><a href="https://www.learndatasci.com/tutorials/python-pandas-tutorial-complete-introduction-for-beginners/">Python Pandas Tutorial: A Complete Introduction for Beginners</a></li>
 <li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/general_functions.html">General functions</a></li>
 </ol>
