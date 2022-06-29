@@ -95,7 +95,7 @@ nav:
         - Merge & Concat: lectures/data_manipulation/data_manipulation/merge_concat.ipynb
         - Pivot Tables: lectures/data_manipulation/data_manipulation/pivot.ipynb
     - Visualization:
-        - Introducción: lectures/data_manipulation/visualization/introduction.ipynb
+        - Introducción: lectures/data_manipulation/visualization/introduccion.ipynb
         - Matplotlib: lectures/data_manipulation/visualization/matplotlib.ipynb
         - Seaborn: lectures/data_manipulation/visualization/seaborn.ipynb
     - Machine Learning:
