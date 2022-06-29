@@ -100,7 +100,8 @@ nav:
         - Seaborn: lectures/data_manipulation/visualization/seaborn.ipynb
     - Machine Learning:
         - Introducción: lectures/ml/introduccion_ml/introduccion.ipynb
-        - Regresión: lectures/ml/analisis_supervisado_regresion/02_regresion_lineal.ipynb
+        - Regresión Lineal: lectures/ml/analisis_supervisado_regresion/02_regresion_lineal.ipynb
+        - Regresión Múltiple: lectures/ml/analisis_supervisado_regresion/02_modelos_regresion.ipynb
         - Clasificación: lectures/ml/analisis_supervisado_clasificacion/02_clasificacion.ipynb
         - Clustering: lectures/ml/analisis_no_supervisado/03_clustering.ipynb
         - Reducción Dimensionalidad: lectures/ml/analisis_no_supervisado/03_reduccion_dimensionalidad.ipynb
