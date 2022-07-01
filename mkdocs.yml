@@ -38,24 +38,31 @@ extra_javascript:
 theme:
   name: material
   language: es
-  font:
-    text: Roboto
-    code: Roboto Mono
+  logo: images/logo.bmp
+  features:
+    - navigation.instant
+    - navigation.top
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
   palette:
-  - media: "(prefers-color-scheme: light)"
-    scheme: default
-    primary: blue grey
-    accent: amber
-    toggle:
-      icon: material/lightbulb
-      name: Switch to light mode
-  - media: "(prefers-color-scheme: dark)"
-    scheme: slate
-    primary: blue grey
-    accent: amber
-    toggle:
-      icon: material/lightbulb-outline
-      name: Switch to dark mode
+    # Light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
 
 # Customization
 extra:
@@ -71,6 +78,11 @@ extra:
     - icon: fontawesome/brands/medium
       link: https://medium.com/@fralfaro
 
+# Plugins
+plugins:
+  - mkdocs-jupyter:
+      kernel_name: python3
+  - search
 
 # TOC
 nav:
@@ -110,7 +122,4 @@ nav:
         - Series Temporales: lectures/ml/time_series/05_series_temporales.ipynb
 
 
-# Plugins
-plugins:
-  - mkdocs-jupyter:
-      kernel_name: python3
+

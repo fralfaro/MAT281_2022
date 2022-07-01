@@ -57,9 +57,9 @@ El estudiante adquiere competencias/destrezas básicas como Data Scientist (ocup
 - Grupal (grupos aleatorios).
 - Entregas fuera del plazo descuentan 25 puntos por día (parte entera).  
 
-### Nota Final 
-Sea $\bar{n_l}$ promedio de notas del laboratorio, $\bar{n_t}$ : promedio de notas de las
-tareas, $n_p$ : nota del proyecto. Entonces la nota final del curso ($N_f$ ) será:
+### Nota Final
+
+La nota final será el promedio ponderado entre los laboratorios, tareas y el proyecto final del curso.
 
 $$
 N_f = 0.25\bar{n_l} + 0.35\bar{n_t} + 0.4n_p
