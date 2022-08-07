@@ -12,7 +12,6 @@ repo_url: https://github.com/fralfaro/MAT281_2022
 edit_uri: ''
 
 
-
 # Markdown extensions
 markdown_extensions:
   - attr_list
@@ -77,6 +76,8 @@ extra:
       link: https://www.kaggle.com/faamds
     - icon: fontawesome/brands/medium
       link: https://medium.com/@fralfaro
+    - icon: fontawesome/solid/globe
+      link: https://fralfaro.github.io/portfolio/
 
 # Plugins
 plugins:
@@ -86,10 +87,11 @@ plugins:
 
 # TOC
 nav:
-    - Home: index.md
+    - index.md
     - Basic Tools:
-        - Introducción: lectures/basic_tools/basic_tools/lecture_000_intro.ipynb
-        - Configuraciones: lectures/basic_tools/basic_tools/lecture_000_configuraciones.ipynb
+        - Tools:
+            - lectures/basic_tools/basic_tools/lecture_000_intro.ipynb
+            - lectures/basic_tools/basic_tools/lecture_000_configuraciones.ipynb
         - Linux: lectures/basic_tools/basic_tools/lecture_011_os.ipynb
         - Git: lectures/basic_tools/basic_tools/lecture_015_git.ipynb
         - IDE: lectures/basic_tools/basic_tools/lecture_013_ide.ipynb
@@ -102,23 +104,34 @@ nav:
         - Sympy: lectures/data_manipulation/scientific_computing/sympy.ipynb
     - Data manipulation:
         - Introducción: lectures/data_manipulation/data_manipulation/base_datos.ipynb
-        - Pandas: lectures/data_manipulation/data_manipulation/pandas.ipynb
-        - Groupby: lectures/data_manipulation/data_manipulation/groupby.ipynb
-        - Merge & Concat: lectures/data_manipulation/data_manipulation/merge_concat.ipynb
-        - Pivot Tables: lectures/data_manipulation/data_manipulation/pivot.ipynb
+        - Pandas:
+            - lectures/data_manipulation/data_manipulation/pandas.ipynb
+            - lectures/data_manipulation/data_manipulation/groupby.ipynb
+            - lectures/data_manipulation/data_manipulation/merge_concat.ipynb
+            - lectures/data_manipulation/data_manipulation/pivot.ipynb
     - Visualization:
         - Introducción: lectures/data_manipulation/visualization/introduccion.ipynb
         - Matplotlib: lectures/data_manipulation/visualization/matplotlib.ipynb
         - Seaborn: lectures/data_manipulation/visualization/seaborn.ipynb
+    - EDA:
+        - lectures/data_manipulation/eda/intro.md
+        - lectures/data_manipulation/eda/eda.ipynb
     - Machine Learning:
         - Introducción: lectures/ml/introduccion_ml/introduccion.ipynb
-        - Regresión Lineal: lectures/ml/analisis_supervisado_regresion/02_regresion_lineal.ipynb
-        - Regresión Múltiple: lectures/ml/analisis_supervisado_regresion/02_modelos_regresion.ipynb
-        - Clasificación: lectures/ml/analisis_supervisado_clasificacion/02_clasificacion.ipynb
-        - Clustering: lectures/ml/analisis_no_supervisado/03_clustering.ipynb
-        - Reducción Dimensionalidad: lectures/ml/analisis_no_supervisado/03_reduccion_dimensionalidad.ipynb
-        - Overffiting: lectures/ml/overfitting/04_overfitting_underfitting.ipynb
-        - Reducir Overfiting: lectures/ml/overfitting/04_reducir_overfitting.ipynb
+        - Aprendizaje Supervisado I:
+            - lectures/ml/analisis_supervisado_regresion/intro.md
+            - lectures/ml/analisis_supervisado_regresion/02_regresion_lineal.ipynb
+            - lectures/ml/analisis_supervisado_regresion/02_modelos_regresion.ipynb
+        - Aprendizaje Supervisado II:
+            - lectures/ml/analisis_supervisado_clasificacion/intro.md
+            - lectures/ml/analisis_supervisado_clasificacion/02_clasificacion.ipynb
+        - Aprendizaje No supervisado:
+            - lectures/ml/analisis_no_supervisado/intro.md
+            - lectures/ml/analisis_no_supervisado/03_clustering.ipynb
+            - lectures/ml/analisis_no_supervisado/03_reduccion_dimensionalidad.ipynb
+        - Overffiting:
+            - lectures/ml/overfitting/04_overfitting_underfitting.ipynb
+            - lectures/ml/overfitting/04_reducir_overfitting.ipynb
         - Series Temporales: lectures/ml/time_series/05_series_temporales.ipynb
 
 
