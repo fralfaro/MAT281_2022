@@ -91,6 +91,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/eda/intro/</loc>
+         <lastmod>2022-08-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/scientific_computing/numpy/</loc>
          <lastmod>2022-08-07</lastmod>
          <changefreq>daily</changefreq>
@@ -136,12 +141,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_no_supervisado/intro/</loc>
+         <lastmod>2022-08-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_no_supervisado/metrics_regression/</loc>
          <lastmod>2022-08-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_supervisado_clasificacion/02_clasificacion/</loc>
+         <lastmod>2022-08-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_supervisado_clasificacion/intro/</loc>
          <lastmod>2022-08-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -157,6 +172,11 @@
     </url>
     <url>
          <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_supervisado_regresion/02_regresion_lineal/</loc>
+         <lastmod>2022-08-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_supervisado_regresion/intro/</loc>
          <lastmod>2022-08-07</lastmod>
          <changefreq>daily</changefreq>
     </url>

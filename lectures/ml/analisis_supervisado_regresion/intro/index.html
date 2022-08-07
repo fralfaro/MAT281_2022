@@ -10,21 +10,21 @@
         <meta name="author" content="Francisco Alfaro">
       
       
-        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/">
+        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/lectures/ml/analisis_supervisado_regresion/intro/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Home</title>
+        <title>Regresión - Home</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -39,7 +39,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bienvenidos-a-mat281" class="md-skip">
+        <a href="#regresion" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -81,9 +81,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
+    <a href="../../../.." title="Home" class="md-header__button md-logo" aria-label="Home" data-md-component="logo">
       
-  <img src="images/logo.bmp" alt="logo">
+  <img src="../../../../images/logo.bmp" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bienvenidos a MAT281!
+              Regresión
             
           </span>
         </div>
@@ -202,9 +202,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
+    <a href="../../../.." title="Home" class="md-nav__button md-logo" aria-label="Home" data-md-component="logo">
       
-  <img src="images/logo.bmp" alt="logo">
+  <img src="../../../../images/logo.bmp" alt="logo">
 
     </a>
     Home
@@ -230,114 +230,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Bienvenidos a MAT281!
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
         Bienvenidos a MAT281!
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#identificacion-de-la-asignatura" class="md-nav__link">
-    Identificación de la asignatura
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#descripcion-de-la-asignatura" class="md-nav__link">
-    Descripción de la Asignatura
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#requisitos-de-entrada" class="md-nav__link">
-    Requisitos de entrada
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contenidos-tematicos" class="md-nav__link">
-    Contenidos temáticos
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    Evaluación
-  </a>
-  
-    <nav class="md-nav" aria-label="Evaluación">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#laboratorios" class="md-nav__link">
-    Laboratorios
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tareas" class="md-nav__link">
-    Tareas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proyecto" class="md-nav__link">
-    Proyecto
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nota-final" class="md-nav__link">
-    Nota Final
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -402,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_000_intro/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_000_intro/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -416,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_000_configuraciones/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_000_configuraciones/" class="md-nav__link">
         Configuraciones
       </a>
     </li>
@@ -437,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_011_os/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_011_os/" class="md-nav__link">
         Linux
       </a>
     </li>
@@ -451,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_015_git/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_015_git/" class="md-nav__link">
         Git
       </a>
     </li>
@@ -465,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_013_ide/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_013_ide/" class="md-nav__link">
         IDE's
       </a>
     </li>
@@ -479,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_012_python/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_012_python/" class="md-nav__link">
         Python
       </a>
     </li>
@@ -493,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_014_jupyter/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_014_jupyter/" class="md-nav__link">
         Jupyter Notebook
       </a>
     </li>
@@ -507,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/basic_tools/basic_tools/lecture_016_colab/" class="md-nav__link">
+      <a href="../../../basic_tools/basic_tools/lecture_016_colab/" class="md-nav__link">
         Google Colab
       </a>
     </li>
@@ -555,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/scientific_computing/numpy/" class="md-nav__link">
+      <a href="../../../data_manipulation/scientific_computing/numpy/" class="md-nav__link">
         Numpy
       </a>
     </li>
@@ -569,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/scientific_computing/scipy/" class="md-nav__link">
+      <a href="../../../data_manipulation/scientific_computing/scipy/" class="md-nav__link">
         SciPy
       </a>
     </li>
@@ -583,7 +480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/scientific_computing/sympy/" class="md-nav__link">
+      <a href="../../../data_manipulation/scientific_computing/sympy/" class="md-nav__link">
         Sympy
       </a>
     </li>
@@ -631,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/data_manipulation/base_datos/" class="md-nav__link">
+      <a href="../../../data_manipulation/data_manipulation/base_datos/" class="md-nav__link">
         Base de datos
       </a>
     </li>
@@ -671,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/data_manipulation/pandas/" class="md-nav__link">
+      <a href="../../../data_manipulation/data_manipulation/pandas/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -685,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/data_manipulation/groupby/" class="md-nav__link">
+      <a href="../../../data_manipulation/data_manipulation/groupby/" class="md-nav__link">
         Groupby
       </a>
     </li>
@@ -699,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/data_manipulation/merge_concat/" class="md-nav__link">
+      <a href="../../../data_manipulation/data_manipulation/merge_concat/" class="md-nav__link">
         Merge &amp; Concat
       </a>
     </li>
@@ -713,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/data_manipulation/pivot/" class="md-nav__link">
+      <a href="../../../data_manipulation/data_manipulation/pivot/" class="md-nav__link">
         Pivot &amp; Melt
       </a>
     </li>
@@ -768,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/visualization/introduccion/" class="md-nav__link">
+      <a href="../../../data_manipulation/visualization/introduccion/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -782,7 +679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/visualization/matplotlib/" class="md-nav__link">
+      <a href="../../../data_manipulation/visualization/matplotlib/" class="md-nav__link">
         Matplotlib
       </a>
     </li>
@@ -796,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/visualization/seaborn/" class="md-nav__link">
+      <a href="../../../data_manipulation/visualization/seaborn/" class="md-nav__link">
         Seaborn
       </a>
     </li>
@@ -844,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/eda/intro/" class="md-nav__link">
+      <a href="../../../data_manipulation/eda/intro/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -858,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/data_manipulation/eda/eda/" class="md-nav__link">
+      <a href="../../../data_manipulation/eda/eda/" class="md-nav__link">
         Caso Aplicado
       </a>
     </li>
@@ -878,12 +775,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -906,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/introduccion_ml/introduccion/" class="md-nav__link">
+      <a href="../../introduccion_ml/introduccion/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -918,12 +817,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" checked>
       
       
       
@@ -944,11 +845,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="lectures/ml/analisis_supervisado_regresion/intro/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Regresión
       </a>
+      
     </li>
   
 
@@ -960,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/analisis_supervisado_regresion/02_regresion_lineal/" class="md-nav__link">
+      <a href="../02_regresion_lineal/" class="md-nav__link">
         Regressión Lineal
       </a>
     </li>
@@ -974,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/analisis_supervisado_regresion/02_modelos_regresion/" class="md-nav__link">
+      <a href="../02_modelos_regresion/" class="md-nav__link">
         Regressión Múltiple
       </a>
     </li>
@@ -1021,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/analisis_supervisado_clasificacion/intro/" class="md-nav__link">
+      <a href="../../analisis_supervisado_clasificacion/intro/" class="md-nav__link">
         Clasificación
       </a>
     </li>
@@ -1035,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/analisis_supervisado_clasificacion/02_clasificacion/" class="md-nav__link">
+      <a href="../../analisis_supervisado_clasificacion/02_clasificacion/" class="md-nav__link">
         Regresión Logística y otros modelos
       </a>
     </li>
@@ -1082,7 +993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/analisis_no_supervisado/intro/" class="md-nav__link">
+      <a href="../../analisis_no_supervisado/intro/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -1096,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/analisis_no_supervisado/03_clustering/" class="md-nav__link">
+      <a href="../../analisis_no_supervisado/03_clustering/" class="md-nav__link">
         Clustering
       </a>
     </li>
@@ -1110,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/analisis_no_supervisado/03_reduccion_dimensionalidad/" class="md-nav__link">
+      <a href="../../analisis_no_supervisado/03_reduccion_dimensionalidad/" class="md-nav__link">
         Reducción de dimensionalidad
       </a>
     </li>
@@ -1157,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/overfitting/04_overfitting_underfitting/" class="md-nav__link">
+      <a href="../../overfitting/04_overfitting_underfitting/" class="md-nav__link">
         Introducción
       </a>
     </li>
@@ -1171,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/overfitting/04_reducir_overfitting/" class="md-nav__link">
+      <a href="../../overfitting/04_reducir_overfitting/" class="md-nav__link">
         Reducir el overfitting
       </a>
     </li>
@@ -1192,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lectures/ml/time_series/05_series_temporales/" class="md-nav__link">
+      <a href="../../time_series/05_series_temporales/" class="md-nav__link">
         Series Temporales
       </a>
     </li>
@@ -1226,83 +1137,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#identificacion-de-la-asignatura" class="md-nav__link">
-    Identificación de la asignatura
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#descripcion-de-la-asignatura" class="md-nav__link">
-    Descripción de la Asignatura
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#requisitos-de-entrada" class="md-nav__link">
-    Requisitos de entrada
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contenidos-tematicos" class="md-nav__link">
-    Contenidos temáticos
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    Evaluación
-  </a>
-  
-    <nav class="md-nav" aria-label="Evaluación">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#laboratorios" class="md-nav__link">
-    Laboratorios
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tareas" class="md-nav__link">
-    Tareas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proyecto" class="md-nav__link">
-    Proyecto
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nota-final" class="md-nav__link">
-    Nota Final
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1315,68 +1149,12 @@
                 
 
 
-<h1 id="bienvenidos-a-mat281">Bienvenidos a MAT281!</h1>
-<p>MAT281 - Aplicaciones de la Matemática en la Ingeniería (USM)</p>
-<h2 id="identificacion-de-la-asignatura">Identificación de la asignatura</h2>
-<ul>
-<li><strong>Asignatura</strong>: Aplicaciones a la Matemática</li>
-<li><strong>Sigla</strong>: MAT281</li>
-<li><strong>Prerrequisitos</strong>: Ninguno</li>
-<li><strong>Unidad Académica que lo imparte</strong>: Deparatamento de matemáticas</li>
-<li><strong>Eje formativo</strong> :Ingeniería Aplicada e Integración</li>
-</ul>
-<h2 id="descripcion-de-la-asignatura">Descripción de la Asignatura</h2>
-<p>El estudiante adquiere competencias/destrezas básicas como Data Scientist (ocupando el lenguaje de programación Python).</p>
-<h2 id="requisitos-de-entrada">Requisitos de entrada</h2>
-<ul>
-<li>Utiliza comprende conceptos básicos de Cálculo-Algebra, Probabilidad-Estadística y Optimización.</li>
-<li>Utiliza comprende conceptos básicos de Python.</li>
-</ul>
-<h2 id="contenidos-tematicos">Contenidos temáticos</h2>
-<ul>
-<li>Toolkit básico del curso</li>
-<li>Computación científica</li>
-<li>Manipulación de datos</li>
-<li>Visualización</li>
-<li>Machine Learning</li>
-</ul>
-<h2 id="evaluacion">Evaluación</h2>
-<h3 id="laboratorios">Laboratorios</h3>
-<ul>
-<li>Semanal.</li>
-<li>Individual.</li>
-<li>Notas: 0, 25, 50, 75, 100.</li>
-<li>Plazo: final del día de clases.</li>
-<li>Entregas fuera del plazo tienen nota cero (0).  </li>
-</ul>
-<h3 id="tareas">Tareas</h3>
-<ul>
-<li>Mensual.</li>
-<li>Individual.</li>
-<li>Plazo:</li>
-<li><span class="arithmatex">\(T_1\)</span>: 31 de Octubre 2021.</li>
-<li><span class="arithmatex">\(T_2\)</span>: 12 de Diciembre 2021.</li>
-<li>Entregas fuera del plazo descuentan 25 puntos por día (parte entera). <ul>
-<li>Por ejemplo, un retraso de 15 minutos cuenta como un día y descuenta 25 puntos.  </li>
-</ul>
-</li>
-</ul>
-<h3 id="proyecto">Proyecto</h3>
-<ul>
-<li>Semestral</li>
-<li>Plazo: final del curso (28 de Diciembre 2021).</li>
-<li>Grupal (grupos aleatorios).</li>
-<li>Entregas fuera del plazo descuentan 25 puntos por día (parte entera).  </li>
-</ul>
-<h3 id="nota-final">Nota Final</h3>
-<p>Sea <span class="arithmatex">\(\bar{n_l}\)</span> promedio de notas del laboratorio, <span class="arithmatex">\(\bar{n_t}\)</span> : promedio de notas de las
-tareas, <span class="arithmatex">\(n_p\)</span> : nota del proyecto. Entonces la nota final del curso (<span class="arithmatex">\(N_f\)</span> ) será:</p>
-<div class="arithmatex">\[
-N_f = 0.25\bar{n_l} + 0.35\bar{n_t} + 0.4n_p
-\]</div>
-<blockquote>
-<p><strong>¡Importante!</strong>: Todos los entregables se deben subir al repositorio personal del estudiante (en GitHub). Las notas se trataran de actualizar al final de cada mes.</p>
-</blockquote>
+<h1 id="regresion">Regresión</h1>
+<p>Los modelos de regresión son ocupadas para predecir valores numéricos, por ejemplo, 
+determinar el precio de una casa a partir de sus metros cuadrados.<br />
+Dentro de los modelos de regresión, el modelo más básico (y no por eso menos importante) es el <strong>modelo de regresión lineal</strong>, 
+del cual se analizará detalladamente la interpretación de sus parámetros (bondad de ajuste) y los errores asociadas a las predicciones del modelo.</p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/ml/analisis_supervisado_regresion/images/lr.webp" align="center"/></p>
 
               
             </article>
@@ -1394,15 +1172,30 @@ N_f = 0.25\bar{n_l} + 0.35\bar{n_t} + 0.4n_p
   
     <nav class="md-footer__inner md-grid" aria-label="Pie">
       
+        
+        <a href="../../introduccion_ml/introduccion/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Introducción" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Introducción
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="lectures/basic_tools/basic_tools/lecture_000_intro/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Introducción" rel="next">
+        <a href="../02_regresion_lineal/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Regressión Lineal" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Siguiente
               </span>
-              Introducción
+              Regressión Lineal
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1490,12 +1283,12 @@ N_f = 0.25\bar{n_l} + 0.35\bar{n_t} + 0.4n_p
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.top", "content.code.annotate", "search.suggest", "search.highlight"], "search": "assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.top", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
