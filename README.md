@@ -46,16 +46,16 @@ El estudiante adquiere competencias/destrezas básicas como Data Scientist (ocup
 - Mensual.
 - Individual.
 - Plazo:
-  - $T_1$: 31 de Octubre 2021.
-  - $T_2$: 12 de Diciembre 2021.
+  - $T_1$: 31 de Octubre 2022.
+  - $T_2$: 05 de Diciembre 2022.
 - Entregas fuera del plazo descuentan 25 puntos por día (parte entera). 
     - Por ejemplo, un retraso de 15 minutos cuenta como un día y descuenta 25 puntos.  
       
 
 ### Proyecto 
 - Semestral
-- Plazo: final del curso (28 de Diciembre 2021).
-- Grupal (grupos aleatorios).
+- Plazo: final del curso (12 de Diciembre 2022).
+- Grupal (grupos fijos).
 - Entregas fuera del plazo descuentan 25 puntos por día (parte entera).  
 
 ### Nota Final
