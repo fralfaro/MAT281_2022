@@ -6521,10 +6521,95 @@ player_data.describe(include='all')# player_data.describe()</div>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># ocupar comando .notnull().all(axis=1)</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># veamos las columnas con datos nulos</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">player_data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+   
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">player_data</span><span class="p">[</span><span class="n">player_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;valores nulos: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<div id="cell-46" class="clipboard-copy-txt"># veamos las columnas con datos nulos
+for col in player_data.columns:
+   
+    temp = player_data[player_data[col].isnull()]
+    print(col)
+    print(f"valores nulos: {len(temp)}\n")</div>
+    
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>year_start
+valores nulos: 0
+
+year_end
+valores nulos: 0
+
+position
+valores nulos: 1
+
+height
+valores nulos: 1
+
+weight
+valores nulos: 6
+
+Birth
+valores nulos: 31
+
+College
+valores nulos: 302
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-47">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># ocupar comando .notnull().all(axis=1) para ver todos los valores que NO son nulos para todas las columnas</span>
 <span class="n">player_data</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-<div id="cell-46" class="clipboard-copy-txt"># ocupar comando .notnull().all(axis=1)
+<div id="cell-47" class="clipboard-copy-txt"># ocupar comando .notnull().all(axis=1) para ver todos los valores que NO son nulos para todas las columnas
 player_data.notnull().all(axis=1).head(10)</div>
     
         </div>
@@ -6543,7 +6628,7 @@ player_data.notnull().all(axis=1).head(10)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
 
 
 
@@ -6588,12 +6673,12 @@ dtype: bool</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-47">
+            <clipboard-copy for="cell-48">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -6608,7 +6693,7 @@ dtype: bool</pre>
 <span class="n">player_data</span> <span class="o">=</span> <span class="n">player_data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
 <span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div id="cell-47" class="clipboard-copy-txt"># ocupar masking
+<div id="cell-48" class="clipboard-copy-txt"># ocupar masking
 mask = lambda df: df.notnull().all(axis=1)
 player_data = player_data[mask]
 player_data.head()</div>
@@ -6629,7 +6714,7 @@ player_data.head()</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
 
 
 
@@ -6752,12 +6837,12 @@ player_data.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[49]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-48">
+            <clipboard-copy for="cell-49">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -6770,7 +6855,7 @@ player_data.head()</div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;year_end&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;year_start&#39;</span><span class="p">]</span>
 <span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div id="cell-48" class="clipboard-copy-txt">player_data['duration'] = player_data['year_end'] - player_data['year_start']
+<div id="cell-49" class="clipboard-copy-txt">player_data['duration'] = player_data['year_end'] - player_data['year_start']
 player_data.head()</div>
     
         </div>
@@ -6789,7 +6874,7 @@ player_data.head()</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
 
 
 
@@ -6919,12 +7004,12 @@ player_data.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[49]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[50]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-49">
+            <clipboard-copy for="cell-50">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -6937,7 +7022,7 @@ player_data.head()</div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;birth_date_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;Birth&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%B </span><span class="si">%d</span><span class="s2">, %Y&quot;</span><span class="p">)</span>
 <span class="n">player_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div id="cell-49" class="clipboard-copy-txt">player_data['birth_date_dt'] = pd.to_datetime(player_data['Birth'], format="%B %d, %Y")
+<div id="cell-50" class="clipboard-copy-txt">player_data['birth_date_dt'] = pd.to_datetime(player_data['Birth'], format="%B %d, %Y")
 player_data.head()</div>
     
         </div>
@@ -6956,7 +7041,7 @@ player_data.head()</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
 
 
 
@@ -7093,12 +7178,12 @@ player_data.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[50]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-50">
+            <clipboard-copy for="cell-51">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -7111,7 +7196,7 @@ player_data.head()</div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">positions</span> <span class="o">=</span> <span class="n">player_data</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">positions</span>
 </pre></div>
-<div id="cell-50" class="clipboard-copy-txt">positions = player_data['position'].unique()
+<div id="cell-51" class="clipboard-copy-txt">positions = player_data['position'].unique()
 positions</div>
     
         </div>
@@ -7130,7 +7215,7 @@ positions</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
 
 
 
@@ -7164,12 +7249,12 @@ positions</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-51">
+            <clipboard-copy for="cell-52">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -7197,7 +7282,7 @@ positions</div>
 <span class="c1"># retornar serie</span>
 <span class="n">nba_position_duration</span>
 </pre></div>
-<div id="cell-51" class="clipboard-copy-txt"># Iterar sobre cada posición y encontrar el mayor valor.
+<div id="cell-52" class="clipboard-copy-txt"># Iterar sobre cada posición y encontrar el mayor valor.
 nba_position_duration = dict()
 
 # iterar
@@ -7231,7 +7316,7 @@ nba_position_duration</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[52]:</div>
 
 
 
