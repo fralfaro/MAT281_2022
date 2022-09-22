@@ -1,4 +1,4 @@
-## Code from:
+# # Code from:
 # https://matplotlib.org/3.1.1/gallery/images_contours_and_fields/image_annotated_heatmap.html#sphx-glr-gallery-images-contours-and-fields-image-annotated-heatmap-py
 
 import numpy as np
