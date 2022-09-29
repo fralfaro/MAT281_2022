@@ -55,7 +55,7 @@ El estudiante adquiere competencias/destrezas básicas como Data Scientist (ocup
 
 ### Proyecto 
 - Semestral
-- Plazo: final del curso (08 de Diciembre 2022).
+- Plazo: final del curso (07 de Diciembre 2022).
 - Grupal (grupos fijos).
 - Entregas fuera del plazo descuentan 25 puntos por día (parte entera).  
 
