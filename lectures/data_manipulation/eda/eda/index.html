@@ -2542,11 +2542,15 @@ pd.set_option('display.max_columns', 500)  # Ver más columnas de los dataframes
             </clipboard-copy>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cargar datos</span>
-<span class="n">terremotos_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;terremotos_contaminados.csv&quot;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">terremotos_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/eda/data/terremotos_contaminados.csv&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">terremotos_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div id="cell-2" class="clipboard-copy-txt"># cargar datos
-terremotos_data = pd.read_csv(os.path.join("data","terremotos_contaminados.csv"), sep=",")
+terremotos_data = pd.read_csv(
+    "https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/eda/data/terremotos_contaminados.csv",
+    sep=",")
 terremotos_data.head()</div>
     
         </div>
