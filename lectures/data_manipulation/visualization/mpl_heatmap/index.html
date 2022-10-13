@@ -2392,7 +2392,7 @@ import matplotlib.pyplot as plt</div>
 <span class="sd">    im</span>
 <span class="sd">        The AxesImage to be labeled.</span>
 <span class="sd">    data</span>
-<span class="sd">        Data used to annotate.  If None, the image&#39;s data is used.  Optional.</span>
+<span class="sd">        Data used to annotate.  If None, the image&#39;s lab_07 is used.  Optional.</span>
 <span class="sd">    valfmt</span>
 <span class="sd">        The format of the annotations inside the heatmap.  This should either</span>
 <span class="sd">        use the string format method, e.g. &quot;$ {x:.2f}&quot;, or be a</span>
@@ -2401,7 +2401,7 @@ import matplotlib.pyplot as plt</div>
 <span class="sd">        A list or array of two color specifications.  The first is used for</span>
 <span class="sd">        values below a threshold, the second for those above.  Optional.</span>
 <span class="sd">    threshold</span>
-<span class="sd">        Value in data units according to which the colors from textcolors are</span>
+<span class="sd">        Value in lab_07 units according to which the colors from textcolors are</span>
 <span class="sd">        applied.  If None (the default) uses the middle of the colormap as</span>
 <span class="sd">        separation.  Optional.</span>
 <span class="sd">    **kwargs</span>
@@ -2428,8 +2428,8 @@ import matplotlib.pyplot as plt</div>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">valfmt</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">valfmt</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">StrMethodFormatter</span><span class="p">(</span><span class="n">valfmt</span><span class="p">)</span>
 
-    <span class="c1"># Loop over the data and create a `Text` for each &quot;pixel&quot;.</span>
-    <span class="c1"># Change the text&#39;s color depending on the data.</span>
+    <span class="c1"># Loop over the lab_07 and create a `Text` for each &quot;pixel&quot;.</span>
+    <span class="c1"># Change the text&#39;s color depending on the lab_07.</span>
     <span class="n">texts</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
@@ -2450,7 +2450,7 @@ import matplotlib.pyplot as plt</div>
     im
         The AxesImage to be labeled.
     data
-        Data used to annotate.  If None, the image's data is used.  Optional.
+        Data used to annotate.  If None, the image's lab_07 is used.  Optional.
     valfmt
         The format of the annotations inside the heatmap.  This should either
         use the string format method, e.g. "$ {x:.2f}", or be a
@@ -2459,7 +2459,7 @@ import matplotlib.pyplot as plt</div>
         A list or array of two color specifications.  The first is used for
         values below a threshold, the second for those above.  Optional.
     threshold
-        Value in data units according to which the colors from textcolors are
+        Value in lab_07 units according to which the colors from textcolors are
         applied.  If None (the default) uses the middle of the colormap as
         separation.  Optional.
     **kwargs
@@ -2486,8 +2486,8 @@ import matplotlib.pyplot as plt</div>
     if isinstance(valfmt, str):
         valfmt = matplotlib.ticker.StrMethodFormatter(valfmt)
 
-    # Loop over the data and create a `Text` for each "pixel".
-    # Change the text's color depending on the data.
+    # Loop over the lab_07 and create a `Text` for each "pixel".
+    # Change the text's color depending on the lab_07.
     texts = []
     for i in range(data.shape[0]):
         for j in range(data.shape[1]):
