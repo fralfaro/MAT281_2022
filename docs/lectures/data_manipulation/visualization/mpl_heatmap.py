@@ -77,7 +77,7 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
     im
         The AxesImage to be labeled.
     data
-        Data used to annotate.  If None, the image's data is used.  Optional.
+        Data used to annotate.  If None, the image's lab_07 is used.  Optional.
     valfmt
         The format of the annotations inside the heatmap.  This should either
         use the string format method, e.g. "$ {x:.2f}", or be a
@@ -86,7 +86,7 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
         A list or array of two color specifications.  The first is used for
         values below a threshold, the second for those above.  Optional.
     threshold
-        Value in data units according to which the colors from textcolors are
+        Value in lab_07 units according to which the colors from textcolors are
         applied.  If None (the default) uses the middle of the colormap as
         separation.  Optional.
     **kwargs
@@ -113,8 +113,8 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
     if isinstance(valfmt, str):
         valfmt = matplotlib.ticker.StrMethodFormatter(valfmt)
 
-    # Loop over the data and create a `Text` for each "pixel".
-    # Change the text's color depending on the data.
+    # Loop over the lab_07 and create a `Text` for each "pixel".
+    # Change the text's color depending on the lab_07.
     texts = []
     for i in range(data.shape[0]):
         for j in range(data.shape[1]):
