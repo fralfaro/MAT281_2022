@@ -2383,13 +2383,13 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2452,6 +2452,52 @@ sns.set_context(rc={"figure.figsize": (12, 4)})</div>
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-1-af7c71145372&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      3</span> <span class="ansi-green-intense-fg ansi-bold">import</span> pandas <span class="ansi-green-intense-fg ansi-bold">as</span> pd
+<span class="ansi-green-fg">      4</span> <span class="ansi-green-intense-fg ansi-bold">import</span> numpy <span class="ansi-green-intense-fg ansi-bold">as</span> np
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 5</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">import</span> matplotlib<span class="ansi-yellow-intense-fg ansi-bold">.</span>pyplot <span class="ansi-green-intense-fg ansi-bold">as</span> plt
+<span class="ansi-green-fg">      6</span> <span class="ansi-green-intense-fg ansi-bold">import</span> seaborn <span class="ansi-green-intense-fg ansi-bold">as</span> sns
+<span class="ansi-green-fg">      7</span> <span class="ansi-green-intense-fg ansi-bold">from</span> sklearn<span class="ansi-yellow-intense-fg ansi-bold">.</span>model_selection <span class="ansi-green-intense-fg ansi-bold">import</span> train_test_split
+
+<span class="ansi-green-intense-fg ansi-bold">~\AppData\Local\pypoetry\Cache\virtualenvs\basic-tools-a_KeXlN7-py3.8\lib\site-packages\matplotlib\__init__.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">    111</span> <span class="ansi-red-intense-fg ansi-bold"># cbook must import matplotlib only within function</span>
+<span class="ansi-green-fg">    112</span> <span class="ansi-red-intense-fg ansi-bold"># definitions, so it is safe to import from it here.</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 113</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">from</span> <span class="ansi-yellow-intense-fg ansi-bold">.</span> <span class="ansi-green-intense-fg ansi-bold">import</span> _api<span class="ansi-yellow-intense-fg ansi-bold">,</span> _version<span class="ansi-yellow-intense-fg ansi-bold">,</span> cbook<span class="ansi-yellow-intense-fg ansi-bold">,</span> _docstring<span class="ansi-yellow-intense-fg ansi-bold">,</span> rcsetup
+<span class="ansi-green-fg">    114</span> <span class="ansi-green-intense-fg ansi-bold">from</span> matplotlib<span class="ansi-yellow-intense-fg ansi-bold">.</span>cbook <span class="ansi-green-intense-fg ansi-bold">import</span> sanitize_sequence
+<span class="ansi-green-fg">    115</span> <span class="ansi-green-intense-fg ansi-bold">from</span> matplotlib<span class="ansi-yellow-intense-fg ansi-bold">.</span>_api <span class="ansi-green-intense-fg ansi-bold">import</span> MatplotlibDeprecationWarning
+
+<span class="ansi-green-intense-fg ansi-bold">~\AppData\Local\pypoetry\Cache\virtualenvs\basic-tools-a_KeXlN7-py3.8\lib\site-packages\matplotlib\rcsetup.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">     22</span> <span class="ansi-green-intense-fg ansi-bold">import</span> numpy <span class="ansi-green-intense-fg ansi-bold">as</span> np
+<span class="ansi-green-fg">     23</span> 
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 24</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">from</span> matplotlib <span class="ansi-green-intense-fg ansi-bold">import</span> _api<span class="ansi-yellow-intense-fg ansi-bold">,</span> animation<span class="ansi-yellow-intense-fg ansi-bold">,</span> cbook
+<span class="ansi-green-fg">     25</span> <span class="ansi-green-intense-fg ansi-bold">from</span> matplotlib<span class="ansi-yellow-intense-fg ansi-bold">.</span>cbook <span class="ansi-green-intense-fg ansi-bold">import</span> ls_mapper
+<span class="ansi-green-fg">     26</span> <span class="ansi-green-intense-fg ansi-bold">from</span> matplotlib<span class="ansi-yellow-intense-fg ansi-bold">.</span>colors <span class="ansi-green-intense-fg ansi-bold">import</span> Colormap<span class="ansi-yellow-intense-fg ansi-bold">,</span> is_color_like
+
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>: cannot import name &#39;animation&#39; from partially initialized module &#39;matplotlib&#39; (most likely due to a circular import) (C:\Users\franc\AppData\Local\pypoetry\Cache\virtualenvs\basic-tools-a_KeXlN7-py3.8\lib\site-packages\matplotlib\__init__.py)</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -2459,7 +2505,7 @@ sns.set_context(rc={"figure.figsize": (12, 4)})</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2517,7 +2563,7 @@ max_deep_list = list(range(2, 20))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2590,28 +2636,18 @@ for k, (train_index, test_index) in enumerate(skf.split(X, y)):
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Pliegue: 1, Dist Clase: [4763 4737], Prec: 0.928
-Pliegue: 2, Dist Clase: [4763 4737], Prec: 0.914
-Pliegue: 3, Dist Clase: [4763 4737], Prec: 0.914
-Pliegue: 4, Dist Clase: [4763 4737], Prec: 0.938
-Pliegue: 5, Dist Clase: [4763 4737], Prec: 0.922
-Pliegue: 6, Dist Clase: [4763 4737], Prec: 0.938
-Pliegue: 7, Dist Clase: [4763 4737], Prec: 0.924
-Pliegue: 8, Dist Clase: [4762 4738], Prec: 0.938
-Pliegue: 9, Dist Clase: [4762 4738], Prec: 0.936
-Pliegue: 10, Dist Clase: [4762 4738], Prec: 0.908
-Pliegue: 11, Dist Clase: [4762 4738], Prec: 0.936
-Pliegue: 12, Dist Clase: [4762 4738], Prec: 0.938
-Pliegue: 13, Dist Clase: [4762 4738], Prec: 0.934
-Pliegue: 14, Dist Clase: [4762 4738], Prec: 0.920
-Pliegue: 15, Dist Clase: [4762 4738], Prec: 0.930
-Pliegue: 16, Dist Clase: [4762 4738], Prec: 0.928
-Pliegue: 17, Dist Clase: [4762 4738], Prec: 0.924
-Pliegue: 18, Dist Clase: [4762 4738], Prec: 0.926
-Pliegue: 19, Dist Clase: [4762 4738], Prec: 0.936
-Pliegue: 20, Dist Clase: [4762 4738], Prec: 0.920
-</pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-2-8f9166349f9c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      6</span> skf <span class="ansi-yellow-intense-fg ansi-bold">=</span> StratifiedKFold<span class="ansi-yellow-intense-fg ansi-bold">(</span>n_splits<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">20</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      7</span> precision <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 8</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>model <span class="ansi-yellow-intense-fg ansi-bold">=</span>  DecisionTreeClassifier<span class="ansi-yellow-intense-fg ansi-bold">(</span>criterion<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;entropy&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> max_depth<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">5</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      9</span> 
+<span class="ansi-green-fg">     10</span> skf<span class="ansi-yellow-intense-fg ansi-bold">.</span>get_n_splits<span class="ansi-yellow-intense-fg ansi-bold">(</span>x_train<span class="ansi-yellow-intense-fg ansi-bold">,</span> y_train<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;DecisionTreeClassifier&#39; is not defined</pre>
 </div>
 </div>
 
