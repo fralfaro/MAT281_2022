@@ -111,7 +111,7 @@ nav:
             - lectures/data_manipulation/data_manipulation/merge_concat.ipynb
             - lectures/data_manipulation/data_manipulation/pivot.ipynb
     - Visualization:
-        - Introducción: lectures/data_manipulation/visualization/introduccion.ipynb
+        - Introducción: lectures/data_manipulation/visualization/01_intro.ipynb
         - Matplotlib: lectures/data_manipulation/visualization/matplotlib.ipynb
         - Seaborn: lectures/data_manipulation/visualization/seaborn.ipynb
     - EDA:
