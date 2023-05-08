@@ -10,14 +10,14 @@
         <meta name="author" content="Francisco Alfaro">
       
       
-        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/data_manipulation/sqlalchemy/sqlalchemy/">
+        <link rel="canonical" href="https://github.com/fralfaro/MAT281_2022/lectures/data_manipulation/data_manipulation/sqlalchemy/sql/">
       
       <link rel="icon" href="../../../../../images/faam_logo.gif">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>SQLAlchemy - Home</title>
+        <title>Buenas Prácticas (SQL) - Home</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sqlalchemy" class="md-skip">
+        <a href="#buenas-practicas-sql" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SQLAlchemy
+              Buenas Prácticas (SQL)
             
           </span>
         </div>
@@ -1130,98 +1130,86 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#coneccion-a-bases-de-datos" class="md-nav__link">
-    Conección a bases de datos
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#comandos-en-sql" class="md-nav__link">
-    Comandos en SQL
+  <a href="#guia-de-codificacion" class="md-nav__link">
+    Guía de Codificación
   </a>
-  
-    <nav class="md-nav" aria-label="Comandos en SQL">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#manipulacion-de-datos" class="md-nav__link">
-    Manipulación de datos
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clausulas" class="md-nav__link">
-    Clausulas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operadores" class="md-nav__link">
-    Operadores
-  </a>
-  
-    <nav class="md-nav" aria-label="Operadores">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#operadores-logicos" class="md-nav__link">
-    Operadores Lógicos
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operadores-de-comparacion" class="md-nav__link">
-    Operadores de comparación
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-de-agregado" class="md-nav__link">
-    Funciones de agregado
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#consultas" class="md-nav__link">
-    Consultas
+  <a href="#palabras-y-funciones-reservadas" class="md-nav__link">
+    Palabras y funciones reservadas
   </a>
   
-    <nav class="md-nav" aria-label="Consultas">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nombres-de-variables" class="md-nav__link">
+    Nombres de variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comentando" class="md-nav__link">
+    Comentando
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#se-conciso" class="md-nav__link">
+    Sé conciso
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloques-de-codigo" class="md-nav__link">
+    Bloques de código
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comas" class="md-nav__link">
+    Comas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indentacion" class="md-nav__link">
+    Indentación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rango-de-fechas" class="md-nav__link">
+    Rango de fechas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sea-explicito" class="md-nav__link">
+    Sea explícito
+  </a>
+  
+    <nav class="md-nav" aria-label="Sea explícito">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#consultas-basicas" class="md-nav__link">
-    Consultas básicas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cosultas-mediante-group-by" class="md-nav__link">
-    Cosultas mediante GROUP BY
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cosultas-mediante-join" class="md-nav__link">
-    Cosultas mediante JOIN
+  <a href="#alias" class="md-nav__link">
+    alias
   </a>
   
 </li>
@@ -1232,8 +1220,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referencias
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lecturas-recomendadas" class="md-nav__link">
+    Lecturas recomendadas
   </a>
   
 </li>
@@ -2288,37 +2283,17 @@ Licensed under the Apache License, Version 2.0.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="sqlalchemy">SQLAlchemy<a class="anchor-link" href="#sqlalchemy">&#182;</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>SQLAlchemy es una librería para Python que facilita el acceso a una base de datos relacional, así como las operaciones a realizar sobre la misma.</p>
-<p>Es independiente del motor de base de datos a utilizar, es decir, en principio, es compatible con la mayoría de bases de datos relacionales conocidas: PostgreSQL, MySQL, Oracle, Microsoft SQL Server, Sqlite, …</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="coneccion-a-bases-de-datos">Conecci&#243;n a bases de datos<a class="anchor-link" href="#coneccion-a-bases-de-datos">&#182;</a></h2><p>Lo primero que hay que hacer para trabajar con SQLAlchemy es crear un <code>engine</code>. El <code>engine</code> es el punto de entrada a la base de datos, es decir, el que permite a SQLAlchemy comunicarse con esta.</p>
-<p>El motor se usa principalmente para manejar dos elementos:</p>
-<ul>
-<li><p><strong>pools de conexiones</strong>: Cuando se usa una conexión a la base de datos, esta ya está creada previamente y es reutilizada por el programa.</p>
-</li>
-<li><p><strong>dialectos de base de datos</strong>: A pesar de que el lenguaje SQL es universal, cada motor de base de datos introduce ciertas variaciones propietarias sobre dicho lenguaje.</p>
-</li>
+<h1 id="buenas-practicas-sql">Buenas Pr&#225;cticas (SQL)<a class="anchor-link" href="#buenas-practicas-sql">&#182;</a></h1><h2 id="introduccion">Introducci&#243;n<a class="anchor-link" href="#introduccion">&#182;</a></h2><p>Esta guía tiene como objetivo mantener la coherencia de los artefactos SQL en todo. Si bien a menudo se hace  referencia a esta guía en nuestras revisiones de código, es importante tener en cuenta que, en última instancia, esta es una guía y habrá casos de uso de piezas que no serán consistentes
+con estas recomendaciones.</p>
+<h2 id="guia-de-codificacion">Gu&#237;a de Codificaci&#243;n<a class="anchor-link" href="#guia-de-codificacion">&#182;</a></h2><h2 id="palabras-y-funciones-reservadas">Palabras y funciones reservadas<a class="anchor-link" href="#palabras-y-funciones-reservadas">&#182;</a></h2><p>Utilice siempre mayúsculas para palabras clave reservadas, funciones y funciones definidas por el usuario (<code>UDF</code>) como <code>SELECT</code>, <code>WHERE</code> o <code>AS</code>.</p>
+<h2 id="nombres-de-variables">Nombres de variables<a class="anchor-link" href="#nombres-de-variables">&#182;</a></h2><ul>
+<li>No mezcle idiomas (y prefiera el inglés).</li>
+<li>Utilice nombres del dominio (si son tiendas, ocupe "store", si son productos, ocupe "product", si son items, ocupe "item").  * Evite crear nuevos nombres para cosas que ya existen (a esto le llamamos mantener un lenguaje ubicuo), si tiene dudas, pregunte.</li>
+<li>Utilice identificadores y nombres coherentes y descriptivos.</li>
+<li>Muchos nombres del lago de datos suelen ser versiones abreviadas, como <strong>first_nm</strong> vs <strong>first_name</strong>. Debe elegir si su tabla utilizará nombres breves o detallados y será coherente en todas las columnas de su tabla.</li>
+<li>Utilice nombres en minúsculas con guiones bajos, como <strong>first_name</strong>. No use <strong>CamelCase</strong>.</li>
+<li>Los nombres deben comenzar con una letra y no pueden terminar con un guión bajo.</li>
+<li>Utilice solo letras, números y guiones bajos en los nombres de las variables.</li>
 </ul>
 
 </div>
@@ -2331,30 +2306,10 @@ Licensed under the Apache License, Version 2.0.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>En la carpeta data se encuentra el archivo <code>chinook.db</code>, que es básicamente una base de datos sql.</p>
-<p><img src="./images/sqlite.jpg" align="center"/></p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Las 11 tablas se definen de la siguiente forma (en inglés):</p>
-<ul>
-<li><code>employees</code> table stores employees data such as employee id, last name, first name, etc. It also has a field named ReportsTo to specify who reports to whom.</li>
-<li><code>customers</code> table stores customers data.</li>
-<li><code>invoices</code> &amp; <code>invoice_items</code> tables: these two tables store invoice data. The <code>invoices</code> table stores invoice header data and the <code>invoice_items</code> table stores the invoice line items data.</li>
-<li><code>artists</code> table stores artists data. It is a simple table that contains only artist id and name.</li>
-<li><code>albums</code> table stores data about a list of tracks. Each album belongs to one artist. However, one artist may have multiple albums.</li>
-<li><code>media_types</code> table stores media types such as MPEG audio file, ACC audio file, etc.</li>
-<li><code>genres</code> table stores music types such as rock, jazz, metal, etc.</li>
-<li><code>tracks</code> table store the data of songs. Each track belongs to one album.</li>
-<li><code>playlists</code> &amp; <code>playlist_track tables</code>: <code>playlists</code> table store data about playlists. Each playlist contains a list of tracks. Each track may belong to multiple playlists. The relationship between the <code>playlists</code> table and <code>tracks</code> table is many-to-many. The <code>playlist_track</code> table is used to reflect this relationship.</li>
+<h2 id="comentando">Comentando<a class="anchor-link" href="#comentando">&#182;</a></h2><p>Evite los comentarios excesivos y haga todo lo posible para resumir tablas y filtros y explicar cada decisión/línea que pueda no estar clara.</p>
+<h2 id="se-conciso">S&#233; conciso<a class="anchor-link" href="#se-conciso">&#182;</a></h2><ul>
+<li>Apunta a la elegancia y escribe las consultas más breves y eficientes posibles y evita la duplicación.</li>
+<li>Las tablas temporales y el flujo de consultas deben seguir una progresión lógica (ejemplo: conjunto de datos grande filtrado en un subconjunto, filtrado o combinado con un subconjunto diferente).</li>
 </ul>
 
 </div>
@@ -2367,237 +2322,29 @@ Licensed under the Apache License, Version 2.0.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Nuestra primera consulata consiste en ver todas las tablas de el esquema de datos.</p>
+<h2 id="bloques-de-codigo">Bloques de c&#243;digo<a class="anchor-link" href="#bloques-de-codigo">&#182;</a></h2><p>Las palabras clave raíz deben estar en su propia línea. En el caso de que haya solo un argumento después de una palabra clave, la palabra clave debe
+incluirse en la misma línea. En el caso de múltiples argumentos, deben ser líneas separadas desde el segundo elemento.</p>
+<p><strong>bad</strong></p>
 
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-1">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>  
+<pre><code>SELECT client_id, submission_date
+FROM main_summary
+WHERE submission_date &gt; '20180101' AND sample_id = '42'
+LIMIT 10</code></pre>
+<p><strong>good</strong></p>
 
-<span class="c1"># Crear conector</span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;sqlite:///&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chinook.db&#39;</span><span class="p">))</span>
-</pre></div>
-<div id="cell-1" class="clipboard-copy-txt">from sqlalchemy import create_engine
-import pandas as pd
-import os  
+<pre><code>-- Single Arguments
+SELECT client_id
+FROM main_summary
+WHERE submission_date &gt; '20180101'
+LIMIT 10</code></pre>
 
-# Crear conector
-engine = create_engine(os.path.join('sqlite:///','data', 'chinook.db'))</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-2">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Crear query</span>
-<span class="n">query</span> <span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT name </span>
-<span class="s2">FROM sqlite_master </span>
-<span class="s2">WHERE type=&#39;table&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-<div id="cell-2" class="clipboard-copy-txt"># Crear query
-query ="""
-SELECT name 
-FROM sqlite_master 
-WHERE type='table'
-"""
-df = pd.read_sql(query, con=engine)
-df</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>albums</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>sqlite_sequence</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>artists</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>customers</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>employees</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>genres</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>invoices</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>invoice_items</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>media_types</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>playlists</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>playlist_track</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>tracks</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>sqlite_stat1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="comandos-en-sql">Comandos en SQL<a class="anchor-link" href="#comandos-en-sql">&#182;</a></h2><h3 id="manipulacion-de-datos">Manipulaci&#243;n de datos<a class="anchor-link" href="#manipulacion-de-datos">&#182;</a></h3><p>Los comandos básicos de manipulación de datos son:</p>
-<table>
-<thead><tr>
-<th>Comando</th>
-<th>Descripción</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SELECT</td>
-<td>Utilizado para consultar registros de la base de datos que satisfagan un criterio determinado</td>
-<td></td>
-</tr>
-<tr>
-<td>INSERT</td>
-<td>Utilizado para cargar lotes de datos en la base de datos en una única operación.</td>
-<td></td>
-</tr>
-<tr>
-<td>UPDATE</td>
-<td>Utilizado para modificar los valores de los campos y registros especificados Utilizado para modificar las tablas agregando campos o cambiando la definición de los campos.</td>
-<td></td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>Utilizado para eliminar registros de una tabla</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<pre><code>-- Multiple Arguments in SELECT and WHERE
+SELECT client_id
+    , submission_date
+FROM main_summary
+WHERE submission_date &gt; '20180101'
+   AND sample_id = '42'
+LIMIT 10</code></pre>
 
 </div>
 </div>
@@ -2609,7 +2356,28 @@ df</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>De estos cuatro comandos, esta seción estará centrada en el comando <code>SELECT</code> (útil para hacer consultas en SQL)</p>
+<h2 id="comas">Comas<a class="anchor-link" href="#comas">&#182;</a></h2><p>Las comas para las listas que están divididas por líneas deben ir precedidas de una coma después de un solo espacio. En las declaraciones debe haber
+una lista en la misma línea de hasta ~ 120 caracteres.</p>
+<p><strong>bad</strong></p>
+
+<pre><code>SELECT
+    client_id,
+    sample_id,
+    submission_date
+FROM main_summary
+WHERE
+    submission_date &gt; '20180101'
+   AND sample_id IN ('a','b','c')
+LIMIT 10</code></pre>
+<p><strong>good</strong></p>
+
+<pre><code>SELECT client_id
+    , sample_id
+    , submission_date
+FROM main_summary
+WHERE submission_date &gt; '20180101'
+   AND sample_id IN ('a','b','c')
+LIMIT 10</code></pre>
 
 </div>
 </div>
@@ -2621,36 +2389,53 @@ df</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="clausulas">Clausulas<a class="anchor-link" href="#clausulas">&#182;</a></h3><p>Las cláusulas son condiciones de modificación utilizadas para definir los datos que desea seleccionar o manipular.</p>
-<table>
-<thead><tr>
-<th>Comando</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FROM</td>
-<td>Utilizada para especificar la tabla de la cual se van a seleccionar los registros</td>
-</tr>
-<tr>
-<td>GROUP BY</td>
-<td>Utilizada para separar los registros seleccionados en grupos específicos</td>
-</tr>
-<tr>
-<td>HAVING</td>
-<td>Utilizada para expresar condición que debe satisfacer cada grupo</td>
-</tr>
-<tr>
-<td>ORDER BY</td>
-<td>Utilizada para ordenar los registros seleccionados de acuerdo con un orden específico</td>
-</tr>
-<tr>
-<td>WHERE</td>
-<td>Utilizada para determinar los registros seleccionados en la clausula FROM</td>
-</tr>
-</tbody>
-</table>
+<h2 id="indentacion">Indentaci&#243;n<a class="anchor-link" href="#indentacion">&#182;</a></h2><p>Cada bloque de código debe tener indentación junto con cada línea que comience con una palabra clave.</p>
+<ul>
+<li>Los argumentos deben comenzar con el argumento de arriba y de abajo</li>
+<li>Los operadores booleanos deben alinearse con el final de la declaración <strong>WHERE / CASE WHEN</strong> anterior.</li>
+</ul>
+<p>Para declaraciones entre paréntesis</p>
+<ul>
+<li>El paréntesis de apertura debe terminar la línea.</li>
+<li>El paréntesis de cierre debe alinearse debajo del primer carácter de la línea que inicia la construcción de varias líneas.</li>
+<li>El contenido de los paréntesis debe tener una sangría de un nivel.</li>
+</ul>
+<p><strong>bad</strong></p>
+
+<pre><code>WITH orders AS (
+SELECT
+name
+, order_date
+, SUM(sales) AS daily_sales
+FROM orders
+WHERE order_date BETWEEN '2021-01-01' AND '2021-01-31'
+GROUP BY
+name
+, order_date
+)</code></pre>
+
+<pre><code>SELECT DISTINCT name
+FROM orders
+WHERE
+name != 'Blue'
+AND daily_sales &lt; 100</code></pre>
+<p><strong>good</strong></p>
+
+<pre><code>WITH orders AS (
+    SELECT name
+        , order_date
+        , SUM(sales) AS daily_sales
+    FROM orders
+    WHERE order_date BETWEEN '2021-01-01' AND '2021-01-31'
+    GROUP BY name
+        , order_date
+)
+
+
+SELECT DISTINCT name
+FROM orders
+WHERE name != 'Blue'
+   AND daily_sales &lt; 100</code></pre>
 
 </div>
 </div>
@@ -2662,27 +2447,11 @@ df</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="operadores">Operadores<a class="anchor-link" href="#operadores">&#182;</a></h3><h4 id="operadores-logicos">Operadores L&#243;gicos<a class="anchor-link" href="#operadores-logicos">&#182;</a></h4><table>
-<thead><tr>
-<th>Operador</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AND</td>
-<td>Es el “y” lógico. Evalúa dos condiciones y devuelve un valor de verdad sólo si ambas son ciertas.</td>
-</tr>
-<tr>
-<td>OR</td>
-<td>Es el “o” lógico. Evalúa dos condiciones y devuelve un valor de verdad si alguna de las dos es cierta.</td>
-</tr>
-<tr>
-<td>NOT</td>
-<td>Negación lógica. Devuelve el valor contrario de la expresión.</td>
-</tr>
-</tbody>
-</table>
+<h2 id="rango-de-fechas">Rango de fechas<a class="anchor-link" href="#rango-de-fechas">&#182;</a></h2><ul>
+<li>Asegúrese de que todos los filtros y tablas utilicen un intervalo de fechas coherente en toda la consulta.</li>
+<li>Mantener un formato de datos coherente </li>
+<li>Evitar lagunas en los datos cuando un evento no se produce en una fecha específica.</li>
+</ul>
 
 </div>
 </div>
@@ -2694,47 +2463,18 @@ df</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="operadores-de-comparacion">Operadores de comparaci&#243;n<a class="anchor-link" href="#operadores-de-comparacion">&#182;</a></h4><table>
-<thead><tr>
-<th>Operador</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&lt;</td>
-<td>Menor que</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>Mayor que</td>
-</tr>
-<tr>
-<td>&lt;&gt;</td>
-<td>Distinto de</td>
-</tr>
-<tr>
-<td>&lt;=</td>
-<td>Menor o igual que</td>
-</tr>
-<tr>
-<td>&gt;=</td>
-<td>Mayor o igual que</td>
-</tr>
-<tr>
-<td>BETWEEN</td>
-<td>Intervalo</td>
-</tr>
-<tr>
-<td>LIKE</td>
-<td>Comparación</td>
-</tr>
-<tr>
-<td>In</td>
-<td>Especificar</td>
-</tr>
-</tbody>
-</table>
+<h2 id="sea-explicito">Sea expl&#237;cito<a class="anchor-link" href="#sea-explicito">&#182;</a></h2><p>Al elegir entre sintaxis explícita o implícita, prefiera explícita.</p>
+<h3 id="alias">alias<a class="anchor-link" href="#alias">&#182;</a></h3><p>Incluya siempre la palabra clave AS cuando cree un alias para una variable o nombre de tabla, es más fácil de leer cuando es explícito.</p>
+<p><strong>bad</strong></p>
+
+<pre><code>SELECT date(submission_timestamp) day
+FROM telemetry.main
+LIMIT 10</code></pre>
+<p><strong>good</strong></p>
+
+<pre><code>SELECT date(submission_timestamp) AS day
+FROM telemetry.main
+LIMIT 10</code></pre>
 
 </div>
 </div>
@@ -2746,36 +2486,59 @@ df</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="funciones-de-agregado">Funciones de agregado<a class="anchor-link" href="#funciones-de-agregado">&#182;</a></h4><p>Las funciones de agregado se usan dentro de una cláusula SELECT en grupos de registros para devolver un único valor que se aplica a un grupo de registros.</p>
-<table>
-<thead><tr>
-<th>Comando</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AVG</td>
-<td>Utilizada para calcular el promedio de los valores de un campo determinado</td>
-</tr>
-<tr>
-<td>COUNT</td>
-<td>Utilizada para devolver el número de registros de la selección</td>
-</tr>
-<tr>
-<td>SUM</td>
-<td>Utilizada para devolver la suma de todos los valores de un campo determinado</td>
-</tr>
-<tr>
-<td>MAX</td>
-<td>Utilizada para devolver el valor más alto de un campo especificado</td>
-</tr>
-<tr>
-<td>MIN</td>
-<td>Utilizada para devolver el valor más bajo de un campo especificado</td>
-</tr>
-</tbody>
-</table>
+<h2 id="joins">Joins<a class="anchor-link" href="#joins">&#182;</a></h2><p>En caso de un <code>JOIN</code>, utilice <code>ON</code> inmediatamente después del <code>JOIN</code>. Nunca en el <code>WHERE</code>. Y siempre estudie la tabla previamente, para asegurar el uso de
+llaves primarias cuando sea posible.</p>
+<p><strong>bad</strong></p>
+
+<pre><code>SELECT orders.name
+    , items.description
+    , orders.order_date
+    , SUM(orders.sales) AS daily_sales
+FROM orders AS orders
+INNER JOIN items AS items
+WHERE order_date BETWEEN '2021-01-01' AND '2021-01-31'
+    AND orders.item_nbr = items.item_nbr
+GROUP BY orders.name
+    , items.description
+    , orders.order_date</code></pre>
+<p><strong>good</strong></p>
+
+<pre><code>SELECT orders.name
+    , items.description
+    , orders.order_date
+    , SUM(orders.sales) AS daily_sales
+FROM orders AS orders
+INNER JOIN items AS items
+ON orders.item_nbr = items.item_nbr
+WHERE order_date BETWEEN '2021-01-01' AND '2021-01-31'
+GROUP BY orders.name
+    , items.description
+    , orders.order_date</code></pre>
+<p>Cuando utilice una combinación que no sea <code>INNER JOIN</code>, incluya el tipo de combinación</p>
+<p><strong>bad</strong></p>
+
+<pre><code>SELECT
+    submission_date
+    , experiment.key AS experiment_id
+FROM telemetry.clients_daily, UNNEST(experiments.key_value) AS experiment -- Implicit Join
+WHERE
+    submission_date &gt; '2019-07-01'
+   AND sample_id = '10'
+GROUP BY
+    submission_date
+    , experiment_id
+    , experiment_branch</code></pre>
+<p><strong>good</strong></p>
+
+<pre><code>SELECT submission_date
+    , experiment.key AS experiment_id
+FROM telemetry.clients_daily
+CROSS JOIN UNNEST(experiments.key_value) AS experiment
+WHERE submission_date &gt; '2019-07-01'
+   AND sample_id = '10'
+GROUP BY submission_date
+    , experiment_id
+    , experiment_branch</code></pre>
 
 </div>
 </div>
@@ -2787,2528 +2550,9 @@ df</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="consultas">Consultas<a class="anchor-link" href="#consultas">&#182;</a></h2><p>Las consultas de selección se utilizan para indicar al motor de datos que devuelva información de las bases de datos, esta información es devuelta en forma de conjunto de registros. Este conjunto de registros es modificable.</p>
-<p>Lo primero es crear una función para poder conectarse a la base de datos y realizar las distintas consultas.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="consultas-basicas">Consultas b&#225;sicas<a class="anchor-link" href="#consultas-basicas">&#182;</a></h3><p>Se realizarán distintas consultas ocupando los operadores básicos y de comparación.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-3">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># funcion de consultas</span>
-<span class="k">def</span> <span class="nf">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-3" class="clipboard-copy-txt"># funcion de consultas
-def consulta(query,conn):
-    return pd.read_sql_query(query, con=conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-4">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Crear conector</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;sqlite:///&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chinook.db&#39;</span><span class="p">))</span>
-</pre></div>
-<div id="cell-4" class="clipboard-copy-txt"># Crear conector
-conn = create_engine(os.path.join('sqlite:///','data', 'chinook.db'))</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-5">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># basicas</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT EmployeeId,LastName,FirstName,Title FROM employees</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-5" class="clipboard-copy-txt"># basicas
-query = """
-SELECT EmployeeId,LastName,FirstName,Title FROM employees
-"""
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>Adams</td>
-      <td>Andrew</td>
-      <td>General Manager</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>Edwards</td>
-      <td>Nancy</td>
-      <td>Sales Manager</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>Johnson</td>
-      <td>Steve</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>Mitchell</td>
-      <td>Michael</td>
-      <td>IT Manager</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7</td>
-      <td>King</td>
-      <td>Robert</td>
-      <td>IT Staff</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8</td>
-      <td>Callahan</td>
-      <td>Laura</td>
-      <td>IT Staff</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-6">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Ordenar los registros: una columna</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT </span>
-<span class="s2">    EmployeeId, LastName, FirstName , Title </span>
-<span class="s2">FROM </span>
-<span class="s2">    employees </span>
-<span class="s2">ORDER BY</span>
-<span class="s2">    LastName</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-6" class="clipboard-copy-txt"># Ordenar los registros: una columna
-query = """
-SELECT 
-    EmployeeId, LastName, FirstName , Title 
-FROM 
-    employees 
-ORDER BY
-    LastName
-"""
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>Adams</td>
-      <td>Andrew</td>
-      <td>General Manager</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>8</td>
-      <td>Callahan</td>
-      <td>Laura</td>
-      <td>IT Staff</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>Edwards</td>
-      <td>Nancy</td>
-      <td>Sales Manager</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5</td>
-      <td>Johnson</td>
-      <td>Steve</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>7</td>
-      <td>King</td>
-      <td>Robert</td>
-      <td>IT Staff</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>Mitchell</td>
-      <td>Michael</td>
-      <td>IT Manager</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-7">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Ordenar los registros: varias columnas</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT EmployeeId,LastName, FirstName , Title FROM employees ORDER BY LastName,Title</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-7" class="clipboard-copy-txt"># Ordenar los registros: varias columnas
-query = """
-SELECT EmployeeId,LastName, FirstName , Title FROM employees ORDER BY LastName,Title
-"""
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>Adams</td>
-      <td>Andrew</td>
-      <td>General Manager</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>8</td>
-      <td>Callahan</td>
-      <td>Laura</td>
-      <td>IT Staff</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>Edwards</td>
-      <td>Nancy</td>
-      <td>Sales Manager</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5</td>
-      <td>Johnson</td>
-      <td>Steve</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>7</td>
-      <td>King</td>
-      <td>Robert</td>
-      <td>IT Staff</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>Mitchell</td>
-      <td>Michael</td>
-      <td>IT Manager</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-8">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Ordenar los registros: especificar el orden </span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT EmployeeId,LastName, FirstName , Title FROM employees ORDER BY LastName DESC , Title ASC;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-8" class="clipboard-copy-txt"># Ordenar los registros: especificar el orden 
-query = """
-SELECT EmployeeId,LastName, FirstName , Title FROM employees ORDER BY LastName DESC , Title ASC;
-"""
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>6</td>
-      <td>Mitchell</td>
-      <td>Michael</td>
-      <td>IT Manager</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>7</td>
-      <td>King</td>
-      <td>Robert</td>
-      <td>IT Staff</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>Johnson</td>
-      <td>Steve</td>
-      <td>Sales Support Agent</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2</td>
-      <td>Edwards</td>
-      <td>Nancy</td>
-      <td>Sales Manager</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>8</td>
-      <td>Callahan</td>
-      <td>Laura</td>
-      <td>IT Staff</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1</td>
-      <td>Adams</td>
-      <td>Andrew</td>
-      <td>General Manager</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-9">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># operador *</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT * FROM employees;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-9" class="clipboard-copy-txt"># operador *
-query = """
-SELECT * FROM employees;
-"""
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-      <th>ReportsTo</th>
-      <th>BirthDate</th>
-      <th>HireDate</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>PostalCode</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>Adams</td>
-      <td>Andrew</td>
-      <td>General Manager</td>
-      <td>NaN</td>
-      <td>1962-02-18 00:00:00</td>
-      <td>2002-08-14 00:00:00</td>
-      <td>11120 Jasper Ave NW</td>
-      <td>Edmonton</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T5K 2N1</td>
-      <td>+1 (780) 428-9482</td>
-      <td>+1 (780) 428-3457</td>
-      <td>andrew@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>Edwards</td>
-      <td>Nancy</td>
-      <td>Sales Manager</td>
-      <td>1.0</td>
-      <td>1958-12-08 00:00:00</td>
-      <td>2002-05-01 00:00:00</td>
-      <td>825 8 Ave SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 2T3</td>
-      <td>+1 (403) 262-3443</td>
-      <td>+1 (403) 262-3322</td>
-      <td>nancy@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-      <td>2.0</td>
-      <td>1973-08-29 00:00:00</td>
-      <td>2002-04-01 00:00:00</td>
-      <td>1111 6 Ave SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5M5</td>
-      <td>+1 (403) 262-3443</td>
-      <td>+1 (403) 262-6712</td>
-      <td>jane@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-      <td>2.0</td>
-      <td>1947-09-19 00:00:00</td>
-      <td>2003-05-03 00:00:00</td>
-      <td>683 10 Street SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5G3</td>
-      <td>+1 (403) 263-4423</td>
-      <td>+1 (403) 263-4289</td>
-      <td>margaret@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>Johnson</td>
-      <td>Steve</td>
-      <td>Sales Support Agent</td>
-      <td>2.0</td>
-      <td>1965-03-03 00:00:00</td>
-      <td>2003-10-17 00:00:00</td>
-      <td>7727B 41 Ave</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T3B 1Y7</td>
-      <td>1 (780) 836-9987</td>
-      <td>1 (780) 836-9543</td>
-      <td>steve@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>Mitchell</td>
-      <td>Michael</td>
-      <td>IT Manager</td>
-      <td>1.0</td>
-      <td>1973-07-01 00:00:00</td>
-      <td>2003-10-17 00:00:00</td>
-      <td>5827 Bowness Road NW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T3B 0C5</td>
-      <td>+1 (403) 246-9887</td>
-      <td>+1 (403) 246-9899</td>
-      <td>michael@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7</td>
-      <td>King</td>
-      <td>Robert</td>
-      <td>IT Staff</td>
-      <td>6.0</td>
-      <td>1970-05-29 00:00:00</td>
-      <td>2004-01-02 00:00:00</td>
-      <td>590 Columbia Boulevard West</td>
-      <td>Lethbridge</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T1K 5N8</td>
-      <td>+1 (403) 456-9986</td>
-      <td>+1 (403) 456-8485</td>
-      <td>robert@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8</td>
-      <td>Callahan</td>
-      <td>Laura</td>
-      <td>IT Staff</td>
-      <td>6.0</td>
-      <td>1968-01-09 00:00:00</td>
-      <td>2004-03-04 00:00:00</td>
-      <td>923 7 ST NW</td>
-      <td>Lethbridge</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T1H 1Y8</td>
-      <td>+1 (403) 467-3351</td>
-      <td>+1 (403) 467-8772</td>
-      <td>laura@chinookcorp.com</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-10">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># operador LIMIT</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT LastName FROM employees LIMIT 5;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-10" class="clipboard-copy-txt"># operador LIMIT
-query = """
-SELECT LastName FROM employees LIMIT 5;
-"""
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>LastName</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Adams</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Edwards</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Peacock</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Park</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Johnson</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-11">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># operador DISTINCT</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT DISTINCT LastName FROM employees </span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-11" class="clipboard-copy-txt"># operador DISTINCT
-query = """
-SELECT DISTINCT LastName FROM employees 
-"""
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>LastName</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Adams</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Edwards</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Peacock</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Park</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Johnson</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Mitchell</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>King</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Callahan</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-12">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># operadores logicos</span>
-
-<span class="n">query1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT *  FROM employees </span>
-<span class="s2">WHERE ReportsTo&gt;1 AND ReportsTo&lt;4</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">query2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT *  FROM employees </span>
-<span class="s2">WHERE ReportsTo&gt;1 OR City=&#39;Calgary&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">query3</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT *  FROM employees </span>
-<span class="s2">WHERE NOT City =  &#39;Calgary&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query3</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-12" class="clipboard-copy-txt"># operadores logicos
-
-query1 = """
-SELECT *  FROM employees 
-WHERE ReportsTo>1 AND ReportsTo<4
-"""
-
-query2 = """
-SELECT *  FROM employees 
-WHERE ReportsTo>1 OR City='Calgary'
-"""
-
-query3 = """
-SELECT *  FROM employees 
-WHERE NOT City =  'Calgary'
-"""
-
-consulta(query3,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-      <th>ReportsTo</th>
-      <th>BirthDate</th>
-      <th>HireDate</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>PostalCode</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>Adams</td>
-      <td>Andrew</td>
-      <td>General Manager</td>
-      <td>NaN</td>
-      <td>1962-02-18 00:00:00</td>
-      <td>2002-08-14 00:00:00</td>
-      <td>11120 Jasper Ave NW</td>
-      <td>Edmonton</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T5K 2N1</td>
-      <td>+1 (780) 428-9482</td>
-      <td>+1 (780) 428-3457</td>
-      <td>andrew@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7</td>
-      <td>King</td>
-      <td>Robert</td>
-      <td>IT Staff</td>
-      <td>6.0</td>
-      <td>1970-05-29 00:00:00</td>
-      <td>2004-01-02 00:00:00</td>
-      <td>590 Columbia Boulevard West</td>
-      <td>Lethbridge</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T1K 5N8</td>
-      <td>+1 (403) 456-9986</td>
-      <td>+1 (403) 456-8485</td>
-      <td>robert@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>8</td>
-      <td>Callahan</td>
-      <td>Laura</td>
-      <td>IT Staff</td>
-      <td>6.0</td>
-      <td>1968-01-09 00:00:00</td>
-      <td>2004-03-04 00:00:00</td>
-      <td>923 7 ST NW</td>
-      <td>Lethbridge</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T1H 1Y8</td>
-      <td>+1 (403) 467-3351</td>
-      <td>+1 (403) 467-8772</td>
-      <td>laura@chinookcorp.com</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-13">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Operador BETWEEN</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT *  FROM employees WHERE ReportsTo BETWEEN 1 AND 4</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-13" class="clipboard-copy-txt"># Operador BETWEEN
-query = """
-SELECT *  FROM employees WHERE ReportsTo BETWEEN 1 AND 4
-"""
-
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-      <th>ReportsTo</th>
-      <th>BirthDate</th>
-      <th>HireDate</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>PostalCode</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2</td>
-      <td>Edwards</td>
-      <td>Nancy</td>
-      <td>Sales Manager</td>
-      <td>1</td>
-      <td>1958-12-08 00:00:00</td>
-      <td>2002-05-01 00:00:00</td>
-      <td>825 8 Ave SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 2T3</td>
-      <td>+1 (403) 262-3443</td>
-      <td>+1 (403) 262-3322</td>
-      <td>nancy@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>6</td>
-      <td>Mitchell</td>
-      <td>Michael</td>
-      <td>IT Manager</td>
-      <td>1</td>
-      <td>1973-07-01 00:00:00</td>
-      <td>2003-10-17 00:00:00</td>
-      <td>5827 Bowness Road NW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T3B 0C5</td>
-      <td>+1 (403) 246-9887</td>
-      <td>+1 (403) 246-9899</td>
-      <td>michael@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1973-08-29 00:00:00</td>
-      <td>2002-04-01 00:00:00</td>
-      <td>1111 6 Ave SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5M5</td>
-      <td>+1 (403) 262-3443</td>
-      <td>+1 (403) 262-6712</td>
-      <td>jane@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1947-09-19 00:00:00</td>
-      <td>2003-05-03 00:00:00</td>
-      <td>683 10 Street SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5G3</td>
-      <td>+1 (403) 263-4423</td>
-      <td>+1 (403) 263-4289</td>
-      <td>margaret@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>Johnson</td>
-      <td>Steve</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1965-03-03 00:00:00</td>
-      <td>2003-10-17 00:00:00</td>
-      <td>7727B 41 Ave</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T3B 1Y7</td>
-      <td>1 (780) 836-9987</td>
-      <td>1 (780) 836-9543</td>
-      <td>steve@chinookcorp.com</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-14">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Operador LIKE</span>
-
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT *  FROM employees WHERE PostalCode LIKE &#39;%T2P%&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-14" class="clipboard-copy-txt"># Operador LIKE
-
-query = """
-SELECT *  FROM employees WHERE PostalCode LIKE '%T2P%'
-"""
-
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-      <th>ReportsTo</th>
-      <th>BirthDate</th>
-      <th>HireDate</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>PostalCode</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2</td>
-      <td>Edwards</td>
-      <td>Nancy</td>
-      <td>Sales Manager</td>
-      <td>1</td>
-      <td>1958-12-08 00:00:00</td>
-      <td>2002-05-01 00:00:00</td>
-      <td>825 8 Ave SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 2T3</td>
-      <td>+1 (403) 262-3443</td>
-      <td>+1 (403) 262-3322</td>
-      <td>nancy@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1973-08-29 00:00:00</td>
-      <td>2002-04-01 00:00:00</td>
-      <td>1111 6 Ave SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5M5</td>
-      <td>+1 (403) 262-3443</td>
-      <td>+1 (403) 262-6712</td>
-      <td>jane@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1947-09-19 00:00:00</td>
-      <td>2003-05-03 00:00:00</td>
-      <td>683 10 Street SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5G3</td>
-      <td>+1 (403) 263-4423</td>
-      <td>+1 (403) 263-4289</td>
-      <td>margaret@chinookcorp.com</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-15">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Operador IN</span>
-
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT *  FROM employees WHERE ReportsTo IN (2,5)</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-15" class="clipboard-copy-txt"># Operador IN
-
-query = """
-SELECT *  FROM employees WHERE ReportsTo IN (2,5)
-"""
-
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>EmployeeId</th>
-      <th>LastName</th>
-      <th>FirstName</th>
-      <th>Title</th>
-      <th>ReportsTo</th>
-      <th>BirthDate</th>
-      <th>HireDate</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>PostalCode</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3</td>
-      <td>Peacock</td>
-      <td>Jane</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1973-08-29 00:00:00</td>
-      <td>2002-04-01 00:00:00</td>
-      <td>1111 6 Ave SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5M5</td>
-      <td>+1 (403) 262-3443</td>
-      <td>+1 (403) 262-6712</td>
-      <td>jane@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>Park</td>
-      <td>Margaret</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1947-09-19 00:00:00</td>
-      <td>2003-05-03 00:00:00</td>
-      <td>683 10 Street SW</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T2P 5G3</td>
-      <td>+1 (403) 263-4423</td>
-      <td>+1 (403) 263-4289</td>
-      <td>margaret@chinookcorp.com</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5</td>
-      <td>Johnson</td>
-      <td>Steve</td>
-      <td>Sales Support Agent</td>
-      <td>2</td>
-      <td>1965-03-03 00:00:00</td>
-      <td>2003-10-17 00:00:00</td>
-      <td>7727B 41 Ave</td>
-      <td>Calgary</td>
-      <td>AB</td>
-      <td>Canada</td>
-      <td>T3B 1Y7</td>
-      <td>1 (780) 836-9987</td>
-      <td>1 (780) 836-9543</td>
-      <td>steve@chinookcorp.com</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-16">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Operadores matematicos</span>
-
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT SUM(ReportsTo),COUNT(ReportsTo),AVG(ReportsTo)  FROM employees </span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-16" class="clipboard-copy-txt"># Operadores matematicos
-
-query = """
-SELECT SUM(ReportsTo),COUNT(ReportsTo),AVG(ReportsTo)  FROM employees 
-"""
-
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SUM(ReportsTo)</th>
-      <th>COUNT(ReportsTo)</th>
-      <th>AVG(ReportsTo)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>20</td>
-      <td>7</td>
-      <td>2.857143</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="cosultas-mediante-group-by">Cosultas mediante GROUP BY<a class="anchor-link" href="#cosultas-mediante-group-by">&#182;</a></h3><p>Combina los registros con valores idénticos, en la lista de campos especificados, en un único registro:</p>
-<p><strong>Ejemplo</strong>: En la base datos chinook existe la tabla employees. ¿Cómo agrupar por la columna Title?</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-17">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT </span>
-<span class="s2">    Title, </span>
-<span class="s2">    SUM(ReportsTo) as suma,</span>
-<span class="s2">    COUNT(ReportsTo) as conteo,</span>
-<span class="s2">    AVG(ReportsTo) as promedio  </span>
-<span class="s2">FROM </span>
-<span class="s2">    employees </span>
-<span class="s2">GROUP BY </span>
-<span class="s2">    Title</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-17" class="clipboard-copy-txt">query = """
-SELECT 
-    Title, 
-    SUM(ReportsTo) as suma,
-    COUNT(ReportsTo) as conteo,
-    AVG(ReportsTo) as promedio  
-FROM 
-    employees 
-GROUP BY 
-    Title
-"""
-
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Title</th>
-      <th>suma</th>
-      <th>conteo</th>
-      <th>promedio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>General Manager</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>IT Manager</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>IT Staff</td>
-      <td>12.0</td>
-      <td>2</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Sales Manager</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Sales Support Agent</td>
-      <td>6.0</td>
-      <td>3</td>
-      <td>2.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="cosultas-mediante-join">Cosultas mediante JOIN<a class="anchor-link" href="#cosultas-mediante-join">&#182;</a></h3><p>La sentencia SQL JOIN se utiliza para relacionar varias tablas. Nos permitirá obtener un listado de los campos que tienen coincidencias en ambas tablas.</p>
-<p><strong>Ejemplo</strong>: En la base datos chinook existen las tablas albums y artists. ¿Cómo agregar el nombre del artista a la tabla de álbumes?</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-18">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># EJEMPLO 01</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT </span>
-<span class="s2">    *  </span>
-<span class="s2">FROM </span>
-<span class="s2">    artists </span>
-<span class="s2">JOIN </span>
-<span class="s2">    albums </span>
-<span class="s2">ON </span>
-<span class="s2">    artists.ArtistId=albums.ArtistId</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-18" class="clipboard-copy-txt"># EJEMPLO 01
-query = """
-SELECT 
-    *  
-FROM 
-    artists 
-JOIN 
-    albums 
-ON 
-    artists.ArtistId=albums.ArtistId
-"""
-
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ArtistId</th>
-      <th>Name</th>
-      <th>AlbumId</th>
-      <th>Title</th>
-      <th>ArtistId</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>AC/DC</td>
-      <td>1</td>
-      <td>For Those About To Rock We Salute You</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>Accept</td>
-      <td>2</td>
-      <td>Balls to the Wall</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>Accept</td>
-      <td>3</td>
-      <td>Restless and Wild</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>AC/DC</td>
-      <td>4</td>
-      <td>Let There Be Rock</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3</td>
-      <td>Aerosmith</td>
-      <td>5</td>
-      <td>Big Ones</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>342</th>
-      <td>226</td>
-      <td>Eugene Ormandy</td>
-      <td>343</td>
-      <td>Respighi:Pines of Rome</td>
-      <td>226</td>
-    </tr>
-    <tr>
-      <th>343</th>
-      <td>272</td>
-      <td>Emerson String Quartet</td>
-      <td>344</td>
-      <td>Schubert: The Late String Quartets &amp; String Qu...</td>
-      <td>272</td>
-    </tr>
-    <tr>
-      <th>344</th>
-      <td>273</td>
-      <td>C. Monteverdi, Nigel Rogers - Chiaroscuro; Lon...</td>
-      <td>345</td>
-      <td>Monteverdi: L'Orfeo</td>
-      <td>273</td>
-    </tr>
-    <tr>
-      <th>345</th>
-      <td>274</td>
-      <td>Nash Ensemble</td>
-      <td>346</td>
-      <td>Mozart: Chamber Music</td>
-      <td>274</td>
-    </tr>
-    <tr>
-      <th>346</th>
-      <td>275</td>
-      <td>Philip Glass Ensemble</td>
-      <td>347</td>
-      <td>Koyaanisqatsi (Soundtrack from the Motion Pict...</td>
-      <td>275</td>
-    </tr>
-  </tbody>
-</table>
-<p>347 rows × 5 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-19">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># EJEMPLO 02</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT </span>
-<span class="s2">    A.ArtistId,</span>
-<span class="s2">    A.Name, </span>
-<span class="s2">    B.AlbumId,</span>
-<span class="s2">    B.Title</span>
-<span class="s2">FROM </span>
-<span class="s2">    artists AS A</span>
-<span class="s2">JOIN</span>
-<span class="s2">    albums AS B </span>
-<span class="s2">ON</span>
-<span class="s2">    A.ArtistId=B.ArtistId</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">consulta</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-</pre></div>
-<div id="cell-19" class="clipboard-copy-txt"># EJEMPLO 02
-query = """
-SELECT 
-    A.ArtistId,
-    A.Name, 
-    B.AlbumId,
-    B.Title
-FROM 
-    artists AS A
-JOIN
-    albums AS B 
-ON
-    A.ArtistId=B.ArtistId
-"""
-
-consulta(query,conn)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ArtistId</th>
-      <th>Name</th>
-      <th>AlbumId</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>AC/DC</td>
-      <td>1</td>
-      <td>For Those About To Rock We Salute You</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>Accept</td>
-      <td>2</td>
-      <td>Balls to the Wall</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>Accept</td>
-      <td>3</td>
-      <td>Restless and Wild</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>AC/DC</td>
-      <td>4</td>
-      <td>Let There Be Rock</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3</td>
-      <td>Aerosmith</td>
-      <td>5</td>
-      <td>Big Ones</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>342</th>
-      <td>226</td>
-      <td>Eugene Ormandy</td>
-      <td>343</td>
-      <td>Respighi:Pines of Rome</td>
-    </tr>
-    <tr>
-      <th>343</th>
-      <td>272</td>
-      <td>Emerson String Quartet</td>
-      <td>344</td>
-      <td>Schubert: The Late String Quartets &amp; String Qu...</td>
-    </tr>
-    <tr>
-      <th>344</th>
-      <td>273</td>
-      <td>C. Monteverdi, Nigel Rogers - Chiaroscuro; Lon...</td>
-      <td>345</td>
-      <td>Monteverdi: L'Orfeo</td>
-    </tr>
-    <tr>
-      <th>345</th>
-      <td>274</td>
-      <td>Nash Ensemble</td>
-      <td>346</td>
-      <td>Mozart: Chamber Music</td>
-    </tr>
-    <tr>
-      <th>346</th>
-      <td>275</td>
-      <td>Philip Glass Ensemble</td>
-      <td>347</td>
-      <td>Koyaanisqatsi (Soundtrack from the Motion Pict...</td>
-    </tr>
-  </tbody>
-</table>
-<p>347 rows × 4 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="referencias">Referencias<a class="anchor-link" href="#referencias">&#182;</a></h2><ol>
-<li><a href="https://www.w3schools.com/sql/default.asp">SQL Tutorial</a></li>
-</ol>
+<h2 id="lecturas-recomendadas">Lecturas recomendadas<a class="anchor-link" href="#lecturas-recomendadas">&#182;</a></h2><ul>
+<li><a href="https://github.com/mattm/sql-style-guide">Mazur's SQL Style Guide</a></li>
+</ul>
 
 </div>
 </div>
