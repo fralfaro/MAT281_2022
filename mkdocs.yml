@@ -38,7 +38,7 @@ theme:
   name: material
   language: es
   logo: images/logo.bmp
-  favicon: images/faam_logo.gif
+  favicon: images/utfsm.png
   features:
     - navigation.instant
     - navigation.top
